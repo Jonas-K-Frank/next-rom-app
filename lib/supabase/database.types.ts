@@ -1,4 +1,4 @@
-// Håndskrevne typer der matcher supabase/migrations/20260829104737_init_schema.sql.
+// Håndskrevne typer der matcher supabase/migrations/*.sql.
 // Når Supabase-projektet er oprettet, kan denne fil erstattes med output fra
 // `supabase gen types typescript` for at holde typerne i sync automatisk.
 
@@ -21,6 +21,7 @@ export interface Database {
           created_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["retailers"]["Insert"]>;
+        Relationships: [];
       };
       products: {
         Row: {
@@ -42,6 +43,7 @@ export interface Database {
           created_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["products"]["Insert"]>;
+        Relationships: [];
       };
       product_retailer_links: {
         Row: {
@@ -63,6 +65,22 @@ export interface Database {
         Update: Partial<
           Database["public"]["Tables"]["product_retailer_links"]["Insert"]
         >;
+        Relationships: [
+          {
+            foreignKeyName: "product_retailer_links_product_id_fkey";
+            columns: ["product_id"];
+            isOneToOne: false;
+            referencedRelation: "products";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "product_retailer_links_retailer_id_fkey";
+            columns: ["retailer_id"];
+            isOneToOne: false;
+            referencedRelation: "retailers";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       prices: {
         Row: {
@@ -82,7 +100,37 @@ export interface Database {
           scraped_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["prices"]["Insert"]>;
+        Relationships: [
+          {
+            foreignKeyName: "prices_link_id_fkey";
+            columns: ["link_id"];
+            isOneToOne: false;
+            referencedRelation: "product_retailer_links";
+            referencedColumns: ["id"];
+          },
+        ];
       };
     };
+    Views: {
+      latest_prices: {
+        Row: {
+          id: string;
+          link_id: string;
+          price: number;
+          in_stock: boolean;
+          scraped_at: string;
+        };
+        Relationships: [];
+      };
+      product_lowest_prices: {
+        Row: {
+          product_id: string;
+          lowest_price: number;
+          retailer_count: number;
+        };
+        Relationships: [];
+      };
+    };
+    Functions: Record<string, never>;
   };
 }
