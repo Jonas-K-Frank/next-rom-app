@@ -1,6 +1,7 @@
 import { Search } from "lucide-react";
 import { getProductListWithLowestPrice } from "@/lib/data/products";
 import { ProductCard } from "@/components/product-card";
+import { Hero } from "@/components/hero";
 import { Input } from "@/components/ui/input";
 
 export default async function Home() {
@@ -8,12 +9,7 @@ export default async function Home() {
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 px-4 py-10">
-      <div>
-        <h1 className="text-2xl font-semibold">Rumpriser</h1>
-        <p className="text-muted-foreground">
-          Sammenlign priser på rom fra danske online forhandlere.
-        </p>
-      </div>
+      <Hero />
 
       {/* Rent visuelt for nu — filtrering af produkter kommer i et
           separat step. */}
