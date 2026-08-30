@@ -25,6 +25,16 @@ const priceFormatter = new Intl.NumberFormat("da-DK", {
   currency: "DKK",
 });
 
+const dateFormatter = new Intl.DateTimeFormat("da-DK", {
+  day: "numeric",
+  month: "short",
+});
+
+function stockLabel(inStock: boolean | null) {
+  if (inStock === null) return "—";
+  return inStock ? "På lager" : "Udsolgt";
+}
+
 export default async function ProductPage({
   params,
 }: {
@@ -114,45 +124,35 @@ export default async function ProductPage({
               Ingen forhandlere linket til dette produkt endnu.
             </p>
           ) : (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Forhandler</TableHead>
-                  <TableHead>Pris</TableHead>
-                  <TableHead>Lager</TableHead>
-                  <TableHead>Senest opdateret</TableHead>
-                  <TableHead />
-                </TableRow>
-              </TableHeader>
-              <TableBody>
+            <>
+              {/* Under sm er en tabel med 5 kolonner for bred til skærmen
+                  (CTA-knappen og hele årstallet endte uden for viewporten),
+                  så mobil får en stablet liste i stedet. */}
+              <div className="flex flex-col gap-3 sm:hidden">
                 {product.offers.map((offer) => (
-                  <TableRow key={offer.linkId}>
-                    <TableCell className="font-medium">
-                      {offer.retailerName}
-                    </TableCell>
-                    <TableCell className="font-mono font-medium">
-                      {offer.price !== null
-                        ? priceFormatter.format(offer.price)
-                        : "—"}
-                    </TableCell>
-                    <TableCell>
-                      {offer.inStock === null
-                        ? "—"
-                        : offer.inStock
-                          ? "På lager"
-                          : "Udsolgt"}
-                    </TableCell>
-                    <TableCell>
-                      {offer.scrapedAt
-                        ? new Date(offer.scrapedAt).toLocaleDateString(
-                            "da-DK",
-                          )
-                        : "—"}
-                    </TableCell>
-                    <TableCell>
+                  <div
+                    key={offer.linkId}
+                    className="flex items-center justify-between gap-3 rounded-lg border border-border p-3"
+                  >
+                    <div className="min-w-0">
+                      <p className="font-medium text-foreground">
+                        {offer.retailerName}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {stockLabel(offer.inStock)}
+                        {offer.scrapedAt &&
+                          ` · ${dateFormatter.format(new Date(offer.scrapedAt))}`}
+                      </p>
+                    </div>
+                    <div className="flex shrink-0 flex-col items-end gap-1.5">
+                      <span className="font-mono font-semibold text-accent">
+                        {offer.price !== null
+                          ? priceFormatter.format(offer.price)
+                          : "—"}
+                      </span>
                       <Button
                         variant="outline"
-                        size="sm"
+                        size="xs"
                         nativeButton={false}
                         render={
                           <a
@@ -164,11 +164,63 @@ export default async function ProductPage({
                           </a>
                         }
                       />
-                    </TableCell>
-                  </TableRow>
+                    </div>
+                  </div>
                 ))}
-              </TableBody>
-            </Table>
+              </div>
+
+              <div className="hidden sm:block">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Forhandler</TableHead>
+                      <TableHead>Pris</TableHead>
+                      <TableHead>Lager</TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Senest opdateret
+                      </TableHead>
+                      <TableHead />
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {product.offers.map((offer) => (
+                      <TableRow key={offer.linkId}>
+                        <TableCell className="font-medium">
+                          {offer.retailerName}
+                        </TableCell>
+                        <TableCell className="font-mono font-medium">
+                          {offer.price !== null
+                            ? priceFormatter.format(offer.price)
+                            : "—"}
+                        </TableCell>
+                        <TableCell>{stockLabel(offer.inStock)}</TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          {offer.scrapedAt
+                            ? dateFormatter.format(new Date(offer.scrapedAt))
+                            : "—"}
+                        </TableCell>
+                        <TableCell>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            nativeButton={false}
+                            render={
+                              <a
+                                href={offer.productUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                Gå til butik
+                              </a>
+                            }
+                          />
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </>
           )}
         </CardContent>
       </Card>
