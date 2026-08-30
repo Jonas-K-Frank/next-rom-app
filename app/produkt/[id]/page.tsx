@@ -144,12 +144,12 @@ export default async function ProductPage({
                           ` · ${dateFormatter.format(new Date(offer.scrapedAt))}`}
                       </p>
                     </div>
-                    <div className="flex shrink-0 flex-col items-end gap-1.5">
-                      <span className="font-mono font-semibold text-accent">
-                        {offer.price !== null
-                          ? priceFormatter.format(offer.price)
-                          : "—"}
-                      </span>
+                    <span className="shrink-0 font-mono font-semibold text-accent">
+                      {offer.price !== null
+                        ? priceFormatter.format(offer.price)
+                        : "—"}
+                    </span>
+                    <div className="shrink-0">
                       <Button
                         variant="outline"
                         size="xs"
