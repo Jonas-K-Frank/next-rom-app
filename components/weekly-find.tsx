@@ -20,7 +20,7 @@ export function WeeklyFindModule({
   return (
     <div>
       <div className="rounded-2xl bg-[linear-gradient(120deg,#1F2420_0%,#4A3410_65%,#C17817_100%)] p-6 sm:p-10">
-        <div className="flex gap-6">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex-1">
             <span className="text-[11px] font-semibold tracking-wide text-[#F0C77A] uppercase">
               Ugens fund
@@ -34,32 +34,33 @@ export function WeeklyFindModule({
             </p>
           </div>
 
-          {/* Kun på desktop — på mobil er der ikke plads til billedet uden
-              at teksten trænges. */}
-          {find.imageUrl && (
-            <div className="relative hidden aspect-[3/4] w-28 shrink-0 sm:block">
-              <Image
-                src={find.imageUrl}
-                alt={find.name}
-                fill
-                className="object-contain"
-                sizes="112px"
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Linker til produktsiden (prishistorik + alle forhandlere), ikke
-            direkte til én forhandler — det ville modsige sammenligningen. */}
-        <div className="mt-6 flex justify-end">
-          <Button
-            variant="outline"
-            nativeButton={false}
-            className="rounded-full border-transparent bg-white/90 text-header shadow-none hover:bg-white"
-            render={
-              <Link href={`/produkt/${find.productId}`}>Se alle priser</Link>
-            }
-          />
+          {/* Billede + CTA grupperet i samme højre kolonne på desktop,
+              billedet før knappen. Billedet er skjult på mobil — ikke
+              plads til det uden at teksten trænges. */}
+          <div className="flex flex-col items-end gap-4">
+            {find.imageUrl && (
+              <div className="relative hidden aspect-[3/4] w-40 shrink-0 sm:block">
+                <Image
+                  src={find.imageUrl}
+                  alt={find.name}
+                  fill
+                  className="object-contain"
+                  sizes="160px"
+                />
+              </div>
+            )}
+            {/* Linker til produktsiden (prishistorik + alle forhandlere),
+                ikke direkte til én forhandler — det ville modsige
+                sammenligningen. */}
+            <Button
+              variant="outline"
+              nativeButton={false}
+              className="h-12 rounded-full border-transparent bg-white/90 px-6 text-base font-medium text-header shadow-none hover:bg-white"
+              render={
+                <Link href={`/produkt/${find.productId}`}>Se ugens fund</Link>
+              }
+            />
+          </div>
         </div>
       </div>
       <p className="mt-2 text-xs text-muted-foreground">
