@@ -33,25 +33,31 @@ export function WeeklyFindModule({
               {priceFormatter.format(find.lowestPrice)}
             </p>
 
-            {/* Linker til produktsiden (prishistorik + alle forhandlere),
+            {/* Centreret på mobil, venstrestillet under prisen på desktop.
+                Linker til produktsiden (prishistorik + alle forhandlere),
                 ikke direkte til én forhandler — det ville modsige
                 sammenligningen. */}
-            <Button
-              variant="outline"
-              nativeButton={false}
-              className="mt-6 h-12 rounded-full border-transparent bg-white/90 px-6 text-base font-medium text-header shadow-none hover:bg-white"
-              render={
-                <Link href={`/produkt/${find.productId}`}>Se ugens fund</Link>
-              }
-            />
+            <div className="mt-6 flex justify-center sm:justify-start">
+              <Button
+                variant="outline"
+                nativeButton={false}
+                className="h-12 rounded-full border-transparent bg-white/90 px-6 text-base font-medium text-header shadow-none hover:bg-white"
+                render={
+                  <Link href={`/produkt/${find.productId}`}>
+                    Se ugens fund
+                  </Link>
+                }
+              />
+            </div>
           </div>
 
           {/* Kun på desktop — på mobil er der ikke plads til billedet uden
               at teksten trænges. Højden matcher venstre kolonne
-              (sm:items-stretch), og billedet fylder 94% af den. */}
+              (sm:items-stretch), og billedet fylder 98% af hele modulets
+              højde. */}
           {find.imageUrl && (
             <div className="hidden shrink-0 sm:flex sm:items-center sm:justify-end">
-              <div className="relative aspect-[3/4] h-[94%]">
+              <div className="relative aspect-[3/4] h-[98%]">
                 <Image
                   src={find.imageUrl}
                   alt={find.name}
