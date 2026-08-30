@@ -133,6 +133,20 @@ export interface Database {
         };
         Relationships: [];
       };
+      product_price_drops: {
+        Row: {
+          product_id: string;
+          best_price_drop_pct: number;
+        };
+        Relationships: [];
+      };
+      catalog_stats: {
+        Row: {
+          product_count: number;
+          retailer_count: number;
+        };
+        Relationships: [];
+      };
     };
     Functions: Record<string, never>;
   };

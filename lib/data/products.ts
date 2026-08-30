@@ -7,43 +7,155 @@ export interface ProductListItem {
   volume_ml: number | null;
   category: string | null;
   image_url: string | null;
-  lowestPrice: number | null;
-  highestPrice: number | null;
+  lowestPrice: number;
+  highestPrice: number;
   retailerCount: number;
 }
 
-// Forsidedata: alle produkter beriget med laveste aktuelle pris på tværs af
-// forhandlere. Bruger `product_lowest_prices`-viewet frem for at hente hele
-// prishistorikken, så forsiden forbliver billig at rendere.
+// Forsidedata: kun produkter der reelt har en aktuel pris hos mindst én
+// forhandler. Starter fra `product_lowest_prices` (ikke `products`), da
+// viewets almindelige join mod product_retailer_links/latest_prices
+// automatisk udelukker produkter uden pris — de skal aldrig vises på
+// forsiden, så filtreringen skal ske i databasen, ikke i frontend.
 export async function getProductListWithLowestPrice(): Promise<
   ProductListItem[]
 > {
   const supabase = await createClient();
 
-  const [{ data: products, error: productsError }, { data: lowestPrices }] =
-    await Promise.all([
-      supabase
-        .from("products")
-        .select("id, name, brand, volume_ml, category, image_url")
-        .order("name"),
-      supabase.from("product_lowest_prices").select("*"),
-    ]);
+  const { data: lowestPrices, error: lowestPricesError } = await supabase
+    .from("product_lowest_prices")
+    .select("*");
+
+  if (lowestPricesError) throw lowestPricesError;
+  if (!lowestPrices || lowestPrices.length === 0) return [];
+
+  const productIds = lowestPrices.map((row) => row.product_id);
+
+  const { data: products, error: productsError } = await supabase
+    .from("products")
+    .select("id, name, brand, volume_ml, category, image_url")
+    .in("id", productIds)
+    .order("name");
 
   if (productsError) throw productsError;
+
+  const lowestByProductId = new Map(
+    lowestPrices.map((row) => [row.product_id, row]),
+  );
+
+  return (products ?? []).flatMap((product) => {
+    const lowest = lowestByProductId.get(product.id);
+    if (!lowest) return [];
+    return [
+      {
+        ...product,
+        lowestPrice: lowest.lowest_price,
+        highestPrice: lowest.highest_price,
+        retailerCount: lowest.retailer_count,
+      },
+    ];
+  });
+}
+
+export interface WeeklyFind {
+  productId: string;
+  name: string;
+  imageUrl: string | null;
+  lowestPrice: number;
+  editorialLine: string;
+}
+
+// "Ugens fund": produktet med størst procentvist prisfald siden forrige
+// scrape. Falder tilbage til produktet med flest forhandlere (bedst
+// datadækning) når der endnu ikke findes prishistorik at sammenligne med,
+// så modulet aldrig står tomt så længe mindst ét produkt har en pris.
+export async function getWeeklyFind(): Promise<WeeklyFind | null> {
+  const supabase = await createClient();
+
+  const [{ data: drops }, { data: lowestPrices }] = await Promise.all([
+    supabase
+      .from("product_price_drops")
+      .select("product_id, best_price_drop_pct")
+      .gt("best_price_drop_pct", 0)
+      .order("best_price_drop_pct", { ascending: false }),
+    supabase
+      .from("product_lowest_prices")
+      .select("product_id, lowest_price, retailer_count"),
+  ]);
 
   const lowestByProductId = new Map(
     (lowestPrices ?? []).map((row) => [row.product_id, row]),
   );
 
-  return (products ?? []).map((product) => {
-    const lowest = lowestByProductId.get(product.id);
-    return {
-      ...product,
-      lowestPrice: lowest?.lowest_price ?? null,
-      highestPrice: lowest?.highest_price ?? null,
-      retailerCount: lowest?.retailer_count ?? 0,
-    };
-  });
+  let productId: string | null = null;
+  let lowestPrice = 0;
+  let editorialLine = "";
+
+  // Det bedste prisfald tæller kun hvis produktet stadig har en aktuel
+  // pris et sted (kan være udsolgt alle steder siden faldet blev målt).
+  const dropCandidate = (drops ?? []).find((drop) =>
+    lowestByProductId.has(drop.product_id),
+  );
+
+  if (dropCandidate) {
+    const lowest = lowestByProductId.get(dropCandidate.product_id)!;
+    productId = dropCandidate.product_id;
+    lowestPrice = lowest.lowest_price;
+    editorialLine = `Prisen er faldet ${Math.round(dropCandidate.best_price_drop_pct)}% siden sidste prischeck`;
+  } else {
+    const fallback = [...lowestByProductId.values()].sort(
+      (a, b) =>
+        b.retailer_count - a.retailer_count || a.lowest_price - b.lowest_price,
+    )[0];
+    if (fallback) {
+      productId = fallback.product_id;
+      lowestPrice = fallback.lowest_price;
+      editorialLine = `Bredest tilgængelig — sammenlignet på tværs af ${fallback.retailer_count} ${
+        fallback.retailer_count === 1 ? "forhandler" : "forhandlere"
+      }`;
+    }
+  }
+
+  if (!productId) return null;
+
+  const { data: product, error: productError } = await supabase
+    .from("products")
+    .select("id, name, image_url")
+    .eq("id", productId)
+    .maybeSingle();
+
+  if (productError) throw productError;
+  if (!product) return null;
+
+  return {
+    productId: product.id,
+    name: product.name,
+    imageUrl: product.image_url,
+    lowestPrice,
+    editorialLine,
+  };
+}
+
+export interface CatalogStats {
+  productCount: number;
+  retailerCount: number;
+}
+
+// Infolinje under "Ugens fund": samlet dækning på tværs af hele katalogget.
+export async function getCatalogStats(): Promise<CatalogStats> {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("catalog_stats")
+    .select("*")
+    .maybeSingle();
+
+  if (error) throw error;
+
+  return {
+    productCount: data?.product_count ?? 0,
+    retailerCount: data?.retailer_count ?? 0,
+  };
 }
 
 export interface RetailerOffer {
