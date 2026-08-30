@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductDetail } from "@/lib/data/products";
 import { PriceChart } from "@/components/price-chart";
+import { PricePositionBar } from "@/components/price-position-bar";
 import {
   Card,
   CardContent,
@@ -35,6 +36,14 @@ export default async function ProductPage({
   if (!product) {
     notFound();
   }
+
+  // Kun vis prisposition-baren når der reelt er noget at sammenligne.
+  const offersWithPrice = product.offers.filter(
+    (offer): offer is typeof offer & { price: number } => offer.price !== null,
+  );
+  const offerPrices = offersWithPrice.map((offer) => offer.price);
+  const hasPriceRange =
+    offerPrices.length > 1 && Math.max(...offerPrices) > Math.min(...offerPrices);
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 px-4 py-10">
@@ -79,6 +88,22 @@ export default async function ProductPage({
         </CardContent>
       </Card>
 
+      {hasPriceRange && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Prisposition</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <PricePositionBar
+              points={offersWithPrice.map((offer) => ({
+                label: offer.retailerName,
+                price: offer.price,
+              }))}
+            />
+          </CardContent>
+        </Card>
+      )}
+
       <Card>
         <CardHeader>
           <CardTitle>Pris pr. forhandler</CardTitle>
@@ -105,7 +130,7 @@ export default async function ProductPage({
                     <TableCell className="font-medium">
                       {offer.retailerName}
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="font-mono font-medium">
                       {offer.price !== null
                         ? priceFormatter.format(offer.price)
                         : "—"}

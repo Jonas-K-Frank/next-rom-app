@@ -8,6 +8,7 @@ export interface ProductListItem {
   category: string | null;
   image_url: string | null;
   lowestPrice: number | null;
+  highestPrice: number | null;
   retailerCount: number;
 }
 
@@ -39,6 +40,7 @@ export async function getProductListWithLowestPrice(): Promise<
     return {
       ...product,
       lowestPrice: lowest?.lowest_price ?? null,
+      highestPrice: lowest?.highest_price ?? null,
       retailerCount: lowest?.retailer_count ?? 0,
     };
   });

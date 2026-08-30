@@ -1,25 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
 import { getProductListWithLowestPrice } from "@/lib/data/products";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
-const priceFormatter = new Intl.NumberFormat("da-DK", {
-  style: "currency",
-  currency: "DKK",
-});
+import { ProductCard } from "@/components/product-card";
 
 export default async function Home() {
   const products = await getProductListWithLowestPrice();
@@ -33,73 +13,18 @@ export default async function Home() {
         </p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Alle produkter</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {products.length === 0 ? (
-            <p className="text-muted-foreground text-sm">
-              Ingen produkter endnu. Tilføj produkter og forhandler-links via
-              Supabase Table Editor for at komme i gang.
-            </p>
-          ) : (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-14" />
-                  <TableHead>Produkt</TableHead>
-                  <TableHead>Mærke</TableHead>
-                  <TableHead>Volumen</TableHead>
-                  <TableHead>Forhandlere</TableHead>
-                  <TableHead className="text-right">Laveste pris</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {products.map((product) => (
-                  <TableRow key={product.id}>
-                    <TableCell>
-                      <Link href={`/produkt/${product.id}`}>
-                        {product.image_url ? (
-                          <Image
-                            src={product.image_url}
-                            alt={product.name}
-                            width={40}
-                            height={40}
-                            className="rounded-md object-contain"
-                          />
-                        ) : (
-                          <div className="flex size-10 items-center justify-center rounded-md bg-muted text-muted-foreground text-xs">
-                            —
-                          </div>
-                        )}
-                      </Link>
-                    </TableCell>
-                    <TableCell className="font-medium">
-                      <Link
-                        href={`/produkt/${product.id}`}
-                        className="hover:underline"
-                      >
-                        {product.name}
-                      </Link>
-                    </TableCell>
-                    <TableCell>{product.brand ?? "—"}</TableCell>
-                    <TableCell>
-                      {product.volume_ml ? `${product.volume_ml} ml` : "—"}
-                    </TableCell>
-                    <TableCell>{product.retailerCount}</TableCell>
-                    <TableCell className="text-right">
-                      {product.lowestPrice !== null
-                        ? priceFormatter.format(product.lowestPrice)
-                        : "Ikke på lager"}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          )}
-        </CardContent>
-      </Card>
+      {products.length === 0 ? (
+        <p className="text-muted-foreground text-sm">
+          Ingen produkter endnu. Tilføj produkter og forhandler-links via
+          Supabase Table Editor for at komme i gang.
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
     </main>
   );
 }

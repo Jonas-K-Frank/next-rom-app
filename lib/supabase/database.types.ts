@@ -129,6 +129,7 @@ export interface Database {
           product_id: string;
           lowest_price: number;
           retailer_count: number;
+          highest_price: number;
         };
         Relationships: [];
       };

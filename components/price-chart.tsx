@@ -65,7 +65,7 @@ export function PriceChart({
         <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
         <XAxis dataKey="date" tick={{ fontSize: 12 }} />
         <YAxis
-          tick={{ fontSize: 12 }}
+          tick={{ fontSize: 12, fontFamily: "var(--font-mono)" }}
           tickFormatter={(value: number) => `${value} kr.`}
         />
         <Tooltip formatter={(value) => `${value} kr.`} />
