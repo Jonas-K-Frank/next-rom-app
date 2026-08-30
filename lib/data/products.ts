@@ -6,6 +6,7 @@ export interface ProductListItem {
   brand: string | null;
   volume_ml: number | null;
   category: string | null;
+  image_url: string | null;
   lowestPrice: number | null;
   retailerCount: number;
 }
@@ -22,7 +23,7 @@ export async function getProductListWithLowestPrice(): Promise<
     await Promise.all([
       supabase
         .from("products")
-        .select("id, name, brand, volume_ml, category")
+        .select("id, name, brand, volume_ml, category, image_url")
         .order("name"),
       supabase.from("product_lowest_prices").select("*"),
     ]);
@@ -66,6 +67,7 @@ export interface ProductDetail {
   volume_ml: number | null;
   abv: number | null;
   category: string | null;
+  image_url: string | null;
   offers: RetailerOffer[];
   priceHistory: PriceHistoryPoint[];
 }
@@ -79,7 +81,7 @@ export async function getProductDetail(
 
   const { data: product, error: productError } = await supabase
     .from("products")
-    .select("id, name, brand, volume_ml, abv, category")
+    .select("id, name, brand, volume_ml, abv, category, image_url")
     .eq("id", productId)
     .maybeSingle();
 

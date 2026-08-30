@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductDetail } from "@/lib/data/products";
@@ -41,14 +42,32 @@ export default async function ProductPage({
         <Button
           variant="ghost"
           className="-ml-4 mb-2"
+          nativeButton={false}
           render={<Link href="/">← Tilbage til forsiden</Link>}
         />
-        <h1 className="text-2xl font-semibold">{product.name}</h1>
-        <p className="text-muted-foreground">
-          {[product.brand, product.category, product.volume_ml && `${product.volume_ml} ml`, product.abv && `${product.abv}% abv`]
-            .filter(Boolean)
-            .join(" · ")}
-        </p>
+        <div className="flex items-center gap-4">
+          {product.image_url ? (
+            <Image
+              src={product.image_url}
+              alt={product.name}
+              width={80}
+              height={80}
+              className="rounded-md object-contain"
+            />
+          ) : (
+            <div className="flex size-20 items-center justify-center rounded-md bg-muted text-muted-foreground text-xs">
+              Intet billede
+            </div>
+          )}
+          <div>
+            <h1 className="text-2xl font-semibold">{product.name}</h1>
+            <p className="text-muted-foreground">
+              {[product.brand, product.category, product.volume_ml && `${product.volume_ml} ml`, product.abv && `${product.abv}% abv`]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          </div>
+        </div>
       </div>
 
       <Card>
@@ -109,6 +128,7 @@ export default async function ProductPage({
                       <Button
                         variant="outline"
                         size="sm"
+                        nativeButton={false}
                         render={
                           <a
                             href={offer.productUrl}

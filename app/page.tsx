@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getProductListWithLowestPrice } from "@/lib/data/products";
 import {
@@ -46,6 +47,7 @@ export default async function Home() {
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead className="w-14" />
                   <TableHead>Produkt</TableHead>
                   <TableHead>Mærke</TableHead>
                   <TableHead>Volumen</TableHead>
@@ -56,6 +58,23 @@ export default async function Home() {
               <TableBody>
                 {products.map((product) => (
                   <TableRow key={product.id}>
+                    <TableCell>
+                      <Link href={`/produkt/${product.id}`}>
+                        {product.image_url ? (
+                          <Image
+                            src={product.image_url}
+                            alt={product.name}
+                            width={40}
+                            height={40}
+                            className="rounded-md object-contain"
+                          />
+                        ) : (
+                          <div className="flex size-10 items-center justify-center rounded-md bg-muted text-muted-foreground text-xs">
+                            —
+                          </div>
+                        )}
+                      </Link>
+                    </TableCell>
                     <TableCell className="font-medium">
                       <Link
                         href={`/produkt/${product.id}`}

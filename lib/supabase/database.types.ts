@@ -31,6 +31,7 @@ export interface Database {
           volume_ml: number | null;
           abv: number | null;
           category: string | null;
+          image_url: string | null;
           created_at: string;
         };
         Insert: {
@@ -40,6 +41,7 @@ export interface Database {
           volume_ml?: number | null;
           abv?: number | null;
           category?: string | null;
+          image_url?: string | null;
           created_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["products"]["Insert"]>;
