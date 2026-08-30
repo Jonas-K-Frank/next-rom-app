@@ -1,5 +1,7 @@
+import { Search } from "lucide-react";
 import { getProductListWithLowestPrice } from "@/lib/data/products";
 import { ProductCard } from "@/components/product-card";
+import { Input } from "@/components/ui/input";
 
 export default async function Home() {
   const products = await getProductListWithLowestPrice();
@@ -11,6 +13,17 @@ export default async function Home() {
         <p className="text-muted-foreground">
           Sammenlign priser på rom fra danske online forhandlere.
         </p>
+      </div>
+
+      {/* Rent visuelt for nu — filtrering af produkter kommer i et
+          separat step. */}
+      <div className="relative">
+        <Search className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-muted-foreground" />
+        <Input
+          type="search"
+          placeholder="Søg efter rom, mærke eller kategori…"
+          className="h-14 rounded-xl border-border bg-card pl-12 text-base shadow-sm"
+        />
       </div>
 
       {products.length === 0 ? (
