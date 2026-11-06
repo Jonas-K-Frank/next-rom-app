@@ -22,39 +22,37 @@ export async function getProductListWithLowestPrice(): Promise<
 > {
   const supabase = await createClient();
 
-  const { data: lowestPrices, error: lowestPricesError } = await supabase
-    .from("product_lowest_prices")
-    .select("*");
-
-  if (lowestPricesError) throw lowestPricesError;
-  if (!lowestPrices || lowestPrices.length === 0) return [];
-
-  const productIds = lowestPrices.map((row) => row.product_id);
-
-  const { data: products, error: productsError } = await supabase
+  // Fetch products with their lowest prices in a single query using a join
+  // This avoids the .in() clause limitation with many IDs
+  const { data, error } = await supabase
     .from("products")
-    .select("id, name, brand, volume_ml, category, image_url")
-    .in("id", productIds)
+    .select(`
+      id, 
+      name, 
+      brand, 
+      volume_ml, 
+      category, 
+      image_url,
+      product_lowest_prices:product_lowest_prices(lowest_price, highest_price, retailer_count)
+    `)
     .order("name");
 
-  if (productsError) throw productsError;
+  if (error) {
+    console.error("Error in getProductListWithLowestPrice:", error);
+    throw error;
+  }
 
-  const lowestByProductId = new Map(
-    lowestPrices.map((row) => [row.product_id, row]),
-  );
-
-  return (products ?? []).flatMap((product) => {
-    const lowest = lowestByProductId.get(product.id);
-    if (!lowest) return [];
-    return [
-      {
-        ...product,
-        lowestPrice: lowest.lowest_price,
-        highestPrice: lowest.highest_price,
-        retailerCount: lowest.retailer_count,
-      },
-    ];
-  });
+  // Filter to only products that have a lowest price (i.e., are available from at least one retailer)
+  return (data ?? [])
+    .filter((product) => product.product_lowest_prices !== null)
+    .map((product) => ({
+      ...product,
+      lowestPrice: product.product_lowest_prices!.lowest_price,
+      highestPrice: product.product_lowest_prices!.highest_price,
+      retailerCount: product.product_lowest_prices!.retailer_count,
+      // Remove the joined data to clean up the response
+      product_lowest_prices: undefined,
+    }));
 }
 
 export interface WeeklyFind {
