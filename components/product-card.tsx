@@ -22,7 +22,7 @@ export function ProductCard({ product }: { product: ProductListItem }) {
         <CardContent className="flex h-full flex-col gap-3">
           {/* Flasken skal være blikfanget, ikke gemt væk: højformat,
               object-contain så hele flasken altid er synlig. */}
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-muted">
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-white">
             {product.image_url ? (
               <Image
                 src={product.image_url}
