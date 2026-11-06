@@ -44,12 +44,12 @@ export async function getProductListWithLowestPrice(): Promise<
 
   // Filter to only products that have a lowest price (i.e., are available from at least one retailer)
   return (data ?? [])
-    .filter((product) => product.product_lowest_prices !== null)
+    .filter((product) => product.product_lowest_prices !== null && product.product_lowest_prices.length > 0)
     .map((product) => ({
       ...product,
-      lowestPrice: product.product_lowest_prices!.lowest_price,
-      highestPrice: product.product_lowest_prices!.highest_price,
-      retailerCount: product.product_lowest_prices!.retailer_count,
+      lowestPrice: product.product_lowest_prices![0].lowest_price,
+      highestPrice: product.product_lowest_prices![0].highest_price,
+      retailerCount: product.product_lowest_prices![0].retailer_count,
       // Remove the joined data to clean up the response
       product_lowest_prices: undefined,
     }));
