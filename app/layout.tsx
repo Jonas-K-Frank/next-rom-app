@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,7 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rumpriser | Sammenlign rom-priser i Danmark",
+  title: "Rompriser | Sammenlign rom-priser i Danmark",
   description:
     "Sammenlign priser og se prishistorik på rom fra danske online forhandlere.",
 };
@@ -25,8 +24,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="da"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <SiteHeader />
         {children}
       </body>
     </html>
