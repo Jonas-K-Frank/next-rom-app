@@ -22,7 +22,7 @@ export function ProductCard({ product }: { product: ProductListItem }) {
         <CardContent className="flex h-full flex-col gap-3">
           {/* Flasken skal være blikfanget, ikke gemt væk: højformat,
               object-contain så hele flasken altid er synlig. */}
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-white">
+          <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-white sm:aspect-[3/4]">
             {product.image_url ? (
               <Image
                 src={product.image_url}
@@ -41,7 +41,7 @@ export function ProductCard({ product }: { product: ProductListItem }) {
           {/* Fast min-height, så navn/pris/bar aldrig presses sammen eller
               skæres af, og alle kort i grid'et forbliver ensartede i
               højden uanset om prisposition-baren renderes eller ej. */}
-          <div className="flex min-h-[152px] flex-col gap-2">
+          <div className="flex min-h-[140px] sm:min-h-[152px] flex-col gap-2">
             <div>
               <h2 className="line-clamp-2 font-medium text-foreground">
                 {product.name}

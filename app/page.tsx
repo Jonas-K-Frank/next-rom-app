@@ -28,7 +28,7 @@ export default async function Home() {
           <Input
             type="search"
             placeholder="Søg efter rom, mærke eller kategori…"
-            className="h-[50px] w-full rounded-full border-border-strong bg-white pl-13 text-[15px]"
+            className="h-12 w-full rounded-full border-border-strong bg-white pl-13 text-[15px] sm:h-[50px]"
           />
         </div>
 

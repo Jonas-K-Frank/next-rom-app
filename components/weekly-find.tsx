@@ -25,11 +25,11 @@ export function WeeklyFindModule({
             <span className="text-[11px] font-semibold tracking-wide text-[#F0C77A] uppercase">
               Ugens fund
             </span>
-            <h2 className="mt-1 text-2xl font-semibold text-white">
+            <h2 className="mt-1 text-xl sm:text-2xl font-semibold text-white">
               {find.name}
             </h2>
             <p className="mt-1 text-sm text-white/70">{find.editorialLine}</p>
-            <p className="mt-3 font-mono text-[30px] font-semibold text-white">
+            <p className="mt-3 font-mono text-2xl sm:text-[30px] font-semibold text-white">
               {priceFormatter.format(find.lowestPrice)}
             </p>
 
@@ -41,7 +41,7 @@ export function WeeklyFindModule({
               <Button
                 variant="outline"
                 nativeButton={false}
-                className="h-12 rounded-full border-transparent bg-white/90 px-6 text-base font-medium text-header shadow-none hover:bg-white"
+                className="h-11 sm:h-12 rounded-full border-transparent bg-white/90 px-5 sm:px-6 text-sm sm:text-base font-medium text-header shadow-none hover:bg-white"
                 render={
                   <Link href={`/produkt/${find.productId}`}>
                     Se ugens fund

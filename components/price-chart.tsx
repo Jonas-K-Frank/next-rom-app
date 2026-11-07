@@ -60,7 +60,7 @@ export function PriceChart({
   const { data, retailerNames } = buildChartData(priceHistory);
 
   return (
-    <ResponsiveContainer width="100%" height={320}>
+    <ResponsiveContainer width="100%" height={280}>
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
         <XAxis dataKey="date" tick={{ fontSize: 12 }} />

@@ -10,24 +10,24 @@ export function Hero({ stats }: { stats: CatalogStats }) {
             <span className="block text-[11px] font-semibold tracking-widest uppercase text-amber-600">
               Prissammenligning på rom
             </span>
-            <Link href="/" className="brand mt-2 mb-4 text-[6rem] font-bold tracking-tight leading-none" style={{ fontFamily: '"DM Serif Display", serif' }}>Rompriser</Link>
-            <h1 className="mt-12 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
+            <Link href="/" className="brand mt-2 mb-4 text-5xl font-bold tracking-tight leading-none sm:text-6xl lg:text-[6rem]" style={{ fontFamily: '"DM Serif Display", serif' }}>Rompriser</Link>
+            <h1 className="mt-12 text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
               Find den bedste pris på rom
             </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-base sm:text-lg text-muted-foreground">
               Vi tjekker priserne hos 3 danske forhandlere hver dag og viser dig,
               hvornår det er billigst at slå til.
             </p>
           </div>
-          <div className="relative">
+          <div className="relative aspect-[4/3] sm:aspect-[3/4]">
             <img
               src="/Rom-illustration.jpg"
               alt="Rom illustration"
-              className="w-full h-auto rounded-lg object-cover"
+              className="w-full h-full rounded-lg object-cover"
             />
           </div>
         </div>
-        <div className="mt-16 flex flex-col sm:flex-row gap-8 sm:gap-16">
+        <div className="mt-16 flex flex-col gap-6 sm:flex-row sm:gap-8 lg:gap-16">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100/50">
               <svg className="h-5 w-5 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
