@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="256" height="256" role="img" aria-labelledby="t">
+<title id="t">Alle store forhandlere</title>
+<defs>
+<filter id="rp-pencil" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="warp"/>
+<feDisplacementMap in="SourceGraphic" in2="warp" scale="2.6" xChannelSelector="R" yChannelSelector="G" result="wob"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="3" result="grain"/>
+<feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.6 0 0 0 -0.3" result="mask"/>
+<feComposite in="wob" in2="mask" operator="in"/>
+</filter>
+<pattern id="rp-hatchA" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="3.6" stroke="#1E1E1C" stroke-width="0.8" opacity="0.75"/></pattern>
+<pattern id="rp-hatchB" width="3.4" height="3.4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="3.4" stroke="#1E1E1C" stroke-width="0.8" opacity="0.75"/><line x1="0" y1="0" x2="3.4" y2="0" stroke="#1E1E1C" stroke-width="0.8" opacity="0.75"/></pattern>
+</defs>
+<g fill="none" stroke="#1E1E1C" stroke-linecap="round" stroke-linejoin="round" filter="url(#rp-pencil)">
+<path d="M5 80 Q28 78.6 52 79.6 T92 79" stroke-width="1.7"/>
+<path d="M12 84 Q34 82.8 60 83.6" stroke-width="0.8" opacity="0.5"/>
+<path d="M16 24 L26 24.2 L23.4 41 q-6.45 8 -12.9 0 Z" fill="url(#rp-hatchA)" stroke="none"/>
+<path d="M36 24.3 L46 24.4 L49.2 41 q-6.45 8 -12.9 0 Z" fill="url(#rp-hatchA)" stroke="none"/>
+<path d="M10.5 41 L16 24 L56 24.4 L62.1 41" stroke-width="1.9"/>
+<path d="M10.5 41 q6.45 8 12.9 0 q6.45 8 12.9 0 q6.45 8 12.9 0 q6.45 8 12.9 0" stroke-width="1.8"/>
+<path d="M26 24.2 L23.4 41 M36 24.3 L36.3 41 M46 24.4 L49.2 41" stroke-width="1.2"/>
+<path d="M16.6 25.6 L56.4 26" stroke-width="0.7" opacity="0.5"/>
+<path d="M15.5 42 L15 79" stroke-width="1.8"/>
+<path d="M57 42 L57.5 79" stroke-width="1.8"/>
+<path d="M16.6 43 L16.2 78" stroke-width="0.8" opacity="0.5"/>
+<path d="M22 79 L22.3 57 L33.8 56.6 L34 79" stroke-width="1.6"/>
+<rect x="22.6" y="57.4" width="10.8" height="21.2" fill="url(#rp-hatchA)" stroke="none"/>
+<circle cx="31" cy="69" r="1" fill="#1E1E1C" stroke="none"/>
+<path d="M39 52.4 L52 52 L52.3 66 L39.2 66.3 Z" stroke-width="1.5"/>
+<path d="M45.6 52.2 L45.8 66.1 M39.1 59.2 L52.1 59" stroke-width="1"/>
+<path d="M41.2 56.5 L43.4 54.2 M41.2 63 L43.6 60.6 M47.6 56.4 L49.8 54.2" stroke-width="0.8" opacity="0.7"/>
+<path d="M65.5 32 L89.6 31.8 L89.4 39.6 L65.4 39.8 Z" stroke-width="1.6" fill="url(#rp-hatchB)"/>
+<path d="M66.4 39.8 L66.1 79 M88.4 39.6 L88.7 79" stroke-width="1.8"/>
+<path d="M72 79 L72.2 58.5 L83 58.2 L83.2 79" stroke-width="1.5"/>
+<path d="M77.6 58.4 L77.7 79" stroke-width="1"/>
+<rect x="84" y="40.4" width="4" height="38.4" fill="url(#rp-hatchA)" stroke="none"/>
+<path d="M73.4 62 L75.6 59.8 M73.4 68 L76 65.4" stroke-width="0.8" opacity="0.7"/>
+</g>
+</svg>
