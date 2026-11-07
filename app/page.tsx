@@ -21,8 +21,6 @@ export default async function Home() {
       <Hero stats={catalogStats} />
       
       <div className="mx-auto w-full max-w-5xl flex-1 px-4 pb-10">
-        {weeklyFind && <WeeklyFindModule find={weeklyFind} stats={catalogStats} />}
-
         <div className="relative py-4">
           <Search className="pointer-events-none absolute top-1/2 left-5 size-5 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -31,6 +29,8 @@ export default async function Home() {
             className="h-12 w-full rounded-full border-border-strong bg-white pl-13 text-[15px] sm:h-[50px]"
           />
         </div>
+
+        {weeklyFind && <WeeklyFindModule find={weeklyFind} stats={catalogStats} />}
 
         {products.length === 0 ? (
           <p className="text-muted-foreground text-sm py-4">
