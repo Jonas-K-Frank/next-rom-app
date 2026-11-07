@@ -70,7 +70,7 @@ export function WeeklyFindModule({
           )}
         </div>
       </div>
-      <p className="mt-2 text-xs text-muted-foreground">
+      <p className="mt-2 mb-6 text-xs text-muted-foreground">
         {stats.productCount}{" "}
         {stats.productCount === 1 ? "romprodukt" : "romprodukter"} fundet på
         tværs af {stats.retailerCount} danske forhandlere

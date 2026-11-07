@@ -15,7 +15,7 @@ export function Hero({ stats }: { stats: CatalogStats }) {
              Find din næste yndlingsrom til den bedste pris
             </h1>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground">
-              Vi sammenligner priserne hos Danmarks førende forhandlere af rom, så du altid gør den billigste handel.
+              Vi sammenligner priserne hos Danmarks førende forhandlere af rom, så du altid gør den bedste handel.
             </p>
             <div className="mt-8 flex flex-col gap-6 sm:gap-8">
               <div className="flex items-start gap-4">
