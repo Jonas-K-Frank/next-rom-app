@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { ProductCard } from "@/components/product-card";
 import { WeeklyFindModule } from "@/components/weekly-find";
@@ -17,6 +17,16 @@ export default function Home({
   catalogStats: CatalogStats;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Log products with/without images for debugging
+  useEffect(() => {
+    const withImage = initialProducts.filter(p => p.image_url).length;
+    const withoutImage = initialProducts.filter(p => !p.image_url).length;
+    console.log(`Products: ${initialProducts.length} total, ${withImage} with image, ${withoutImage} without image`);
+    if (withoutImage > 0) {
+      console.log("Products without image:", initialProducts.filter(p => !p.image_url).map(p => p.name));
+    }
+  }, [initialProducts]);
 
   const filteredProducts = initialProducts.filter((product) => {
     const query = searchQuery.toLowerCase();
@@ -38,8 +48,8 @@ export default function Home({
           <Search className="pointer-events-none absolute top-1/2 left-5 size-5 -translate-y-1/2 text-muted-foreground" />
           <Input
             type="search"
-            placeholder="Søg efter rom, mærke eller kategori…"
-            className="h-12 w-full rounded-full border-border-strong bg-white pl-13 text-[15px] sm:h-[50px]"
+            placeholder="Søg efter rom eller mærke…"
+            className="h-18 w-full rounded-full border-2 border-amber-400 bg-white pl-13 text-[15px] sm:h-18"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

@@ -22,9 +22,8 @@ export async function getProductListWithLowestPrice(): Promise<
 > {
   const supabase = await createClient();
 
-  // Fetch products with their lowest prices in a single query using a join
-  // This avoids the .in() clause limitation with many IDs
-  const { data, error } = await supabase
+  // First fetch all products with their image_url
+  const { data: productsData, error: productsError } = await supabase
     .from("products")
     .select(`
       id, 
@@ -32,27 +31,53 @@ export async function getProductListWithLowestPrice(): Promise<
       brand, 
       volume_ml, 
       category, 
-      image_url,
-      product_lowest_prices:product_lowest_prices(lowest_price, highest_price, retailer_count)
+      image_url
     `)
     .order("name");
 
-  if (error) {
-    console.error("Error in getProductListWithLowestPrice:", error);
-    throw error;
+  if (productsError) {
+    console.error("Error fetching products:", productsError);
+    throw productsError;
   }
 
-  // Filter to only products that have a lowest price (i.e., are available from at least one retailer)
-  return (data ?? [])
-    .filter((product) => product.product_lowest_prices !== null && product.product_lowest_prices.length > 0)
-    .map((product) => ({
-      ...product,
-      lowestPrice: product.product_lowest_prices![0].lowest_price,
-      highestPrice: product.product_lowest_prices![0].highest_price,
-      retailerCount: product.product_lowest_prices![0].retailer_count,
-      // Remove the joined data to clean up the response
-      product_lowest_prices: undefined,
-    }));
+  // Then fetch lowest prices view for all products
+  const { data: pricesData, error: pricesError } = await supabase
+    .from("product_lowest_prices")
+    .select(`
+      product_id,
+      lowest_price,
+      highest_price,
+      retailer_count
+    `);
+
+  if (pricesError) {
+    console.error("Error fetching prices:", pricesError);
+    throw pricesError;
+  }
+
+  // Create a map of product_id to price info
+  const priceMap = new Map<string, { lowest_price: number; highest_price: number; retailer_count: number }>();
+  (pricesData ?? []).forEach(price => {
+    priceMap.set(price.product_id, {
+      lowest_price: price.lowest_price,
+      highest_price: price.highest_price,
+      retailer_count: price.retailer_count,
+    });
+  });
+
+  // Map products to ProductListItem
+  return (productsData ?? [])
+    .filter(product => priceMap.has(product.id))
+    .map((product) => {
+      const priceInfo = priceMap.get(product.id)!;
+      return {
+        ...product,
+        image_url: product.image_url,
+        lowestPrice: priceInfo.lowest_price,
+        highestPrice: priceInfo.highest_price,
+        retailerCount: priceInfo.retailer_count,
+      };
+    });
 }
 
 export interface WeeklyFind {
