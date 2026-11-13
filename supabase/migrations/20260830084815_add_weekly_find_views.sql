@@ -1,4 +1,4 @@
--- Understøtter "Ugens fund"-modulet på forsiden:
+-- Understøtter "Månedens fund"-modulet på forsiden:
 --   product_price_drops: største procentvise prisfald pr. produkt siden
 --     forrige scrape (kun links med mindst to prisobservationer bidrager).
 --   catalog_stats: samlet antal produkter med en pris og antal forhandlere

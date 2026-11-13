@@ -1,21 +1,21 @@
 import {
   getCatalogStats,
   getProductListWithLowestPrice,
-  getWeeklyFind,
+  getMonthlyFind,
 } from "@/lib/data/products";
 import HomeClient from "./HomeClient";
 
 export default async function Home() {
-  const [products, weeklyFind, catalogStats] = await Promise.all([
+  const [products, monthlyFind, catalogStats] = await Promise.all([
     getProductListWithLowestPrice(),
-    getWeeklyFind(),
+    getMonthlyFind(),
     getCatalogStats(),
   ]);
 
   return (
     <HomeClient
       initialProducts={products}
-      weeklyFind={weeklyFind}
+      monthlyFind={monthlyFind}
       catalogStats={catalogStats}
     />
   );

@@ -92,7 +92,7 @@ export async function getProductListWithLowestPrice(): Promise<
   return result;
 }
 
-export interface WeeklyFind {
+export interface MonthlyFind {
   productId: string;
   name: string;
   imageUrl: string | null;
@@ -100,11 +100,11 @@ export interface WeeklyFind {
   editorialLine: string;
 }
 
-// "Ugens fund": produktet med størst procentvist prisfald siden forrige
+// "Månedens fund": produktet med størst procentvist prisfald siden forrige
 // scrape. Falder tilbage til produktet med flest forhandlere (bedst
 // datadækning) når der endnu ikke findes prishistorik at sammenligne med,
 // så modulet aldrig står tomt så længe mindst ét produkt har en pris.
-export async function getWeeklyFind(): Promise<WeeklyFind | null> {
+export async function getMonthlyFind(): Promise<MonthlyFind | null> {
   const supabase = await createClient();
 
   const [{ data: drops }, { data: lowestPrices }] = await Promise.all([
@@ -176,7 +176,7 @@ export interface CatalogStats {
   retailerCount: number;
 }
 
-// Infolinje under "Ugens fund": samlet dækning på tværs af hele katalogget.
+// Infolinje under "Månedens fund": samlet dækning på tværs af hele katalogget.
 export async function getCatalogStats(): Promise<CatalogStats> {
   const supabase = await createClient();
 

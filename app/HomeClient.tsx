@@ -2,24 +2,29 @@
 import { useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { ProductCard } from "@/components/product-card";
-import { WeeklyFindModule } from "@/components/weekly-find";
+import { MonthlyFindModule } from "@/components/monthly-find";
 import { Hero } from "@/components/hero";
 import { Input } from "@/components/ui/input";
-import type { ProductListItem, WeeklyFind, CatalogStats } from "@/lib/data/products";
+import type { ProductListItem, MonthlyFind, CatalogStats } from "@/lib/data/products";
 
 export default function Home({
   initialProducts,
-  weeklyFind,
+  monthlyFind,
   catalogStats,
 }: {
   initialProducts: ProductListItem[];
-  weeklyFind: WeeklyFind | null;
+  monthlyFind: MonthlyFind | null;
   catalogStats: CatalogStats;
 }) {
   console.log('initialProducts ialt:', initialProducts.length);
   console.log('bacardi i initialProducts:', initialProducts.filter(p => p.name.toLowerCase().includes('bacardi')).length);
   
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Reset search on page refresh/mount
+  useEffect(() => {
+    setSearchQuery("");
+  }, []);
 
   // Log products with/without images for debugging
   useEffect(() => {
@@ -59,7 +64,7 @@ export default function Home({
         </form>
 
         <div className={`transition-all duration-500 overflow-hidden ${searchQuery ? "max-h-0 opacity-0 mb-0" : "max-h-[500px] opacity-100 mb-6"}`}>
-          {weeklyFind && <WeeklyFindModule find={weeklyFind} stats={catalogStats} />}
+          {monthlyFind && <MonthlyFindModule find={monthlyFind} stats={catalogStats} />}
         </div>
 
         {displayedProducts.length === 0 ? (
