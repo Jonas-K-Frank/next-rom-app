@@ -16,6 +16,9 @@ export default function Home({
   weeklyFind: WeeklyFind | null;
   catalogStats: CatalogStats;
 }) {
+  console.log('initialProducts ialt:', initialProducts.length);
+  console.log('bacardi i initialProducts:', initialProducts.filter(p => p.name.toLowerCase().includes('bacardi')).length);
+  
   const [searchQuery, setSearchQuery] = useState("");
 
   // Log products with/without images for debugging

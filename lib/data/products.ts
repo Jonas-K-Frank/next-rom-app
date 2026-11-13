@@ -12,6 +12,29 @@ export interface ProductListItem {
   retailerCount: number;
 }
 
+// Hjælpefunktion til at hente ALLE rækker ved paginering med .range()
+async function fetchAll(
+  supabase: any,
+  table: string,
+  select: string,
+  order: string,
+): Promise<any[]> {
+  const PAGE = 1000; // præcis under serverens db-max-rows loft
+  let from = 0,
+    all: any[] = [];
+  while (true) {
+    const { data, error } = await supabase
+      .from(table)
+      .select(select)
+      .order(order)
+      .range(from, from + PAGE - 1);
+    if (error) throw error;
+    all.push(...data);
+    if (data.length < PAGE) return all; // sidste side — ikke flere rækker
+    from += PAGE;
+  }
+}
+
 // Forsidedata: kun produkter der reelt har en aktuel pris hos mindst én
 // forhandler. Starter fra `product_lowest_prices` (ikke `products`), da
 // viewets almindelige join mod product_retailer_links/latest_prices
@@ -22,42 +45,28 @@ export async function getProductListWithLowestPrice(): Promise<
 > {
   const supabase = await createClient();
 
-  // First fetch all products with their image_url
-  const { data: productsData, error: productsError } = await supabase
-    .from("products")
-    .select(`
-      id, 
-      name, 
-      brand, 
-      volume_ml, 
-      category, 
-      image_url
-    `)
-    .order("name");
+  // Fetch ALL products via pagination
+  const productsData = await fetchAll(
+    supabase,
+    "products",
+    "id, name, brand, volume_ml, category, image_url",
+    "name"
+  );
 
-  if (productsError) {
-    console.error("Error fetching products:", productsError);
-    throw productsError;
-  }
-
-  // Then fetch lowest prices view for all products
-  const { data: pricesData, error: pricesError } = await supabase
-    .from("product_lowest_prices")
-    .select(`
-      product_id,
-      lowest_price,
-      highest_price,
-      retailer_count
-    `);
-
-  if (pricesError) {
-    console.error("Error fetching prices:", pricesError);
-    throw pricesError;
-  }
+  // Fetch ALL prices via pagination
+  const pricesData = await fetchAll(
+    supabase,
+    "product_lowest_prices",
+    "product_id, lowest_price, highest_price, retailer_count",
+    "product_id"
+  );
 
   // Create a map of product_id to price info
-  const priceMap = new Map<string, { lowest_price: number; highest_price: number; retailer_count: number }>();
-  (pricesData ?? []).forEach(price => {
+  const priceMap = new Map<
+    string,
+    { lowest_price: number; highest_price: number; retailer_count: number }
+  >();
+  (pricesData ?? []).forEach((price) => {
     priceMap.set(price.product_id, {
       lowest_price: price.lowest_price,
       highest_price: price.highest_price,
@@ -66,8 +75,8 @@ export async function getProductListWithLowestPrice(): Promise<
   });
 
   // Map products to ProductListItem
-  return (productsData ?? [])
-    .filter(product => priceMap.has(product.id))
+  const result = (productsData ?? [])
+    .filter((product) => priceMap.has(product.id))
     .map((product) => {
       const priceInfo = priceMap.get(product.id)!;
       return {
@@ -78,6 +87,9 @@ export async function getProductListWithLowestPrice(): Promise<
         retailerCount: priceInfo.retailer_count,
       };
     });
+
+  console.log("initialProducts loaded:", result.length);
+  return result;
 }
 
 export interface WeeklyFind {
