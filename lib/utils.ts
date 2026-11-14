@@ -14,6 +14,7 @@ export function cleanDisplayName(name: string): string {
     .replace(/(\s*\d+([.,]\d+)?\s*(x\s*\d+([.,]\d+)?\s*)?(cl|ml|liter|l)\b)+/gi, "")
     .replace(/(\s*\d+([.,]\d+)?\s*%)+(\s*vol)?/gi, "")
     .replace(/(\s*\d+([.,]\d+)?\s*vol\b)+/gi, "")
+    .replace(/[,\.]/g, "")
     .replace(/\s{2,}/g, " ")
     .trim();
   return cleaned.length > 0 ? cleaned : name;

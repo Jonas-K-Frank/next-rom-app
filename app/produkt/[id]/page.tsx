@@ -86,7 +86,7 @@ export default async function ProductPage({
       {/* TRIN 3: HERO-SEKTION */}
       <section className="flex flex-col gap-8 sm:flex-row sm:items-start">
         {/* Billede i blyantstreg-kort, let roteret */}
-        <div className="relative mx-auto w-full max-w-[300px] shrink-0 -rotate-[0.6deg] rounded-lg bg-card p-6 shadow-[2px_4px_12px_rgba(26,26,24,0.08)] sm:mx-0">
+        <div className="relative mx-auto w-full max-w-[300px] shrink-0 -rotate-[0.6deg] rounded-lg bg-[#FBFBF2] p-6 sm:mx-0">
           <PencilFrame />
           {product.image_url ? (
             <div className="relative z-10 aspect-[3/4]">
@@ -151,7 +151,7 @@ export default async function ProductPage({
       {offers.length > 0 && (
         <section>
           <h2 className="mb-3 text-xl font-bold">Pris pr. forhandler</h2>
-          <div className="relative rounded-lg bg-card px-5 py-2 shadow-[2px_4px_12px_rgba(26,26,24,0.08)]">
+          <div className="relative rounded-lg bg-[#FBFBF2] px-5 py-2">
             <PencilFrame />
             <Table className="relative z-10">
               <TableHeader>
