@@ -4,12 +4,7 @@ import { notFound } from "next/navigation";
 import { getProductDetail } from "@/lib/data/products";
 import { cleanDisplayName } from "@/lib/utils";
 import { PriceChart } from "@/components/price-chart";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { PencilFrame } from "@/components/pencil-frame";
 import {
   Table,
   TableBody,
@@ -19,7 +14,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 const priceFormatter = new Intl.NumberFormat("da-DK", {
   style: "currency",
@@ -43,20 +37,19 @@ export default async function ProductPage({
     notFound();
   }
 
-  // Check om der er reel prisudvikling (mindst ét link har ændret pris)
+  // Beregn hasRealDevelopment: true hvis mindst ét link har ≥2 priser hvor min ≠ max
   const hasRealDevelopment = product.priceHistory.some((point) => {
-    // For at have reel udvikling, skal der være mindst 2 forskellige priser for samme forhandler
     const pricesForRetailer = product.priceHistory
       .filter(p => p.retailerName === point.retailerName)
       .map(p => p.price);
-    const uniquePrices = new Set(pricesForRetailer);
-    return uniquePrices.size > 1;
+    if (pricesForRetailer.length < 2) return false;
+    const min = Math.min(...pricesForRetailer);
+    const max = Math.max(...pricesForRetailer);
+    return min !== max;
   });
 
-  // Til "Bedste pris" highlight
-  // Type-cast: vi ved at alle offers i product.offers har inStock === true og price !== null
-  // efter filtrering i getProductDetail
-  const sortedOffers = product.offers as Array<{
+  // Type assertion: offers are filtered to only include in-stock with non-null prices
+  const offers = product.offers as Array<{
     linkId: string;
     retailerName: string;
     retailerLogoUrl: string | null;
@@ -65,11 +58,9 @@ export default async function ProductPage({
     inStock: boolean;
     scrapedAt: string | null;
   }>;
-  const cheapestOffer = sortedOffers[0];
-  const mostExpensiveOffer = sortedOffers[sortedOffers.length - 1];
-
-  // Beregn besparelsevisning
-  const hasMultipleOffers = sortedOffers.length > 1;
+  const cheapestOffer = offers[0];
+  const mostExpensiveOffer = offers[offers.length - 1];
+  const hasMultipleOffers = offers.length > 1;
   const savingsAmount = hasMultipleOffers 
     ? (mostExpensiveOffer?.price ?? 0) - (cheapestOffer?.price ?? 0)
     : 0;
@@ -77,218 +68,197 @@ export default async function ProductPage({
     ? Math.round((savingsAmount / mostExpensiveOffer.price) * 100)
     : 0;
 
+  // Stempel tekst: brand eller category som fallback
+  const stampText = product.brand ?? product.category ?? "Rom";
+
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 px-4 py-10">
-      {/* Tilbage-knap */}
+      {/* Tilbage-knap - diskret ghost */}
       <div className="mb-4">
         <Button
           variant="ghost"
-          className="-ml-4"
+          className="-ml-4 text-sm"
           nativeButton={false}
           render={<Link href="/">← Tilbage til forsiden</Link>}
         />
       </div>
 
-      {/* 1. HERO-SEKTION - Fuld bredde */}
-      <section className="w-full">
-        <div className="flex flex-col gap-6 md:flex-row md:gap-8">
-          {/* Billede - større end før, højformat */}
-          <div className="flex-shrink-0">
-            {product.image_url ? (
-              <Image
-                src={product.image_url}
-                alt={product.name}
-                width={224}
-                height={280}
-                className="h-[280px] w-[224px] rounded-lg object-contain bg-white p-4"
-              />
-            ) : (
-              <div className="flex h-[280px] w-[224px] items-center justify-center rounded-lg bg-muted text-muted-foreground text-xs">
-                Intet billede
-              </div>
-            )}
-          </div>
+      {/* TRIN 3: HERO-SEKTION */}
+      <section className="flex flex-col gap-8 sm:flex-row sm:items-start">
+        {/* Billede i blyantstreg-kort, let roteret */}
+        <div className="relative mx-auto w-full max-w-[300px] shrink-0 -rotate-[0.6deg] rounded-lg bg-card p-6 shadow-[2px_4px_12px_rgba(26,26,24,0.08)] sm:mx-0">
+          <PencilFrame />
+          {product.image_url ? (
+            <div className="relative z-10 aspect-[3/4]">
+              <Image src={product.image_url} alt={product.name} fill
+                className="object-contain" sizes="300px" />
+            </div>
+          ) : (
+            <div className="relative z-10 flex aspect-[3/4] items-center justify-center text-xs text-muted-foreground">
+              Intet billede
+            </div>
+          )}
+        </div>
 
-          {/* Tekstblok */}
-          <div className="flex-1">
-            <h1 className="text-3xl font-bold text-foreground">{cleanDisplayName(product.name)}</h1>
-            
-            {/* Brand · volumen · ABV */}
-            <p className="mt-2 text-lg text-muted-foreground">
-              {product.brand && <span>{product.brand}</span>}
-              {product.brand && (product.volume_cl || product.abv) && <span> · </span>}
-              {product.volume_cl && <span>{product.volume_cl} cl</span>}
-              {product.volume_cl && product.abv && <span> · </span>}
-              {product.abv && <span>{product.abv}% abv</span>}
+        <div className="min-w-0 flex-1">
+          {/* Brand-stempel (fallback: kategori) */}
+          <span className="mb-4 inline-block -rotate-3 rounded-[3px] border-[2.5px] border-[#c2410c] px-4 py-1 text-[13px] font-bold tracking-[4px] text-[#c2410c] uppercase">
+            {stampText}
+          </span>
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            {cleanDisplayName(product.name)}
+          </h1>
+          <p className="mt-2 text-muted-foreground">
+            {[product.volume_cl ? `${product.volume_cl} cl` : null,
+              product.abv ? `${product.abv}% abv` : null]
+              .filter(Boolean).join(" · ")}
+          </p>
+          {product.description && (
+            <p className="mt-4 max-w-[52ch] text-sm italic leading-relaxed text-muted-foreground">
+              {product.description}
             </p>
-
-            {/* Beskrivelse - kun hvis den findes */}
-            {product.description && (
-              <p className="mt-4 text-foreground">{product.description}</p>
-            )}
-          </div>
+          )}
         </div>
       </section>
 
-      {/* 2. PRIS PR. FORHANDLER - kun hvis der er offers på lager */}
-      <section>
-        <Card>
-          <CardHeader>
-            <CardTitle>Pris pr. forhandler</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {product.offers.length === 0 ? (
-              <p className="text-muted-foreground text-sm">
-                Produktet er i øjeblikket udsolgt alle steder.
+      {/* TRIN 4: Bedstepris-boks (kun hvis der er tilbud) */}
+      {offers.length > 0 && (
+        <section>
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg bg-card px-6 py-5 shadow-[2px_4px_12px_rgba(26,26,24,0.08)]">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[2.5px] text-muted-foreground">
+                Bedste pris
               </p>
-            ) : (
-              <>
-                {/* Bedste pris highlight */}
-                {cheapestOffer && (
-                  <div className="mb-6 rounded-lg bg-muted/50 p-4">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-                      <span className="text-sm text-muted-foreground">
-                        Bedste pris:
-                      </span>
-                      <span className="text-2xl font-bold text-accent">
-                        {priceFormatter.format(cheapestOffer.price)}
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        hos {cheapestOffer.retailerName}
-                      </span>
-                      {hasMultipleOffers && savingsAmount > 0 && (
-                        <>
-                          <span className="text-sm text-muted-foreground">
-                            · Spar {priceFormatter.format(savingsAmount)}
-                          </span>
-                          <span className="text-sm text-muted-foreground">
-                            ({savingsPercentage}% ift. dyreste forhandler)
-                          </span>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                )}
+              <p className="mt-1 text-3xl font-bold leading-none text-[#c2410c] sm:text-[40px]">
+                {priceFormatter.format(cheapestOffer.price)} kr.
+              </p>
+              {hasMultipleOffers && savingsAmount > 0 && (
+                <p className="mt-2 text-sm font-semibold text-success">
+                  Spar {priceFormatter.format(savingsAmount)} kr. (
+                  {savingsPercentage}%) ift. dyreste forhandler
+                </p>
+              )}
+            </div>
+            <a href={cheapestOffer.productUrl} target="_blank" rel="nofollow sponsored noopener noreferrer"
+               className="-rotate-1 rounded-[2px] bg-foreground px-5 py-2.5 text-sm font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-[#c2410c]">
+              Køb hos {cheapestOffer.retailerName}
+            </a>
+          </div>
+        </section>
+      )}
 
-                {/* Mobil liste */}
-                <div className="flex flex-col gap-3 sm:hidden">
-                  {sortedOffers.map((offer, index) => (
-                    <div
-                      key={offer.linkId}
-                      className="flex items-center justify-between gap-3 rounded-lg border border-border p-3"
-                    >
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2">
-                          <p className="font-medium text-foreground">
-                            {offer.retailerName}
-                          </p>
-                          {index === 0 && (
-                            <Badge variant="default" className="text-xs">
-                              Bedste pris
-                            </Badge>
-                          )}
-                        </div>
-                        {offer.scrapedAt && (
-                          <p className="text-xs text-muted-foreground">
-                            {dateFormatter.format(new Date(offer.scrapedAt))}
-                          </p>
+      {/* TRIN 5: Forhandler-tabel i blyantstreg-kort */}
+      {offers.length > 0 && (
+        <section>
+          <h2 className="mb-3 text-xl font-bold">Pris pr. forhandler</h2>
+          <div className="relative rounded-lg bg-card px-5 py-2 shadow-[2px_4px_12px_rgba(26,26,24,0.08)]">
+            <PencilFrame />
+            <Table className="relative z-10">
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Forhandler</TableHead>
+                  <TableHead>Pris</TableHead>
+                  <TableHead className="hidden md:table-cell">
+                    Senest opdateret
+                  </TableHead>
+                  <TableHead />
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {offers.map((offer, index) => (
+                  <TableRow key={offer.linkId}>
+                    <TableCell className="font-medium">
+                      <div className="flex items-center gap-2">
+                        {offer.retailerName}
+                        {index === 0 && (
+                          <span className="ml-2 inline-block -rotate-2 rounded-[3px] border-2 border-[#c2410c] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[2px] text-[#c2410c]">
+                            Bedste pris
+                          </span>
                         )}
                       </div>
-                      <span className="shrink-0 font-mono font-semibold text-accent">
-                        {priceFormatter.format(offer.price)}
+                    </TableCell>
+                    <TableCell className={`font-mono font-medium ${index === 0 ? 'text-[#c2410c]' : ''}`}>
+                      {priceFormatter.format(offer.price)}
+                    </TableCell>
+                    <TableCell className="hidden md:table-cell">
+                      {offer.scrapedAt
+                        ? dateFormatter.format(new Date(offer.scrapedAt))
+                        : "—"}
+                    </TableCell>
+                    <TableCell>
+                      <a
+                        href={offer.productUrl}
+                        target="_blank"
+                        rel="nofollow sponsored noopener noreferrer"
+                        className="block rounded-[2px] bg-foreground px-4 py-2 text-center text-sm font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-[#c2410c]"
+                      >
+                        Køb hos {offer.retailerName}
+                      </a>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+
+          {/* Mobil liste */}
+          <div className="flex flex-col gap-3 sm:hidden">
+            {offers.map((offer, index) => (
+              <div
+                key={offer.linkId}
+                className="flex items-center justify-between gap-3 rounded-lg border border-border bg-white p-3"
+              >
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <p className="font-medium text-foreground">
+                      {offer.retailerName}
+                    </p>
+                    {index === 0 && (
+                      <span className="inline-block -rotate-2 rounded-[3px] border-2 border-[#c2410c] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[2px] text-[#c2410c]">
+                        Bedste pris
                       </span>
-                      <div className="shrink-0">
-                        <Button
-                          variant="outline"
-                          size="xs"
-                          nativeButton={false}
-                          render={
-                            <a
-                              href={offer.productUrl}
-                              target="_blank"
-                              rel="nofollow sponsored noopener noreferrer"
-                            >
-                              Køb hos {offer.retailerName}
-                            </a>
-                          }
-                        />
-                      </div>
-                    </div>
-                  ))}
+                    )}
+                  </div>
+                  {offer.scrapedAt && (
+                    <p className="text-xs text-muted-foreground">
+                      {dateFormatter.format(new Date(offer.scrapedAt))}
+                    </p>
+                  )}
                 </div>
-
-                {/* Desktop tabel */}
-                <div className="hidden sm:block">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Forhandler</TableHead>
-                        <TableHead>Pris</TableHead>
-                        <TableHead className="hidden md:table-cell">
-                          Senest opdateret
-                        </TableHead>
-                        <TableHead />
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {sortedOffers.map((offer, index) => (
-                        <TableRow key={offer.linkId}>
-                          <TableCell className="font-medium">
-                            <div className="flex items-center gap-2">
-                              {offer.retailerName}
-                              {index === 0 && (
-                                <Badge variant="default" className="text-xs">
-                                  Bedste pris
-                                </Badge>
-                              )}
-                            </div>
-                          </TableCell>
-                          <TableCell className="font-mono font-medium">
-                            {priceFormatter.format(offer.price)}
-                          </TableCell>
-                          <TableCell className="hidden md:table-cell">
-                            {offer.scrapedAt
-                              ? dateFormatter.format(new Date(offer.scrapedAt))
-                              : "—"}
-                          </TableCell>
-                          <TableCell>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              nativeButton={false}
-                              render={
-                                <a
-                                  href={offer.productUrl}
-                                  target="_blank"
-                                  rel="nofollow sponsored noopener noreferrer"
-                                >
-                                  Køb hos {offer.retailerName}
-                                </a>
-                              }
-                            />
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
+                <span className={`shrink-0 font-mono font-semibold ${index === 0 ? 'text-[#c2410c]' : ''}`}>
+                  {priceFormatter.format(offer.price)}
+                </span>
+                <div className="shrink-0">
+                  <a
+                    href={offer.productUrl}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    className="block rounded-[2px] bg-foreground px-3 py-1.5 text-center text-xs font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-[#c2410c]"
+                  >
+                    Køb
+                  </a>
                 </div>
-              </>
-            )}
-          </CardContent>
-        </Card>
-      </section>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
-      {/* 3. PRISUDVIKLING - kun hvis der er reel udvikling */}
+      {/* Edge-case: ingen tilbud */}
+      {offers.length === 0 && (
+        <p className="text-sm text-muted-foreground">Produktet er i øjeblikket udsolgt alle steder.</p>
+      )}
+
+      {/* TRIN 6: Prisudvikling nederst, betinget */}
       {hasRealDevelopment && (
         <section>
-          <Card>
-            <CardHeader>
-              <CardTitle>Prisudvikling</CardTitle>
-            </CardHeader>
-            <CardContent>
+          <h2 className="mb-3 text-xl font-bold">Prisudvikling</h2>
+          <div className="relative rounded-lg bg-card p-6 shadow-[2px_4px_12px_rgba(26,26,24,0.08)]">
+            <PencilFrame />
+            <div className="relative z-10">
               <PriceChart priceHistory={product.priceHistory} />
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </section>
       )}
     </main>
