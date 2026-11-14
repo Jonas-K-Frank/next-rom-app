@@ -48,12 +48,28 @@ export function SearchField({
 					value={searchQuery}
 					onChange={(e) => onSearchChange(e.target.value)}
 				/>
-				<button
-					type="submit"
-					className="flex h-[38px] shrink-0 items-center rounded-[2px] bg-foreground px-4 text-sm text-background transition-colors group-hover:bg-[#c2410c] hover:bg-[#c2410c] group-focus-within:bg-[#c2410c]"
-				>
-					Søg
-				</button>
+				<div className="relative shrink-0 -rotate-[1.2deg]">
+					{/* Lys blyantstreg oven på knappen, med krus-streger til ekstra
+      kornet tekstur: mere "hånd" i stregen på den lille flade. */}
+					<div className="pointer-events-none absolute inset-0 z-20">
+						<PencilFrame
+							color="#FBFBF2"
+							withFill={false}
+							showCrumble={true}
+							strokeWidthH={10}
+							strokeWidthV={6}
+							crumbleWidthH={4}
+							crumbleWidthV={0.9}
+						/>
+					</div>
+
+					<button
+						type="submit"
+						className="flex h-[42px] items-center bg-[#5f5f5c] px-8 text-base text-background tracking-wide transition-colors hover:bg-[#c2410c] group-hover:bg-[#c2410c] group-focus-within:bg-[#c2410c]"
+					>
+						Søg
+					</button>
+				</div>
 			</form>
 		</div>
 	);
