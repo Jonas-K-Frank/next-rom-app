@@ -229,35 +229,18 @@ export async function getProductDetail(
 ): Promise<ProductDetail | null> {
   const supabase = await createClient();
 
-  // Forsøg at hente med description, falder tilbage til uden
-  let product: any = null;
-  let productError: any = null;
-  
-  try {
-    const result = await supabase
-      .from("products")
-      .select("id, name, brand, volume_ml, abv, category, image_url, description")
-      .eq("id", productId)
-      .maybeSingle();
-    product = result.data;
-    productError = result.error;
-  } catch {
-    // Hvis description-kolonnen ikke findes, prøv uden
-    const result = await supabase
-      .from("products")
-      .select("id, name, brand, volume_ml, abv, category, image_url")
-      .eq("id", productId)
-      .maybeSingle();
-    product = result.data;
-    productError = result.error;
-  }
+  // Prøv først uden description (kolonnen findes endnu ikke i DB)
+  const { data: product, error: productError } = await supabase
+    .from("products")
+    .select("id, name, brand, volume_ml, abv, category, image_url")
+    .eq("id", productId)
+    .maybeSingle();
 
   if (productError) throw productError;
   if (!product) return null;
 
-  // TODO: aktiver når products.description findes
-  // Indtil da sættes description til null
-  const description: string | null = product.description ?? null;
+  // TODO: aktiver når products.description findes - indtil da er det null
+  const description: string | null = null;
 
   const { data: links, error: linksError } = await supabase
     .from("product_retailer_links")

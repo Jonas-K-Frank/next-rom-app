@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { PricePositionBar } from "@/components/price-position-bar";
+import { cleanDisplayName } from "@/lib/utils";
 import type { ProductListItem } from "@/lib/data/products";
 
 const priceFormatter = new Intl.NumberFormat("da-DK", {
@@ -44,7 +45,7 @@ export function ProductCard({ product }: { product: ProductListItem }) {
           <div className="flex min-h-[140px] sm:min-h-[152px] flex-col gap-2">
             <div>
               <h2 className="line-clamp-2 font-medium text-foreground">
-                {product.name}
+                {cleanDisplayName(product.name)}
               </h2>
               <p className="text-sm text-muted-foreground">
                 {product.volume_ml ? `${product.volume_ml} ml` : null}

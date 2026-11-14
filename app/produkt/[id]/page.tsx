@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductDetail } from "@/lib/data/products";
+import { cleanDisplayName } from "@/lib/utils";
 import { PriceChart } from "@/components/price-chart";
 import {
   Card,
@@ -110,7 +111,7 @@ export default async function ProductPage({
 
           {/* Tekstblok */}
           <div className="flex-1">
-            <h1 className="text-3xl font-bold text-foreground">{product.name}</h1>
+            <h1 className="text-3xl font-bold text-foreground">{cleanDisplayName(product.name)}</h1>
             
             {/* Brand · volumen · ABV */}
             <p className="mt-2 text-lg text-muted-foreground">
