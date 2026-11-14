@@ -4,7 +4,7 @@ export interface ProductListItem {
   id: string;
   name: string;
   brand: string | null;
-  volume_ml: number | null;
+  volume_cl: number | null;
   category: string | null;
   image_url: string | null;
   lowestPrice: number;
@@ -82,6 +82,7 @@ export async function getProductListWithLowestPrice(): Promise<
       return {
         ...product,
         image_url: product.image_url,
+        volume_cl: product.volume_ml !== null ? Math.round(product.volume_ml / 10) : null,
         lowestPrice: priceInfo.lowest_price,
         highestPrice: priceInfo.highest_price,
         retailerCount: priceInfo.retailer_count,
@@ -213,7 +214,7 @@ export interface ProductDetail {
   id: string;
   name: string;
   brand: string | null;
-  volume_ml: number | null;
+  volume_cl: number | null;
   abv: number | null;
   category: string | null;
   image_url: string | null;
@@ -305,7 +306,7 @@ export async function getProductDetail(
     id: product.id,
     name: product.name,
     brand: product.brand,
-    volume_ml: product.volume_ml,
+    volume_cl: product.volume_ml !== null ? Math.round(product.volume_ml / 10) : null,
     abv: product.abv,
     category: product.category,
     image_url: product.image_url,

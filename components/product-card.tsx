@@ -48,8 +48,8 @@ export function ProductCard({ product }: { product: ProductListItem }) {
                 {cleanDisplayName(product.name)}
               </h2>
               <p className="text-sm text-muted-foreground">
-                {product.volume_ml ? `${product.volume_ml} ml` : null}
-                {product.volume_ml && product.retailerCount > 0 ? " · " : null}
+                {product.volume_cl ? `${product.volume_cl} cl` : null}
+                {product.volume_cl && product.retailerCount > 0 ? " · " : null}
                 {product.retailerCount > 0 && (
                   <span className="font-medium text-foreground">
                     {product.retailerCount} {product.retailerCount === 1 ? "forhandler" : "forhandlere"}

@@ -116,9 +116,9 @@ export default async function ProductPage({
             {/* Brand · volumen · ABV */}
             <p className="mt-2 text-lg text-muted-foreground">
               {product.brand && <span>{product.brand}</span>}
-              {product.brand && (product.volume_ml || product.abv) && <span> · </span>}
-              {product.volume_ml && <span>{product.volume_ml} ml</span>}
-              {product.volume_ml && product.abv && <span> · </span>}
+              {product.brand && (product.volume_cl || product.abv) && <span> · </span>}
+              {product.volume_cl && <span>{product.volume_cl} cl</span>}
+              {product.volume_cl && product.abv && <span> · </span>}
               {product.abv && <span>{product.abv}% abv</span>}
             </p>
 
