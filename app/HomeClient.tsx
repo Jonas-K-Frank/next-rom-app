@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Search } from "lucide-react";
 import { ProductCard } from "@/components/product-card";
 import { MonthlyFindModule } from "@/components/monthly-find";
 import { Hero } from "@/components/hero";
-import { Input } from "@/components/ui/input";
+import { SearchField } from "@/components/search-field";
 import type { ProductListItem, MonthlyFind, CatalogStats } from "@/lib/data/products";
 
 export default function Home({
@@ -52,16 +51,9 @@ export default function Home({
       <Hero stats={catalogStats} />
       
       <div className="mx-auto w-full max-w-5xl flex-1 px-4 pb-10">
-        <form className="relative py-4" onSubmit={(e) => e.preventDefault()}>
-          <Search className="pointer-events-none absolute top-1/2 left-5 size-5 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Søg efter rom eller mærke…"
-            className="h-18 w-full rounded-full border-2 border-amber-400 bg-white pl-13 text-[15px] sm:h-18"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </form>
+        <div className="py-4">
+          <SearchField searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+        </div>
 
         <div className={`transition-all duration-500 overflow-hidden ${searchQuery ? "max-h-0 opacity-0 mb-0" : "max-h-[500px] opacity-100 mb-6"}`}>
           {monthlyFind && <MonthlyFindModule find={monthlyFind} stats={catalogStats} />}
