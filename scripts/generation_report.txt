@@ -1,0 +1,396 @@
+DESCRIPTION GENERATION REPORT
+============================================================
+
+Generated at: 2026-11-14T19:59:19.984Z
+Mode: FULL (all null)
+
+Total products processed: 468
+PASS: 362
+FAIL: 106
+LLM_REVIEW: 0
+
+Error codes distribution:
+  COPY (found 6-word sequence: "på egetræsfade i den dominikanske republik" in source): 1
+  LEN (128 chars): 1
+  COPY (found 6-word sequence: "udvalgt og aftappet af ærø whisky" in source): 1
+  COPY (found 6-word sequence: "år gammel rom fra venezuela og" in source): 1
+  LEN (130 chars): 1
+  COPY (found 6-word sequence: "perfekt til brug i drinks og" in source): 1
+  COPY (found 6-word sequence: "år på cuba og aftappet ved" in source): 1
+  FACT (untraceable numbers: 25): 1
+  COPY (found 6-word sequence: "sød smøragtig karamel nødder og delikate" in source): 1
+  COPY (found 6-word sequence: "blomster honning fine krydderier og tørret" in source): 1
+  COPY (found 6-word sequence: "og spanske egetræsfade der tidligere har" in source): 1
+  COPY (found 6-word sequence: "til brug i cocktails og long" in source): 1
+  COPY (found 6-word sequence: "vanilje mahogni laurbær og egefad smagen" in source): 1
+  COPY (found 6-word sequence: "op til 20 år gamle den" in source): 1
+  COPY (found 6-word sequence: "af valnødder appelsin og honning smagen" in source): 1
+  COPY (found 6-word sequence: "af ristede tørrede frugter og karamel" in source): 1
+  COPY (found 6-word sequence: "noter af vanilje frugt og krydderier" in source): 1
+  COPY (found 6-word sequence: "lavet på frisk sukkerrørsjuice og destilleret" in source): 1
+  COPY (found 6-word sequence: "mørke frugter og et strejf af" in source): 1
+  COPY (found 6-word sequence: "noter af brændt sukker og karamel" in source): 1
+  COPY (found 6-word sequence: "tropiske frugter mørk chokolade vanilje blommer" in source): 1
+  COPY (found 6-word sequence: "med noter af karamel kokos vanilje" in source): 1
+  COPY (found 6-word sequence: "lag af rosiner mørk sirup karamel" in source): 1
+  COPY (found 6-word sequence: "tobak karamel brun farin tørret frugt" in source): 1
+  COPY (found 6-word sequence: "lagret i både tropisk varme og" in source): 1
+  COPY (found 6-word sequence: "lime eller yuzu stjerneanis og urtete" in source): 1
+  COPY (found 6-word sequence: "banan ananas rosiner valnødder og brunt" in source): 1
+  FACT (untraceable numbers: 20): 1
+  LEN (135 chars): 1
+  COPY (found 6-word sequence: "rum er en håndlavet økologisk hvid" in source): 1
+  COPY (found 6-word sequence: "modnet i sistema solera i guatemala" in source): 1
+  COPY (found 6-word sequence: "hvid rom fra et enkelt estate" in source): 1
+  COPY (found 6-word sequence: "destilleret i 1992 og tappet på" in source): 1
+  COPY (found 6-word sequence: "baseret på melasse og destilleret i" in source): 1
+  COPY (found 6-word sequence: "vaniljesødme et strejf af hvid peber" in source): 1
+  COPY (found 6-word sequence: "et blend af pot og kolonne" in source): 1
+  COPY (found 6-word sequence: "tørret frugt brændt sukker chokolade appelsinskal" in source): 1
+  BAN (found '\bkr\.?\b'): 1
+  COPY (found 6-word sequence: "af appelsin mango papaya og vanilje" in source): 1
+  COPY (found 6-word sequence: "te med bergamot sød tobak chokolade" in source): 1
+  COPY (found 6-word sequence: "snert af portvin lang eftersmag med" in source): 1
+  COPY (found 6-word sequence: "brun farin mørk chokolade og ristede" in source): 1
+  COPY (found 6-word sequence: "og lagret minimum 12 år på" in source): 1
+  COPY (found 6-word sequence: "tunge frugtnoter og den klassiske jamaicanske" in source): 1
+  COPY (found 6-word sequence: "vanilje rosiner tobak egetræ og honning" in source): 1
+  COPY (found 6-word sequence: "af karamel kaffe kakao tørret frugt" in source): 1
+  COPY (found 6-word sequence: "bølge af chokoladeovertrukne nødder kaffe og" in source): 1
+  COPY (found 6-word sequence: "destilleret i 2008 på det ikoniske" in source): 1
+  COPY (found 6-word sequence: "rosiner karamel egetræ og vanilje i" in source): 1
+  COPY (found 6-word sequence: "eksotiske krydderier kandiserede æbler appelsin kokos" in source): 1
+  COPY (found 6-word sequence: "skabt af udvalgte fade der har" in source): 1
+  COPY (found 6-word sequence: "melasse egetræ tobak lakrids og krydderier" in source): 1
+  COPY (found 6-word sequence: "af rosiner brombær karamel vanilje egetræ" in source): 1
+  COPY (found 6-word sequence: "med krydrede aromaer lette frugtnoter og" in source): 1
+  COPY (found 6-word sequence: "med 18 år på hvid eg" in source): 1
+  COPY (found 6-word sequence: "banan kokos moden frugt og abrikoskerner" in source): 1
+  COPY (found 6-word sequence: "ristet eg toffee og et strejf" in source): 1
+  COPY (found 6-word sequence: "guyanarom op til 21 år gammel" in source): 1
+  COPY (found 6-word sequence: "af en fyldig smag af rosiner" in source): 1
+  COPY (found 6-word sequence: "af nødder dadler toffee kokosnød og" in source): 1
+  COPY (found 6-word sequence: "sødmefulde noter af creme brulée og" in source): 1
+  COPY (found 6-word sequence: "kandiserede æbler candyfloss og farvestrålende slikkepinde" in source): 1
+  COPY (found 6-word sequence: "batch rom fra clément på martinique" in source): 1
+  COPY (found 6-word sequence: "til mai tais og ti’punch men" in source): 1
+  COPY (found 6-word sequence: "kamfer diesel og den karakteristiske rosenketon" in source): 1
+  COPY (found 6-word sequence: "en kraftig og fyldig smag med" in source): 1
+  COPY (found 6-word sequence: "med noter af sort trøffel kapers" in source): 1
+  COPY (found 6-word sequence: "af saft fra sukkerrør og lagres" in source): 1
+  COPY (found 6-word sequence: "af mirabelle geranium og frisk sukkerrørssaft" in source): 1
+  COPY (found 6-word sequence: "kommer fra foursquare distillery på barbados" in source): 1
+  COPY (found 6-word sequence: "karamel røde frugter mørk chokolade urter" in source): 1
+  COPY (found 6-word sequence: "er en blanding af rom fra" in source): 1
+  COPY (found 6-word sequence: "tropisk frugt og vanilje en del" in source): 1
+  COPY (found 6-word sequence: "år på amerikansk og fransk eg" in source): 1
+  COPY (found 6-word sequence: "først lagres i mindst 12 år" in source): 1
+  COPY (found 6-word sequence: "nydes rent eller i enkle cocktails" in source): 1
+  COPY (found 6-word sequence: "udvalgt og tappet af velier ved" in source): 1
+  COPY (found 6-word sequence: "måneder på ferrands fade i frankrig" in source): 1
+  COPY (found 6-word sequence: "i spanien den afsluttende lagring på" in source): 1
+  BAN (found '\bsalg\b'): 1
+  COPY (found 6-word sequence: "af figner dadler og rosiner samt" in source): 1
+  COPY (found 6-word sequence: "en harmonisk blanding af vanilje karamel" in source): 1
+  COPY (found 6-word sequence: "en anelse syrlighed fra appelsin og" in source): 1
+  COPY (found 6-word sequence: "af karamel vanilje tørret frugt druer" in source): 1
+  COPY (found 6-word sequence: "i charlotte amalie i det tidligere" in source): 1
+  COPY (found 6-word sequence: "ved lave temperaturer og høj luftfugtighed" in source): 1
+  COPY (found 6-word sequence: "chokolade karamel vanilje eg og nektar" in source): 1
+  COPY (found 6-word sequence: "moscow mule mojitos eller piña colada" in source): 1
+  COPY (found 6-word sequence: "12 måneder på amerikanske egetræsfade fra" in source): 1
+  COPY (found 6-word sequence: "den yngste er mindst 15 år" in source): 1
+  COPY (found 6-word sequence: "fra destilleriets egne marker everglades farms" in source): 1
+  COPY (found 6-word sequence: "nydes kold i kaffen eller som" in source): 1
+  COPY (found 6-word sequence: "af vanilje dadler karamel og nødder" in source): 1
+  COPY (found 6-word sequence: "tropiske frugter og en fin sødme" in source): 1
+  COPY (found 6-word sequence: "varme noter af vanilje og karamel" in source): 1
+  COPY (found 6-word sequence: "vanilje fra madagaskar kanel nelliker appelsinskaller" in source): 1
+  COPY (found 6-word sequence: "af karamel vanilje tørret frugt krydderi" in source): 1
+  COPY (found 6-word sequence: "den dominikanske republik barbados jamaica guyana" in source): 1
+  COPY (found 6-word sequence: "brændt melasse anis eukalyptus solbær og" in source): 1
+  COPY (found 6-word sequence: "grønt græs stjerneanis melon og friske" in source): 1
+  COPY (found 6-word sequence: "syrlighed sød lakrids sort te og" in source): 1
+  COPY (found 6-word sequence: "år gammel barbados-rom og 10-15 år" in source): 1
+  COPY (found 6-word sequence: "med machete mellem september og januar" in source): 1
+  COPY (found 6-word sequence: "tropisk frugt som banan og ananas" in source): 1
+  COPY (found 6-word sequence: "duft af tropisk frugt hvid peber" in source): 1
+  COPY (found 6-word sequence: "er en økologisk rhum agricole fra" in source): 1
+  COPY (found 6-word sequence: "caña criolla presset og gæret naturligt" in source): 1
+  COPY (found 6-word sequence: "sød lakrids og appelsin med nelliker" in source): 1
+
+Failed products:
+  - Austrian Empire Solera 18 år Blended Navy Rom 70 cl 40% (f2a6fc51-0a53-4e28-9233-3be3026abfe4)
+    Errors: COPY (found 6-word sequence: "på egetræsfade i den dominikanske republik" in source)
+  - Å Æ Cykel XO Blended Caribbean Rom 40% (2914aa31-6ba2-4cd5-931f-b140f9c0162e)
+    Errors: LEN (128 chars), COPY (found 6-word sequence: "udvalgt og aftappet af ærø whisky" in source)
+  - Infernal Rum Paris to Berlin Dominikanske Republik Venezuela Infernal Rom 40% (76008bd1-10cb-4ae3-a328-89058ec95862)
+    Errors: COPY (found 6-word sequence: "år gammel rom fra venezuela og" in source)
+  - RomDeLuxe Wild Series Rum Unicorn Vol 2 Tasting Kit 3x70 cl (d423b919-4160-4f95-b969-90c646e767b9)
+    Errors: LEN (130 chars)
+  - Tabu Caribbean White Rum (1f43606d-cf78-40ec-b5c8-b07816ba927a)
+    Errors: COPY (found 6-word sequence: "perfekt til brug i drinks og" in source)
+  - Ron Cubanacan Reserva Familiar 12 år Oliver & Oliver Rom 38% (87da534a-d2ab-4599-8890-effe44fc9d47)
+    Errors: COPY (found 6-word sequence: "år på cuba og aftappet ved" in source)
+  - SAMPLE 3 cl Volbeat XXV Rum Limited Edition med Rom fra Jamaica og Guyana 43% (89130e35-12bc-4a6f-8ac0-5743fa736e0c)
+    Errors: FACT (untraceable numbers: 25)
+  - Barceló Gran Añejo Rom (54c75ef1-61ea-472a-b940-8e3ab2f81cdb)
+    Errors: COPY (found 6-word sequence: "sød smøragtig karamel nødder og delikate" in source)
+  - Bapt & Clem's Belize 4 års Rom (b21ffde6-a767-4949-a6a7-786011afea61)
+    Errors: COPY (found 6-word sequence: "blomster honning fine krydderier og tørret" in source)
+  - Brugal 1888 Rom (d71b4689-0d1c-4496-8c24-49e6593d1a18)
+    Errors: COPY (found 6-word sequence: "og spanske egetræsfade der tidligere har" in source)
+  - Bristol Classic Rum Finest Mauritius Cane Juice Rhum (0f4354e1-55ca-4268-aeab-f7170c53f65d)
+    Errors: COPY (found 6-word sequence: "til brug i cocktails og long" in source)
+  - Old St. Croix Non Plus Ultra La Galante (1aade907-ec4c-4617-ab16-014b784f0bba)
+    Errors: COPY (found 6-word sequence: "vanilje mahogni laurbær og egefad smagen" in source)
+  - Old St. Croix Family Reserve 1838 (b9456f44-a719-4268-87c6-fe87a2ac62f5)
+    Errors: COPY (found 6-word sequence: "op til 20 år gamle den" in source)
+  - Rammstein Rum Sauternes Cask Finish (6bb7ed69-bbea-451b-90b1-8a6b241dfa69)
+    Errors: COPY (found 6-word sequence: "af valnødder appelsin og honning smagen" in source)
+  - Ron Matusalem Gran Reserva 15 års Rom (0ca97892-acf3-4c01-a697-c6260d2c597b)
+    Errors: COPY (found 6-word sequence: "af ristede tørrede frugter og karamel" in source)
+  - Ron Millonario Numero 10 Aniversario Rom (59ab389c-4094-4ae6-a221-65077a2fe0d8)
+    Errors: COPY (found 6-word sequence: "noter af vanilje frugt og krydderier" in source)
+  - Ron Malteco Reserva Añeja 10 års Rom (60446507-193e-49a6-abc7-aebef3d4c916)
+    Errors: COPY (found 6-word sequence: "lavet på frisk sukkerrørsjuice og destilleret" in source)
+  - SBS Barbados 2013 Bourbon and Port Cask rom (bottled for Germany & Austria) (89d2b1d1-fc5f-4f19-8dce-f703db773977)
+    Errors: COPY (found 6-word sequence: "mørke frugter og et strejf af" in source)
+  - SBS Venezuela 2006 rom (1b64a388-0ddd-45fb-8847-4d2ce100c920)
+    Errors: COPY (found 6-word sequence: "noter af brændt sukker og karamel" in source)
+  - A.H.Riise XO Founders Reserve No 4 (8845c46d-aebd-4874-b788-7c4549ccb4d0)
+    Errors: COPY (found 6-word sequence: "tropiske frugter mørk chokolade vanilje blommer" in source)
+  - Bumbu Cream (5f41f0aa-b747-49c4-8ccc-59b22fbb72b3)
+    Errors: COPY (found 6-word sequence: "med noter af karamel kokos vanilje" in source)
+  - El Ron Prohibido Reserva 22 Y.O (4ddcb599-01a5-40de-8d80-2ac41782dd5f)
+    Errors: COPY (found 6-word sequence: "lag af rosiner mørk sirup karamel" in source)
+  - Old St. Croix XO Tribute Reserve (83c2f3e8-2d5e-43e0-bad2-a19e7b19ac31)
+    Errors: COPY (found 6-word sequence: "tobak karamel brun farin tørret frugt" in source)
+  - Plantation Rum BARBADOS XO 20th Anniversary (20f11eb1-3c86-4ec0-a07f-42399441722c)
+    Errors: COPY (found 6-word sequence: "lagret i både tropisk varme og" in source)
+  - Clement Rhum Blanc Canne Bleue 2022 (ff930bef-8753-4a8f-b9ca-bdc89be28328)
+    Errors: COPY (found 6-word sequence: "lime eller yuzu stjerneanis og urtete" in source)
+  - SBS Jamaica 2020 Rom - Oloroso Cask (8749fb03-74e2-4769-8d16-644dd7898059)
+    Errors: COPY (found 6-word sequence: "banan ananas rosiner valnødder og brunt" in source)
+  - Plantation XO 20th Anniversary 10 cl. (7c65f184-d790-4f6b-bcb9-e711636b6f5a)
+    Errors: FACT (untraceable numbers: 20)
+  - Fionia White Rum Handcrafted Organic Isle of Fionia Hvid Rom 38% (04ffcce7-7e3e-4c11-9418-9250188ae9e1)
+    Errors: LEN (135 chars), COPY (found 6-word sequence: "rum er en håndlavet økologisk hvid" in source)
+  - Ron Zacapa Ambar 12 Solera Reserva Guatemala 100 cl Rom 40% (da9e9d51-97a7-4c8d-a0ab-583fa599ddbb)
+    Errors: COPY (found 6-word sequence: "modnet i sistema solera i guatemala" in source)
+  - SBS 2022/2023 Origin Selection Cane Juice 1423 Jamaica Rom 70 cl 57% (66de31cc-912a-4c22-921c-68d3811cd446)
+    Errors: COPY (found 6-word sequence: "hvid rom fra et enkelt estate" in source)
+  - Rum Nation Rare Rums Hampden 24 år (5b01bf9d-2ad2-4e68-bcf3-ba1ccb9c053f)
+    Errors: COPY (found 6-word sequence: "destilleret i 1992 og tappet på" in source)
+  - SBS Panama 2010 Rom (3324dbbb-f2a0-492a-a1d4-cc8da9ce4fee)
+    Errors: COPY (found 6-word sequence: "baseret på melasse og destilleret i" in source)
+  - SBS Panama 2012 Rom (a4ae9008-a8c7-4fd7-a9e0-baa3a3f3b394)
+    Errors: COPY (found 6-word sequence: "vaniljesødme et strejf af hvid peber" in source)
+  - Takamaka Extra Noir Charred Cask Rum (13b9920a-97c5-4597-a28d-4a83dc01f3a3)
+    Errors: COPY (found 6-word sequence: "et blend af pot og kolonne" in source)
+  - Abuelo XV Finish Collection Oloroso Cask Rom (2d9b5579-8c8b-4fc5-8415-54670ea9c88d)
+    Errors: COPY (found 6-word sequence: "tørret frugt brændt sukker chokolade appelsinskal" in source)
+  - A.H. Riise Non Plus Ultra Very Rare – Old Edition (3021c96c-5477-47c7-9ead-d8761a709324)
+    Errors: BAN (found '\bkr\.?\b')
+  - A.H. Riise X.O. Reserve Super Premium Single Barrel Rum – Old Version (27e7eedf-f737-4721-a02d-59219ac0e9e2)
+    Errors: COPY (found 6-word sequence: "af appelsin mango papaya og vanilje" in source)
+  - A.H. Riise XO Reserve Superior Cask, i gaveæske m/2 glas (0b4a4420-1851-4437-96ff-37df7174743d)
+    Errors: COPY (found 6-word sequence: "te med bergamot sød tobak chokolade" in source)
+  - A.H. Riise XO Royal Reserve King Haakon – Old Rum Edition (e352dab0-f71e-4d09-bec2-6879e07fc930)
+    Errors: COPY (found 6-word sequence: "snert af portvin lang eftersmag med" in source)
+  - Angostura Dark Rum 7 Years Old (b2b0a1b7-85ee-471e-89b0-79e7645e8dfb)
+    Errors: COPY (found 6-word sequence: "brun farin mørk chokolade og ristede" in source)
+  - Appleton Estate 12 Years Old Rare Casks Jamaica Rum i gaveæske med 2 glas (abcac28a-8bc7-4fe0-9fc5-35e6a44bf498)
+    Errors: COPY (found 6-word sequence: "og lagret minimum 12 år på" in source)
+  - Appleton Estate Reserve 8 Years Jamaica Rum (6928a866-97e3-4663-8e09-8cba0eb796c9)
+    Errors: COPY (found 6-word sequence: "tunge frugtnoter og den klassiske jamaicanske" in source)
+  - Chairman’s Reserve Forgotten Casks (8d77c873-c8e3-4814-8553-82a7941f9699)
+    Errors: COPY (found 6-word sequence: "vanilje rosiner tobak egetræ og honning" in source)
+  - Dictador 20 Y.O i gaveæske m/2 glas (8bf079d9-9b8c-4e57-98ab-c388b227bd86)
+    Errors: COPY (found 6-word sequence: "af karamel kaffe kakao tørret frugt" in source)
+  - El Dorado 2010 Port Mourant Uitvlucht (da6f9e81-8d0d-4a90-a43d-6c089c3d8da4)
+    Errors: COPY (found 6-word sequence: "bølge af chokoladeovertrukne nødder kaffe og" in source)
+  - Hunter Laing Kill Devil Guyana 8 Years Old Single Cask Rum 2008 (fe426e49-ab8b-42f9-a96a-df7b7b9eb87e)
+    Errors: COPY (found 6-word sequence: "destilleret i 2008 på det ikoniske" in source)
+  - Gosling's Family Reserve (df35e7be-2dd0-4647-a9b2-f87500273d94)
+    Errors: COPY (found 6-word sequence: "rosiner karamel egetræ og vanilje i" in source)
+  - Old St. Croix Danish Navy Frigate Jylland (05da05f8-a1c6-4fbd-a8d2-51085a50579e)
+    Errors: COPY (found 6-word sequence: "eksotiske krydderier kandiserede æbler appelsin kokos" in source)
+  - Old St. Croix Family Reserve (7418fa7f-ddfa-43c6-95db-3cf9ca60bb45)
+    Errors: COPY (found 6-word sequence: "skabt af udvalgte fade der har" in source)
+  - Old St. Croix Non Plus Ultra Black Edition (effb64b9-aeab-4fee-a02f-bf67d7d2ac7b)
+    Errors: COPY (found 6-word sequence: "melasse egetræ tobak lakrids og krydderier" in source)
+  - Opthimus 25 Años Solera Metodo Solera OportO Ron Artesanal (c5c6e802-b658-4761-9712-70e32ff5abf5)
+    Errors: COPY (found 6-word sequence: "af rosiner brombær karamel vanilje egetræ" in source)
+  - Rammstein Rum (106da87a-d84d-48a2-8090-991efb1faf5d)
+    Errors: COPY (found 6-word sequence: "med krydrede aromaer lette frugtnoter og" in source)
+  - Wagemut XO Barbados Rom 70 cl 43,8% (0693fc9d-73e1-423d-9b0a-b331296b79b1)
+    Errors: COPY (found 6-word sequence: "med 18 år på hvid eg" in source)
+  - Santos Dumont XO Elixir (7a7ca2e8-222a-440e-8464-20c989d73423)
+    Errors: COPY (found 6-word sequence: "banan kokos moden frugt og abrikoskerner" in source)
+  - Bayou Rum Reserve (06851cc8-1858-4cc3-89cc-4f05f9297ede)
+    Errors: COPY (found 6-word sequence: "ristet eg toffee og et strejf" in source)
+  - Black Tot Master Blender's Reserve 2025 (c11dcb41-4511-42d0-9628-7ce2670a564c)
+    Errors: COPY (found 6-word sequence: "guyanarom op til 21 år gammel" in source)
+  - Rum Nation Rare Rums Caroni 25 år (da22ab04-56d3-4b32-8602-6c7813a5c0bc)
+    Errors: COPY (found 6-word sequence: "af en fyldig smag af rosiner" in source)
+  - Carupano Reserve 1996 (adde0653-3f4d-420a-82fa-2aae8983faee)
+    Errors: COPY (found 6-word sequence: "af nødder dadler toffee kokosnød og" in source)
+  - CDI Guyana DK 24 years Enmore (90f855a4-13c8-4142-bcbf-cf104affd771)
+    Errors: COPY (found 6-word sequence: "sødmefulde noter af creme brulée og" in source)
+  - CDI Jamaica 8 Years Old Multi Distilleries Denmark (4cba7ded-6b8b-44d2-b59b-a8df0def3eda)
+    Errors: COPY (found 6-word sequence: "kandiserede æbler candyfloss og farvestrålende slikkepinde" in source)
+  - Clement Rhum Vieux Single Batch 100% Canne Bleue (6137db9e-576d-43e4-a639-e72fcc75a611)
+    Errors: COPY (found 6-word sequence: "batch rom fra clément på martinique" in source)
+  - Clement VO (f725c3be-e178-4c3d-9a6b-65020bf185bb)
+    Errors: COPY (found 6-word sequence: "til mai tais og ti’punch men" in source)
+  - Hampden Rum Fire 63% (a00016e6-0677-489e-a088-0111656d988b)
+    Errors: COPY (found 6-word sequence: "kamfer diesel og den karakteristiske rosenketon" in source)
+  - J Wray and Nephew White Overproof (67575426-9371-449f-bfd3-dd390b0987a0)
+    Errors: COPY (found 6-word sequence: "en kraftig og fyldig smag med" in source)
+  - Magnifica Bica do Alambique Cachaca (93a1086b-f44c-40c6-b336-794a7f4697bf)
+    Errors: COPY (found 6-word sequence: "med noter af sort trøffel kapers" in source)
+  - Magnifica Envelhecida Cachaca (d24858a0-b7b6-4f89-adf7-2fcfb4cc94cf)
+    Errors: COPY (found 6-word sequence: "af saft fra sukkerrør og lagres" in source)
+  - Mother Mesccia Pure Single Rum (01c87181-41c1-408e-aab6-739871fd0ea9)
+    Errors: COPY (found 6-word sequence: "af mirabelle geranium og frisk sukkerrørssaft" in source)
+  - Magnum Series #1 Foursquare 16 years 2021 Magnum (a047645b-a2ce-4e1e-ba90-8263032fe7f6)
+    Errors: COPY (found 6-word sequence: "kommer fra foursquare distillery på barbados" in source)
+  - SBS Trinidad 2016 Rom - Bourbon and Recioto Cask (d594a112-975e-42c6-a06b-c60929c267f9)
+    Errors: COPY (found 6-word sequence: "karamel røde frugter mørk chokolade urter" in source)
+  - Planteray 3 Stars White Rum (2490ec55-3c52-4f5f-b305-35eda62abc6c)
+    Errors: COPY (found 6-word sequence: "er en blanding af rom fra" in source)
+  - Planteray Grande Reserve (d08222a4-0da7-44f0-b955-a81ccfcad112)
+    Errors: COPY (found 6-word sequence: "tropisk frugt og vanilje en del" in source)
+  - Emperor Rom Sherry Finish Premium Mauritian Blended Rum 40% (ce89c15e-1387-4ddf-b74a-0d5bc4e08cca)
+    Errors: COPY (found 6-word sequence: "år på amerikansk og fransk eg" in source)
+  - Diplomático AMBASSADOR Selection Cask Strength Rom (f9bd4466-d8eb-447c-8dc4-63800d4c1088)
+    Errors: COPY (found 6-word sequence: "først lagres i mindst 12 år" in source)
+  - CDI Veneragua Multi Distilleries Small Batch (7cfd7f74-e0ae-4d62-a622-5ccc91a15f85)
+    Errors: COPY (found 6-word sequence: "nydes rent eller i enkle cocktails" in source)
+  - Magnum Series #1 Hampden HLCF 5 years 2021 Magnum (b5cc30b4-cf32-4c9d-b9f9-82e8df53a31b)
+    Errors: COPY (found 6-word sequence: "udvalgt og tappet af velier ved" in source)
+  - Planteray Jamaica Vintage 2017 Denmark (4f102c3b-f1d0-4e50-9519-a360d63a3885)
+    Errors: COPY (found 6-word sequence: "måneder på ferrands fade i frankrig" in source)
+  - Dos Maderas Atlantic Double Aged Rum (f672281f-f033-4379-8230-891ca544a84a)
+    Errors: COPY (found 6-word sequence: "i spanien den afsluttende lagring på" in source)
+  - Guyana Port Mourant Shared Single Cask Rum (8efe5141-9e70-464f-8e3c-e0c8987ad75a)
+    Errors: BAN (found '\bsalg\b')
+  - Ron Sostenible 8 år Triple Cask Rom (cd1d3087-53cc-43f4-a3f1-1bd28c8a2734)
+    Errors: COPY (found 6-word sequence: "af figner dadler og rosiner samt" in source)
+  - Terra Verde A Christmas Spirit (0ca694a4-1ba6-4060-b8a4-dad9ea9743d7)
+    Errors: COPY (found 6-word sequence: "en harmonisk blanding af vanilje karamel" in source)
+  - Abuelo Anejo 12 Years Rom (242042b5-317c-4520-acd2-75405b4ead30)
+    Errors: COPY (found 6-word sequence: "en anelse syrlighed fra appelsin og" in source)
+  - Abuelo XV 15 Years Napoleon Cognac Cask Rom (58f0679c-6383-47e1-94f5-b847532f416d)
+    Errors: COPY (found 6-word sequence: "af karamel vanilje tørret frugt druer" in source)
+  - A.H. Riise Royal Danish Navy, 35 cl (d0193256-7960-4e3e-aee3-1b99a181184e)
+    Errors: COPY (found 6-word sequence: "i charlotte amalie i det tidligere" in source)
+  - A.H.Riise XO 175th Anniversary (67fa96a2-a544-45a8-9d41-15555c56479a)
+    Errors: COPY (found 6-word sequence: "ved lave temperaturer og høj luftfugtighed" in source)
+  - Austrian Empire Navy Rum 18 Y.O. (d5e8bd0e-6c37-43b6-b766-bc2fd40d4872)
+    Errors: COPY (found 6-word sequence: "chokolade karamel vanilje eg og nektar" in source)
+  - Bayou Pink (d570b609-aacd-45cf-9540-d6bb52a3b3db)
+    Errors: COPY (found 6-word sequence: "moscow mule mojitos eller piña colada" in source)
+  - Dictador 2 Masters 1978 39 Years Old Château d’Arche Finish 2nd Release (8fc5bd93-8a0b-445f-8e85-018f4c51b92f)
+    Errors: COPY (found 6-word sequence: "12 måneder på amerikanske egetræsfade fra" in source)
+  - El Dorado 15 Y.O. (60614553-239a-4fa1-875e-399233be6ffe)
+    Errors: COPY (found 6-word sequence: "den yngste er mindst 15 år" in source)
+  - Hampden Estate Rum 8-Year-Old Pure Single Jamaican Rum 46% (c91737ea-8551-40c8-b259-b10def6db494)
+    Errors: COPY (found 6-word sequence: "fra destilleriets egne marker everglades farms" in source)
+  - Old St. Croix Cream Liqueur Original (58d1edac-dbd2-40a0-b820-4c3a34fece75)
+    Errors: COPY (found 6-word sequence: "nydes kold i kaffen eller som" in source)
+  - Opthimus 15 Años Solera OportO (560efd2c-b267-4f3a-a5e1-0cb20c612db3)
+    Errors: COPY (found 6-word sequence: "af vanilje dadler karamel og nødder" in source)
+  - Plantation 3 Stars (6af4a901-2c58-4f5f-b246-71e79bf5c5ff)
+    Errors: COPY (found 6-word sequence: "tropiske frugter og en fin sødme" in source)
+  - Old St. Croix Non Plus Ultra La Galante (06d61008-efbf-4f27-b8dc-701368b2b60c)
+    Errors: COPY (found 6-word sequence: "varme noter af vanilje og karamel" in source)
+  - Professor Cornelius Rumbullion! Navy-Strength Rom (409d43b4-6613-451d-8f68-7acd0b263f9b)
+    Errors: COPY (found 6-word sequence: "vanilje fra madagaskar kanel nelliker appelsinskaller" in source)
+  - Ron Cartavio XO 18 Años (a2a299f3-a591-4020-85fb-10e6c8ed64d7)
+    Errors: COPY (found 6-word sequence: "af karamel vanilje tørret frugt krydderi" in source)
+  - Volbeat Rum No III (2edbd3dc-d2ab-4d4a-a97c-03d99aae6a1d)
+    Errors: COPY (found 6-word sequence: "den dominikanske republik barbados jamaica guyana" in source)
+  - Caroni Juuls full Proof Single Cask (0ca1e493-6082-4f90-80f3-36b4f7a5546b)
+    Errors: COPY (found 6-word sequence: "brændt melasse anis eukalyptus solbær og" in source)
+  - Clement Rhum Blanc Canne Bleue 2021 (3912d9cd-c964-43b3-8b1b-9a14c3f6303a)
+    Errors: COPY (found 6-word sequence: "grønt græs stjerneanis melon og friske" in source)
+  - Clement Rhum Single Cask Joie de Vivre 16 Ans (6f0f3e1d-fbe9-4cd1-bb65-01563aa0dbca)
+    Errors: COPY (found 6-word sequence: "syrlighed sød lakrids sort te og" in source)
+  - Plantation Experience Box  (d71f0096-4252-4b9b-9479-a207506e7a67)
+    Errors: COPY (found 6-word sequence: "år gammel barbados-rom og 10-15 år" in source)
+  - El Amparo Ron Equatorial (66fa2db6-ee4e-4cdb-ae3a-93caf2241940)
+    Errors: COPY (found 6-word sequence: "med machete mellem september og januar" in source)
+  - HIMMALEH White Habitation Velier (f2ab0e58-1bb4-47d0-88f4-b756149f01da)
+    Errors: COPY (found 6-word sequence: "tropisk frugt som banan og ananas" in source)
+  - Kiyomi White Rum Okinawa (021c3348-7aef-4346-aafe-7076f472d7fb)
+    Errors: COPY (found 6-word sequence: "duft af tropisk frugt hvid peber" in source)
+  - Neisson L´Esprit Bio ØKO (5a961633-ebf3-4306-9949-9ad80368a73b)
+    Errors: COPY (found 6-word sequence: "er en økologisk rhum agricole fra" in source)
+  - Paranubes Cana Criolla (ba99a40c-7262-420d-a321-f3e37569f34c)
+    Errors: COPY (found 6-word sequence: "caña criolla presset og gæret naturligt" in source)
+  - Plantation Ping X Trinidad 26 years (26732ede-5158-429f-850b-4fd0b5f389bf)
+    Errors: COPY (found 6-word sequence: "sød lakrids og appelsin med nelliker" in source)
+
+Sample PASS descriptions:
+
+A. Michler Ron Espero Caribbean Banana Rum 70 cl 40%
+En blød og sødmefyldt rom med tydelig bananaroma, der bærer præg af det caribiske klima. Den tropiske profil gør den velegnet til at nydes alene eller i drinks med frugt og is.
+
+24 Days of Rum Black Edition - Romjulekalender fyldt med 24 stk x 2cl
+Rommen kommer i en julekalender med 24 miniatureflasker på 2 cl hver, suppleret med to glas. Udvalget spænder fra 38 til 54,5 % alkohol, og flaskerne repræsenterer forskellige romtraditioner fra hele verden.
+
+24 Days of Rum Green Edition - Romjulekalender fyldt med 24 stk x 2cl
+Rommen kommer i en julekalender med 24 miniflasker fra lige så mange lande. Hver flaske indeholder en rom med en alkoholprocent på 43,7 og er beregnet til at blive nydt i små portioner. Udvalget spænder over forskellige smagsretninger og oprindelser, hvilket giver en bred oplevelse af verdens romkultur.
+
+Abuelo XV Tawny Port Cask Finish Panama Rom 70 cl 40%
+En Panama-rom med bær og portvinspræg, modnet i 15 år på bourbonfade. Fadene giver en sødmefuld karakter med noter af portvin. Velegnet til nydelse som den er eller i cocktails.
+
+Admiral Rodney HMS Princessa St. Lucia Rom 70 cl 40%
+En St. Lucia-rom lagret mellem fem og syv år på fade, der samler karamel og krydderier i en fyldig smagsoplevelse. Aftappet ved 40 procent giver den en afrundet og tilgængelig karakter, der egner sig til både nydelse og brug i drinks.
+
+Appleton Estate 21 år Single Estate Nassau Valley Cask Jamaica Rom 70 cl 43%
+En 21 år gammel jamaicansk rom fra Appleton Estate, lagret på single estate-fade fra Nassau Valley. Modnet i egetræsfade udvikler den noter af modne nødder og krydderier. Velegnet til at nydes som en ren sippingrom eller i komplekse cocktails.
+
+Balthazar 5 år Barbados Rom 40%
+En Barbados-rom med fem års modning, der fremstår blød og rund med en tydelig vaniljesødme. Aftappet ved 40 % alkohol, præget af den karakteristiske sødme og blødhed fra den caribiske ø. Velegnet til nydelse som den er eller i simple blandinger.
+
+Bacardi Miniature Carta Blanca Puerto Rico Rom 5 cl 37,5%
+En let og tør rom fra Puerto Rico, fremstillet af sukkerrørsprodukter og filtreret med aktivt kul. Den præsenteres i en ren og afrundet stil med en karakteristisk klar farve. Velegnet til at blive nydt som den er eller brugt i cocktails.
+
+Appleton Estate Hearts Collection 1999 Velier Jamaica Rom 70 cl 63%
+Efter 21 år på tidligere bourbonfade præsenteres denne jamaicanske single cask-rom med en karakteristisk dybde og kompleksitet. Den er tappet af Velier og bærer årstallet 1999, hvilket afspejles i dens afrundede smagsprofil med noter af tropisk frugt, vanilje og en let krydret finish.
+
+Bristol Classic Caribbean Collection Trinidad Rom 70 cl 40%
+Den fire år gamle Trinidad-rom fra Bristol Classic Caribbean Collection er fremstillet af melasse og lagret på tidligere bourbonfade. Den kolonne destillerede rom byder på en blød og rund smag med noter af vanilje og tropiske frugter. Velegnet til at nydes ren eller i cocktails.
+
+Cane Island Barbados Single Island Blends Rom 70 cl 40%
+Cane Island Barbados Single Island Blends Rom er produceret på Foursquare Distillery i Barbados og lagret op til otte år i tropisk klima. Rommen byder på en blød og rund smagsprofil med noter af tropisk frugt og en let krydret afrunding. Velegnet til at nydes som den er eller i cocktails.
+
+Bumbu Cream Panama Romlikør 70 cl 15%
+Bumbu Cream fra Panama er en cremet likør baseret på rom, fløde og krydderier. Produktet fremstår sød og blød i smagen, hvilket gør det velegnet til cocktails. Den cremede konsistens og de krydrede noter giver en afrundet og behagelig oplevelse.
+
+Cane Island Trinidad Single Island Blends Rom 70 cl 40%
+Trinidad-rommen modnes 3 til 5 år på tidligere bourbonfade, hvilket giver en elegant og afrundet karakter. Den kommer fra Trinidad og fremstår med en blød, harmonisk smagsprofil. Velegnet til nydelse som den er eller i cocktails.
+
+Bombarda Falconet Dark 8 år Sort Flaske Blended Dark Caribbean Rom 70 cl 43%
+Bombarda Falconet Dark er en mørk rom fra Caribien, lagret otte år på tidligere bourbonfade. Den er produceret af en blanding af rom fra fire lande og har en fyldig, rund smag med noter af mørk chokolade og krydderier. Velegnet som after-dinner-drink eller i drinks med en kraftig smagsprofil.
+
+Clarendon 1995/2021 Valinch & Mallet 26 år Jamaica Rom 70 cl 56,9%
+En 26 år gammel Jamaica Single Cask rom fra Clarendon destilleri, oprindeligt lagret 25 år på Jamaica og afsluttet med ét år i Skotland. Den modnes i egetræsfade og præsenterer sig med en dyb, kompleks karakter med noter af tropiske frugter, krydderier og en let røget undertone. Velegnet til nydelse som en ren dram eller som base i lange drinks.
+
+Clement Mahina Coco Martinique Kokos Romlikør 70 cl 18%
+En sød og rund romlikør fra Martinique, fremstillet med unge kokosnødder og sukkerrørssirup. Produktet præsenterer en blød smag med en karakteristisk sødme og en afrundet profil. Velegnet til at nydes som en lille sipping eller som ingrediens i cocktails.
+
+Great Dane Miniature Skotlander Økologisk Hvid Rom 5 cl 37,5%
+Fyldes med frisk og let sød økologisk hvid rom fra Skotland. Har en ren og afrundet karakter med en behagelig sødme. Velegnet til at nydes direkte eller som base i cocktails.
+
+Compagnie des Indes 2007/2017 Secrete 9 år Jamaica Single Cask Rom 70 cl 54,1%
+Et 9 år gammelt Jamaica-rom fra et enkelt fad, destilleret i 2007 og aftappet i 2017. Råvaren stammer direkte fra Jamaica, hvor rommen modnes i egetræsfade. Smagsmæssigt præges den af tropiske noter med en rund og afrundet profil. Velegnet til nydelse som ren rom eller i komplekse cocktails.
+
+Ron Esclavo Miniature XO Dominikanske Republik Rom 5 cl 42%
+Mørk rom fra Den Dominikanske Republik, lagret mellem 12 og 15 år på amerikanske og franske egetræsfade. Produktet fremstår med en dyb, mættet farve og byder på noter af vanilje, tørrede frugter og en let krydret afrunding. Velegnet til nydelse i ren form eller som del af en kompleks cocktail.
+
+Compagnie des Indes 2004/2017 Secrete 13 år Panama Single Cask Rom 70 cl 56,9%
+En blød og karamelpræget single cask rom fra Panama, lagret i 13 år. Modnet i egetræsfade, der giver en fyldig og rund smagsoplevelse med noter af karamel og blødhed. Velegnet til nydelse som den er eller som base i cocktails.
