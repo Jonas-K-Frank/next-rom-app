@@ -217,6 +217,7 @@ export interface ProductDetail {
   abv: number | null;
   category: string | null;
   image_url: string | null;
+  description: string | null;
   offers: RetailerOffer[];
   priceHistory: PriceHistoryPoint[];
 }
@@ -228,14 +229,35 @@ export async function getProductDetail(
 ): Promise<ProductDetail | null> {
   const supabase = await createClient();
 
-  const { data: product, error: productError } = await supabase
-    .from("products")
-    .select("id, name, brand, volume_ml, abv, category, image_url")
-    .eq("id", productId)
-    .maybeSingle();
+  // Forsøg at hente med description, falder tilbage til uden
+  let product: any = null;
+  let productError: any = null;
+  
+  try {
+    const result = await supabase
+      .from("products")
+      .select("id, name, brand, volume_ml, abv, category, image_url, description")
+      .eq("id", productId)
+      .maybeSingle();
+    product = result.data;
+    productError = result.error;
+  } catch {
+    // Hvis description-kolonnen ikke findes, prøv uden
+    const result = await supabase
+      .from("products")
+      .select("id, name, brand, volume_ml, abv, category, image_url")
+      .eq("id", productId)
+      .maybeSingle();
+    product = result.data;
+    productError = result.error;
+  }
 
   if (productError) throw productError;
   if (!product) return null;
+
+  // TODO: aktiver når products.description findes
+  // Indtil da sættes description til null
+  const description: string | null = product.description ?? null;
 
   const { data: links, error: linksError } = await supabase
     .from("product_retailer_links")
@@ -267,7 +289,8 @@ export async function getProductDetail(
     (links ?? []).map((link) => [link.id, link.retailers?.name ?? "Ukendt"]),
   );
 
-  const offers: RetailerOffer[] = (links ?? []).map((link) => {
+  // Filtrer offers: kun in-stock og med pris
+  const allOffers: RetailerOffer[] = (links ?? []).map((link) => {
     const latest = latestByLinkId.get(link.id);
     return {
       linkId: link.id,
@@ -280,6 +303,12 @@ export async function getProductDetail(
     };
   });
 
+  // Filtrer til kun offers med inStock === true og price !== null
+  const offers: RetailerOffer[] = allOffers
+    .filter((offer) => offer.inStock === true && offer.price !== null)
+    .sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+
+  // Prishistorik indeholder ALLE links (ogsaa dem der nu er udsolgt)
   const priceHistory: PriceHistoryPoint[] = (priceHistoryRows ?? []).map(
     (row) => ({
       scrapedAt: row.scraped_at,
@@ -288,5 +317,19 @@ export async function getProductDetail(
     }),
   );
 
-  return { ...product, offers, priceHistory };
+  // Konstruer return objektet med korrekte typer
+  const result: ProductDetail = {
+    id: product.id,
+    name: product.name,
+    brand: product.brand,
+    volume_ml: product.volume_ml,
+    abv: product.abv,
+    category: product.category,
+    image_url: product.image_url,
+    description,
+    offers,
+    priceHistory,
+  };
+
+  return result;
 }
