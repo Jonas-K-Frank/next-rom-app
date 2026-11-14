@@ -145,7 +145,7 @@ export async function getMonthlyFind(): Promise<MonthlyFind | null> {
     if (fallback) {
       productId = fallback.product_id;
       lowestPrice = fallback.lowest_price;
-      editorialLine = `Bredest tilgængelig — sammenlignet på tværs af ${fallback.retailer_count} ${
+      editorialLine = `Bedste pris sammenlignet mellem ${fallback.retailer_count} ${
         fallback.retailer_count === 1 ? "forhandler" : "forhandlere"
       }`;
     }

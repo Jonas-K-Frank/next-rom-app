@@ -42,7 +42,7 @@ export function Hero({ stats }: { stats: CatalogStats }) {
             <img
               src="/Rom-illustration.jpg"
               alt="Rom illustration"
-              className="w-full h-full rounded-lg object-cover"
+              className="w-full h-full rounded-lg object-cover "
             />
           </div>
         </div>
