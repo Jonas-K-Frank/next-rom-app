@@ -1,0 +1,758 @@
+
+> next-rom-app@0.1.0 generate:descriptions:rerun
+> tsx scripts/generate_descriptions.ts --rerun-failed
+
+Running in RE-RUN (failed/null only) mode
+Starting description generation pipeline...
+Mode: RE-RUN (failed/null only)
+
+Starting description collection...
+Fetching products...
+products fetched: 1037
+Fetching all product_retailer_links with descriptions...
+links fetched: 3287
+products with usable sources: 342
+Generating descriptions for 342 products...
+Processing batch 1 (4 products)...
+Processing batch 2 (4 products)...
+Processing batch 3 (4 products)...
+Processing batch 4 (4 products)...
+Processing batch 5 (4 products)...
+Processing batch 6 (4 products)...
+Processing batch 7 (4 products)...
+Processing batch 8 (4 products)...
+Processing batch 9 (4 products)...
+Processing batch 10 (4 products)...
+Processing batch 11 (4 products)...
+Processing batch 12 (4 products)...
+Processing batch 13 (4 products)...
+Processing batch 14 (4 products)...
+Processing batch 15 (4 products)...
+Processing batch 16 (4 products)...
+Processing batch 17 (4 products)...
+Processing batch 18 (4 products)...
+Processing batch 19 (4 products)...
+Processing batch 20 (4 products)...
+Processing batch 21 (4 products)...
+Processing batch 22 (4 products)...
+Processing batch 23 (4 products)...
+Processing batch 24 (4 products)...
+Processing batch 25 (4 products)...
+Processing batch 26 (4 products)...
+Processing batch 27 (4 products)...
+Processing batch 28 (4 products)...
+Processing batch 29 (4 products)...
+Processing batch 30 (4 products)...
+Processing batch 31 (4 products)...
+Processing batch 32 (4 products)...
+Processing batch 33 (4 products)...
+Processing batch 34 (4 products)...
+Processing batch 35 (4 products)...
+Processing batch 36 (4 products)...
+Processing batch 37 (4 products)...
+Processing batch 38 (4 products)...
+Processing batch 39 (4 products)...
+Processing batch 40 (4 products)...
+Processing batch 41 (4 products)...
+Processing batch 42 (4 products)...
+Processing batch 43 (4 products)...
+Processing batch 44 (4 products)...
+Processing batch 45 (4 products)...
+Processing batch 46 (4 products)...
+Processing batch 47 (4 products)...
+Processing batch 48 (4 products)...
+Processing batch 49 (4 products)...
+Processing batch 50 (4 products)...
+Processing batch 51 (4 products)...
+Processing batch 52 (4 products)...
+Processing batch 53 (4 products)...
+Processing batch 54 (4 products)...
+Processing batch 55 (4 products)...
+Processing batch 56 (4 products)...
+Processing batch 57 (4 products)...
+Processing batch 58 (4 products)...
+Processing batch 59 (4 products)...
+Processing batch 60 (4 products)...
+Processing batch 61 (4 products)...
+Processing batch 62 (4 products)...
+Processing batch 63 (4 products)...
+Processing batch 64 (4 products)...
+Processing batch 65 (4 products)...
+Processing batch 66 (4 products)...
+Processing batch 67 (4 products)...
+Processing batch 68 (4 products)...
+Processing batch 69 (4 products)...
+Processing batch 70 (4 products)...
+Processing batch 71 (4 products)...
+Processing batch 72 (4 products)...
+Processing batch 73 (4 products)...
+Processing batch 74 (4 products)...
+Processing batch 75 (4 products)...
+Processing batch 76 (4 products)...
+Processing batch 77 (4 products)...
+Processing batch 78 (4 products)...
+Processing batch 79 (4 products)...
+Processing batch 80 (4 products)...
+Processing batch 81 (4 products)...
+Processing batch 82 (4 products)...
+Processing batch 83 (4 products)...
+Processing batch 84 (4 products)...
+Processing batch 85 (4 products)...
+Processing batch 86 (2 products)...
+Processing 9 LLM reviews...
+Starting polishing phase for PASS descriptions...
+Updated product 31190a14-f563-44b0-aaf5-bddadcf2021c
+Updated product 444eb7db-4d34-4cd7-af4c-34d9af71003d
+Updated product a2626788-b498-47e5-a0c0-e260ba84eab2
+Updated product 2914aa31-6ba2-4cd5-931f-b140f9c0162e
+Updated product 76008bd1-10cb-4ae3-a328-89058ec95862
+Updated product 823d1277-a002-4bf4-8cda-7c0046734386
+Updated product e1b02fd7-5a50-4e91-b88a-45d9e65b43c9
+Updated product bb717951-5c4a-4382-8ffc-4fa4410898ab
+Updated product 7f41e18f-84cb-4724-a169-07f67e861932
+Updated product bb8584d4-f130-4cec-b233-ad3b94e418d6
+Updated product 782e8f84-6a6b-4b24-a588-27e717bba3e6
+Updated product 58dac1c7-8502-4a8b-b471-cc9d5a9f555d
+Updated product adfb40f1-4d4e-43ef-84d6-22e64499ccc2
+Updated product f311ad2c-b814-440a-90e1-1b631ccd388a
+Updated product b761fa0b-93e4-4ca3-b993-48dad00f3a2c
+Updated product 888d07e9-d346-4f73-9c32-8fa89ff8425a
+Updated product b41ea2e8-1a0f-4a47-a87e-881af7acffab
+Updated product 47608c8c-efbd-429b-a643-2a41c868a4a2
+Updated product 96e095c7-e512-48a1-9d3f-0fff0b7c58fe
+Updated product 3a8b82f6-8ff6-42a5-9545-5dcc63bdb111
+Updated product 5ea5d73f-8ac6-46bd-9f5c-4661b2abd38d
+Updated product 1600d6f5-5355-4468-8889-ea176bf8cd97
+Updated product b4f13cc1-ede1-4924-82b9-cbf747981258
+Updated product 9c72932c-a4be-4d19-93e2-5521ab000fb9
+Updated product 5a04404a-d375-4d2d-9d16-7af107cfa10a
+Updated product 7a01a3da-eb5e-4bdb-b6fb-a574a652ce09
+Updated product 07c8c93b-56ae-4888-be5b-901a6a12531e
+Updated product 4f231c6d-67d1-4332-882c-c2f3caf5c97e
+Updated product 75736c40-7700-4920-b19a-6294bcfebc4d
+Updated product 089bef76-e2aa-465b-b0d6-43f70bfb0df1
+Updated product 09d41222-df06-42b5-94e0-775973348b1f
+Updated product 2a33e97c-13e7-4306-b81a-b93da262cc31
+Updated product 439c381c-ac68-47f2-ac8f-d5d6d653a663
+Updated product 8a359322-16fa-4cba-8b7e-5af3d37f1f1b
+Updated product f9d5ddb7-e7ef-489a-8d7a-2b04413a178a
+Updated product 9dd054f2-2ac6-498d-94bc-36fa2a1fff2d
+Updated product f9d29288-3dcc-449a-98c7-9080c315c7f4
+Updated product a586c7fd-5ef8-4ae0-8a17-ff46237e4199
+Updated product bf92d090-f86e-481e-8cba-d6ea564c63ea
+Updated product 0c29c589-a376-473b-91c5-bc0beaabbd3d
+Updated product 9875745c-d662-4c08-afd7-57275e0a5280
+Updated product 3ac97170-5ab6-4c9a-bb43-4ea1576f67cb
+Updated product 9fdbb18a-039a-47d3-8b67-ef2c4ee6d220
+Updated product 7e9f4ced-6d99-4168-9d74-ba5fbde245b1
+Updated product c7d0ef3b-a241-45c4-9bc4-8158fb44b063
+Updated product 50f455fe-4faa-4c66-a784-7a7daed6b2c9
+Updated product 7a9a95b0-c26e-4ebd-952d-f61ceb34799d
+Updated product c2f1cf8e-a104-42b4-94c6-b71dcfcc8ae4
+Updated product c8fc73a4-4966-4f49-98f7-4fdd7e36c0dd
+Updated product 6c27e8e5-fdb6-4e89-9348-4ed3e6ac65e8
+Updated product e5e4259a-2b45-4c41-bee2-5afb33d4854a
+Updated product 4ccc42eb-7a9a-4e8b-9102-856b38262585
+Updated product 20308556-2b53-4db9-9f71-f1c7420d58f3
+Updated product e6a9935c-75f2-45b2-b116-ebfea7c581a9
+Updated product 92123c61-6edc-40d0-a444-eb6efb66fc61
+Updated product 8566fedf-2f53-4e02-943c-2ad1bb5dbfb1
+Updated product d0360245-924b-4633-80a0-3390f5443b4a
+Updated product 60c6aabd-47d0-4bb7-a748-034b915ffc4b
+Updated product d3c50db6-9f19-4f60-a5b8-1e189627516a
+Updated product 339ed255-feda-479e-bf35-87eefaa08a6c
+Updated product 6a062b0a-3ac8-49b4-b9b6-f91a246bdc56
+Updated product 40cf005e-8b67-4295-9c21-913d0cf7a5ea
+Updated product bfff16b0-b32a-4465-927f-2cd4c5dd87ac
+Updated product 2ce7eb35-1116-4381-a33c-ef87a061cefa
+Updated product a7cd1ae5-bc56-404f-802d-b212b95c9d28
+Updated product 68bd90bf-cde6-45c8-9e03-27e51bb3eb14
+Updated product 1f05e8a4-94a9-4d2c-bc3c-583a1420db0c
+Updated product 309e5956-8d1d-4704-b74a-975397424153
+Updated product ca64592c-2117-4e96-ba97-c9b7f1e9390d
+Updated product 9aff6df4-8034-4a54-82bf-a54005a6fd61
+Updated product d4ddfb1b-6b8d-4e37-98a1-7c87ae4287c3
+Updated product 29883fff-1494-4bfc-ac40-b7442497e64f
+Updated product 264d5367-7c8a-422b-8968-4861f40dc9b9
+Updated product ae5c50a0-46ee-479e-be1f-1657cf802fa5
+Updated product 94dd8e1c-c446-41e1-9836-24163ec4e414
+Updated product 43f718e4-43da-449f-8431-eb3294de53eb
+Updated product 982b76bb-3a8d-474d-8f27-3c3a0bb6b1e4
+Updated product f97ca8e8-571e-4e93-8414-66615f3adf47
+Updated product dd237371-0f55-46af-8a77-34ddcdfb513d
+Updated product 191609a2-4794-4274-a2f0-00b971f23c96
+Updated product 8b90826b-c014-4051-bce9-493f91aa1f54
+Updated product 9288d371-a9c4-4043-aa2e-5e70255280ea
+Updated product 14c4b244-b88a-46ce-aea6-2211da1fe19b
+Updated product 08b3ac2f-0f97-4351-84b8-f264f8edc28e
+Updated product e078c8d6-5ac9-4eba-8355-33cc7b82077a
+Updated product c1883e48-3893-4156-ace1-8bd3d1641480
+Updated product ead9c878-c2cf-48bb-a262-9177fb54a5aa
+Updated product 8037e525-1d6c-40ba-87d2-918bc2b4e3f9
+Updated product e56df4ae-189f-42bf-be41-5afbaa2ad239
+Updated product 99ebd6e3-54e1-493b-bc06-730ed6c2a897
+Updated product a38f04f6-2d03-4831-ad7b-d6f7f1c4e4f9
+Updated product 1cc79019-7c4c-4ec6-ae08-47e1c0d9855c
+Updated product c3c86139-c91b-403b-a64f-a17870f19712
+Updated product 2311f8c2-0740-4b30-98c0-aff07e55c948
+Updated product 8402fa6e-8376-4794-9bc5-2086ac81322a
+Updated product cd0f9d33-6a05-4879-b0bf-f7930fd8df01
+Updated product 89e384a1-9605-4381-a614-013faebd8d95
+Updated product 04ffcce7-7e3e-4c11-9418-9250188ae9e1
+Updated product 52612033-6baf-4ab1-9720-6ca58ba881da
+Updated product 71e70b47-2f8e-4059-8c88-f9c49de3ac55
+Updated product a5049e82-8b51-4bc9-9648-9be2d7136cc9
+Updated product 20f11eb1-3c86-4ec0-a07f-42399441722c
+Updated product fd1986d1-ac34-4fed-8dfd-516762cbd1b3
+Updated product d1811820-082b-43eb-8e59-908f6218216f
+Updated product b2363021-a425-4320-865c-8051622153dc
+Updated product b1705536-f1b6-4d61-b1ea-93ed54c5e95e
+Updated product 9fd7773a-4a2f-4e62-9851-943b43041bd8
+Updated product a4ae9008-a8c7-4fd7-a9e0-baa3a3f3b394
+Updated product f13c25f3-2d6c-42e7-9b49-c3bdb69c28d3
+Updated product d81bc7fe-6f1b-4e22-b8b9-78d510d4915e
+Updated product 4d404df0-eb43-4519-84d6-92f89cc87621
+Updated product 0e595663-b695-4cc2-9851-2e633cccd143
+Updated product 2d80b2b2-ed23-4363-b885-c03dc7f691a5
+Updated product b351cae6-d3bc-49bb-9f4d-868036283cff
+Updated product b2a65606-237f-489a-98ab-6b42b28cdde7
+Updated product dbddf45b-df11-4509-a8c2-1852dd52269b
+Updated product e17ff00e-3214-4545-a746-6e54353a1708
+Updated product 79fedf56-bef3-40bd-adaf-398197e0e8ca
+Updated product a3559e9a-d6fc-4f8e-b205-a798273604ca
+Updated product 2f316bf3-9733-4b0b-b4db-238fcd854077
+Updated product 90f5d143-fbfc-4aff-a5f3-9055f09a52b8
+Updated product 1232865f-304f-4ba0-be34-037bb4b4ed46
+Updated product d3670a05-5946-4ad5-a704-5441bbc7d038
+Updated product 7104e012-86d6-45ec-ba31-d87ba70e395e
+Updated product 7b9dbe7c-0601-4bdd-b7c6-5bff528e29b2
+Updated product 120eaac1-6014-4ea8-86e7-03aac86076ea
+Updated product a79b2575-e34f-40d1-ab22-89cbba4ba062
+Updated product d42ec819-f24f-43c3-8c82-877b18b62b28
+Updated product 9f1986e7-5ee2-4f69-be83-e4ebeffb2254
+Updated product 710dfe64-c678-4bb8-a604-921c08e8fa7b
+Updated product cce7872a-012d-4e8f-97db-58aaa23e16e3
+Updated product 15e48d81-b023-4c43-8ef5-86f2d9f3f84b
+Updated product 119cef38-59e0-4c0a-90ab-0943658e78b2
+Updated product 85b20272-ad14-4586-84d0-e9cb4adc792b
+Updated product 2f9d816a-d33b-46af-915f-4dddfe9632ab
+Updated product 6409524e-4e8b-4e31-83a0-19063ce4fc1c
+Updated product 5bbcc781-bd18-4ff2-a912-9d6dd99bb7f2
+Updated product f51dbc84-1a7d-49f7-af37-2e09a63422d7
+Updated product 2b38e978-160f-472e-8b2d-6c292de0c266
+Updated product 7d50bf37-9a74-445a-8c33-074dac4fb84e
+Updated product 1e2faa88-55bf-4295-b82c-e1d7d3e284d5
+Updated product 1d8ce97b-1c6c-45f7-a6b3-c5fd82b2bc22
+Updated product 9f9adc31-0acc-4686-9bf8-37202b9347e0
+Updated product 6c319ae0-3580-42fc-8453-806f76c19e70
+Updated product cf82007b-5a0e-4b3f-bd71-2625a66d5aa5
+Updated product 82fc3056-c85e-43f1-bf3f-aacbe27ee228
+Updated product 597c4c71-2f6f-456f-88b3-f49d355b9012
+Updated product 0817f6ae-7f41-4b80-ae89-30e3daceca96
+Updated product 21a35fcb-f4ed-4aa2-947c-b9f7ab7418a6
+Updated product 5d5671b0-c51d-485b-8528-9ea7d377dd81
+Updated product 2232eb13-ffaf-4a6f-9fca-6ab8e633a01e
+Updated product d24858a0-b7b6-4f89-adf7-2fcfb4cc94cf
+Updated product a08d6f9e-accd-4dcb-9126-e7ac495050f9
+Updated product e5a782b8-1d6d-4625-808e-4624d8a9a312
+Updated product 4d26b3a2-79a1-481d-b2db-40e00cbd0dc2
+Updated product d4d389e1-0944-483f-8971-707565cc04bd
+Updated product ce89c15e-1387-4ddf-b74a-0d5bc4e08cca
+Updated product a875bff8-e5b0-4cf5-bc00-6b2e563d2b1a
+Updated product 834f21a6-8dd0-4c90-acb9-4af4a23544d2
+Updated product 4f102c3b-f1d0-4e50-9519-a360d63a3885
+Updated product 2e002b83-c7e9-4986-8f4a-458e42b09640
+Updated product f647de72-7e9a-46d9-bc99-53530843e3e1
+Updated product ab70a069-a0b5-4e1f-aded-7aca27d92b1e
+Updated product eee8ce03-0af7-404f-aced-ff435f72d5d9
+Updated product e7c4aa84-4f82-4b82-9b79-8e201096b144
+Updated product 409d43b4-6613-451d-8f68-7acd0b263f9b
+Updated product 5a961633-ebf3-4306-9949-9ad80368a73b
+Updated product 021c3348-7aef-4346-aafe-7076f472d7fb
+Updated product 164b469f-6772-40f5-b63d-5a834ec06053
+Updated product 8628b850-bdf5-4ee0-ba0b-9be1e79a459f
+Updated product 517fa74b-6540-4c6c-ab1e-62cf288cc96f
+Updated product e20c158f-1409-4d8b-932d-40fcbd877afd
+Updated product 071acff3-c314-449f-89c9-18419b9deaf1
+Updated product 3c4a7901-0c89-47fc-b447-91a7e1a54af3
+Updated product 89bfdcee-331a-4e61-affe-65435caeeeda
+Updated product a15330e0-6c91-4c46-8892-493e9f963db1
+Updated product 0e78e62e-76aa-4f7b-89b1-6f50dcb81939
+Updated product 2293b489-98aa-4622-91d7-ddea1c19a00f
+Updated product 5771f0c1-83fc-4234-8176-dcafe901e6bf
+Updated product 532fb35c-4aae-498c-989a-17c499b89685
+Updated product 677de379-e7dc-4588-9ec8-a941b4ea91a4
+Updated product 5d902d3f-c89c-4221-97d2-ff1f78a50b2f
+Updated product 146868db-ebf7-4e7d-b33c-7dcf951af24f
+Updated product eeb3332d-7c52-469e-b96d-5c2637618a77
+Updated product 76a178dc-185d-4368-9d29-71c0e07ad893
+Updated product 9ec448bc-3754-4434-9b19-753cf61ed425
+Updated product 809f0c2d-7db6-483e-8fe7-6650958de2b9
+Updated product 78f54deb-1b12-468d-a8b3-209ae682902d
+Updated product aa47cd47-bddf-42b6-8d84-92c059d39fc7
+Updated product 7339082d-1bab-4811-8580-cf7e08e07da0
+Updated product 3ff687e4-4da4-4dbc-afca-850f9dccca9f
+Updated product c2ec8dd1-1a4e-46c4-af55-7a04555b72ff
+Updated product 5a97643e-d745-4659-a34f-163fc2c8cac2
+Updated product b554fb04-4b7a-4828-b9a2-a380cf7f89f7
+Updated product 80ec825b-eadb-4284-bd15-e81defdbf8a5
+Updated product 01ec7436-a9b5-4a0e-af51-ed0fe0c15dc4
+Updated product 77fc554a-ccdc-4734-af98-667605faf2c8
+Updated product 9b4dd8c0-4429-4d3d-881f-1317466f3e35
+Updated product 963f1bb1-869b-4526-9a5d-c42bc0863e30
+Updated product e5b4a5d6-7f56-4419-8438-e9bc4b8d8c82
+Updated product 715ac143-d9ca-4460-b59c-871d31c1e7d5
+Updated product bc4de6c8-d13b-438e-aa88-20c0f7622634
+Updated product a4b1e660-eeb9-49b0-bb00-d9f852c930a6
+Updated product 76349508-8291-44e1-8893-49cc93d095c0
+Updated product 0740ae29-dca5-47c7-af41-e95bd4cbe723
+Updated product 2ed5b362-71ba-4c88-9cb9-ccd0ad301929
+Updated product ee4ea3a3-5096-42be-a136-dc34fa8408c2
+Updated product 642b4274-d468-46d5-889c-9d13e3147b7a
+Updated product e62e7331-8480-448c-ad01-d56713ba19f0
+Updated product 85103107-70f6-4e27-9b9c-7f5fbfa7cbf6
+Updated product 5cc65165-5df6-49b6-9dad-48cb96d6d1cc
+Updated product 1fed4f34-b7a8-4941-9f16-24072a959775
+Updated product 5926992b-cc8e-4093-bbef-79cf9f77c216
+Updated product da22ab04-56d3-4b32-8602-6c7813a5c0bc
+Updated product e3a2fef7-5abd-4da0-862d-2baeb4c69bdf
+Updated product 77963537-c67d-41bd-83b1-37579cd2eaa1
+Updated product ff408305-2ed7-4c7f-9856-d5d889100af3
+Updated product 71ff83f2-73c1-4c5e-80c0-b5a72f02220f
+Updated product ba52cafe-d691-48d2-b442-ef480e6a9735
+Updated product 9eb9ec1b-ba15-401a-b572-8a03e8093e6d
+Updated product b9456f44-a719-4268-87c6-fe87a2ac62f5
+Updated product 18212531-5c39-4e61-b394-e260a1b76d1b
+Updated product be0c5b3a-7c02-41f5-ad6a-a6680ac3eb70
+Updated product bfe3557c-ab44-4e6d-8330-ace851861bc8
+Updated product 5f337dd2-6e65-4bd3-8a85-876f68f7391c
+Updated product 215e7392-46b8-4c77-a9ea-1cc673310466
+Updated product bf21c415-e70d-4a0a-9b65-79f40408e0d1
+Updated product 99f02e43-840e-4f1d-8ef4-fc49cf177b39
+Updated product b2732443-eb61-4179-93d5-e66d9af774f0
+Updated product 76778d40-2f38-4562-a62a-53f39e6ce0d3
+Updated product 5309e606-bd9d-4b85-bf07-57f0a08861b6
+Updated product de88dee9-442d-4fd4-ab0e-6ed73e428bad
+Updated product 5f157fbc-fe26-419f-ae12-71fd9d8a9885
+Updated product 4483be52-2e78-480d-8d31-6b0f98e11d24
+Updated product b2f49292-c350-4f3b-b05c-9269ffe2efeb
+Updated product f3b4b8a0-9fa7-4e89-95c9-416529811721
+Updated product 2e706f55-1845-4769-a2e7-f919660a8616
+Updated product c7d1e6a3-f5c7-4b0b-944d-7b832eb80659
+Updated product fb3a0408-c113-47aa-9df7-d82cb45ee6f8
+Updated product 28911e44-5942-4c3e-b6e5-424088c868d1
+Updated product 29de1946-a52c-4d6a-a681-a3bde0789ccc
+Updated product 7eaa825d-b2e4-497f-8de4-756ed889c9c7
+Updated product b58856ee-d202-4c23-aa5c-8d08c82bb02b
+Updated product d4d60bab-c5d5-47ea-be5b-48df52a0306d
+Updated product 3f777dc2-cf4f-4bd9-bb8f-9543cab71613
+Updated product 38ac2e01-31d9-4e2a-b396-442c3ad40fae
+Updated product 71fc3a2f-91eb-408d-93ba-d0dd8fe428ec
+Updated product 12004987-e976-4107-881c-b86d21b00832
+Updated product 6137db9e-576d-43e4-a639-e72fcc75a611
+Updated product d8657473-fdcc-4ebd-9351-b1e14f6c673e
+Updated product 03f6d9bf-35f2-4333-97d2-9d145570a32b
+Updated product a124ceb4-b762-4c70-b708-f1ebdfe1fd6b
+Updated product ec778544-e8f7-45d7-a72c-4af3fea98fa6
+Updated product 2d99af85-a0d5-4ed2-93ec-ac35cafd88e3
+Updated product a047645b-a2ce-4e1e-ba90-8263032fe7f6
+Updated product 79531841-3ad6-4db1-b949-c632ecdd3848
+Updated product d24fed72-1b97-4482-a5a6-645cf89c7f5f
+Updated product 6d4cbfa7-12e7-4268-8ae5-34cb95d6e838
+Updated product 940b72b6-14aa-4619-90e6-b39add6e4e4d
+Updated product 232f4db5-e9f7-4ed2-80f1-a008da5144ef
+Updated product 91928286-df8c-464c-af5f-bd2396dd6583
+Updated product a40e4135-3b7a-44a6-af35-0962a566c002
+Updated product 79e6e982-adc4-4a11-9b8c-944c9dea10c3
+Updated product b2f057f9-ef73-4b59-b059-eedf21eb8262
+Updated product cee96f04-ee13-4dd9-ae86-e3965332ac44
+Updated product 7aa6b8ca-2876-470c-9f9a-5b79e8e8d182
+Updated product 937eaad1-7a0d-4ee5-8c60-421fd68db80b
+Updated product 2f33ca36-5a7b-4ffb-9a83-71114d84706e
+Updated product 816b8244-405d-4a7f-baa3-ca5d4735fca2
+Updated product 80e14956-8a3d-4b24-b3d6-621478d1cf4f
+Updated product b7a89fd6-38b1-4d47-ad5f-70fae47151dd
+Updated product 13ecf041-8130-4ddf-b634-a261ac27b3f2
+Updated product 976a5905-6a6f-4e0d-a4f0-6c9a8326449c
+Updated product f3598e45-2b29-4eab-9074-a9d60f44be81
+Updated product c40cc58d-3ecc-4106-a5bb-b2909375cd31
+Updated product abcac28a-8bc7-4fe0-9fc5-35e6a44bf498
+Updated product ee93e18c-4637-4cff-9a61-43d3cfea244f
+Updated product a5312907-5f99-4a6c-badd-be7642413ee2
+Updated product 834011ec-849e-464a-969b-014361380ea4
+Updated product 072c34cc-d661-4b0d-8e3e-31f8791145c1
+Updated product 2edbd3dc-d2ab-4d4a-a97c-03d99aae6a1d
+Updated product d005e080-ac26-43ab-9f31-91f83e73da82
+Updated product 355c4e43-421d-4006-93bc-cf021b4146f7
+Updated product 5b5696e0-b017-4168-8464-26a5513c024d
+Updated product d46d962d-eb8c-4803-a390-8c69518c2ad1
+Updated product 6bccfa69-1130-4eb9-aea6-8411fc16367c
+Updated product ab39e365-7932-4d29-9815-837cfdc84e91
+Updated product 495c9723-bf80-42f8-94b3-0614b1b83aab
+Updated product c4455f32-7172-463f-b5c6-258b8901ec6d
+Updated product 4f467581-0b5b-4a96-b8ad-af409845369f
+Updated product f15a0ba5-a28a-47f6-8e57-5b317c26d5c2
+Updated product adc3f6b9-4d74-4ae8-9372-8a54bb956c20
+Updated product c6e3af83-6443-4298-9935-a522bcc48ad9
+Updated product 35308d4c-6922-421f-b30c-042bbeea02db
+Updated product f030ae64-206c-45f1-84bd-f7b900815089
+Updated product 87bfa0ce-dff3-452a-a29b-3d981c450446
+Updated product 0589c9f5-4ed3-4304-83fc-4a960f016f80
+Updated product c4570a1c-0008-4d7c-b587-6e7e4ce1e8cc
+Updated product fef600df-bdac-47c2-ad78-6dcec42bf468
+Updated product 10d3ba2f-a4fd-480d-8dc9-76b9c2853417
+Updated product 20bc55c8-ee14-4ac7-a685-080c9b820f90
+Updated product e044e72d-0601-43ab-96f2-c23642111206
+Updated product afc586c6-e4ba-4ed6-b632-a40e765648b7
+Updated product a4d1f3d4-6a2d-4e2a-9bf2-893ae59f2e64
+Updated product 51279252-2e87-4676-b222-99b8d971d51c
+Updated product bba2b57f-dbf4-4a73-bdff-b68b8e3fc093
+Updated product f089bd95-15fa-4a6d-b8fd-2015941f04c7
+Updated product 5e06dfe5-e91c-4c17-b4c4-f7bc7121a2c4
+Updated product 0e7fb65d-e784-488f-912e-ee25980511d9
+Updated product 45240fe2-0ad4-49e7-8dc8-c209dbc29aa3
+Updated product df54a845-d0f1-42b4-8f4f-d61dc3d22742
+Updated product 1884998b-746b-4562-bc83-ec31013739e5
+Updated product 68975a74-883b-45e5-9546-d3b69824a70b
+Updated product dc13f5a9-3fd5-420a-8114-ece5e6494eee
+Updated product 1579ecb7-4b25-4714-b8ef-7f5ec11e26ad
+Updated product bc7567a4-ba30-4bac-8c28-25a40715ca6a
+Updated product cbad2bee-3b1b-4b27-8dd9-51a7c7fce5b2
+Updated product 5f297971-54f3-4513-afd4-4b407e64282e
+Updated product bcc74ad9-d3fb-4d44-a50b-e6b212c84329
+Updated product 26d2fcf0-6ddb-4fb1-851a-b8a6db25c30b
+Updated product 7c0e6290-0c5f-4b02-8be7-64e147d5b39d
+Updated product f559df84-7ded-4a7c-a2e6-808b54540292
+Updated product de1ecd8e-2dce-4fd7-a5da-e4e953ac5ba9
+Updated product 262e0b5b-f5db-4088-bc83-8efe7dd73cce
+Updated product 57215315-f53c-4d51-8f78-112a5a529783
+Updated product 93178cb4-7a5e-4aa2-b84b-ada9da89eee2
+Updated product a745f34a-c394-4b9b-95bb-50929097e9cb
+Updated product bb3737d5-b82e-44f5-8fa0-b26dd9158dc4
+Updated product c59069e9-ef0c-44b2-8cff-20887924aaa1
+Updated product 5b34651e-4319-4cca-88fd-562aceaeb496
+Updated product 991c21b2-04d7-4e8f-bc9b-60fbd828c224
+Updated product 72d104f7-e72f-45ce-bf19-b7b44e9be50b
+Updated product a5bae54c-78e5-4866-9cb7-1138296d5e8f
+Updated product e3df84ed-913c-4256-b33f-a40af285326e
+Updated product 15b93671-3975-4189-859f-cdcc213f5dfc
+Updated product ec761b08-f542-428a-9ecc-b96570ba1647
+Updated product a3a96aaf-025e-4051-af73-a6c59f9fb617
+Updated product c91737ea-8551-40c8-b259-b10def6db494
+Updated product 69941e1c-0748-475b-ae3e-d8b803206181
+Updated product ac04ba26-239b-4961-900d-bae25c27abe1
+Updated product 36b9d712-287c-41e1-961a-b50bec009de4
+Updated product ad3a7fe5-f0ea-40a9-b2e4-7830af60d5c7
+
+============================================================
+DESCRIPTION GENERATION REPORT
+============================================================
+
+Total products processed: 342
+PASS: 136
+FAIL: 206
+LLM_REVIEW: 0
+
+Error codes distribution:
+  COPY (found 6-word sequence: "i amerikanske og franske egetræsfade i" in source): 5
+  FACT (untraceable numbers: 15): 3
+  COPY (found 6-word sequence: "i både tropisk varme og franske" in source): 2
+  COPY (found 6-word sequence: "finish er en fyldig og sødmefuld" in source): 2
+  COPY (found 6-word sequence: "i tropisk klima i amerikanske og" in source): 2
+  COPY (found 6-word sequence: "i franske egetræsfade fra limousin eller" in source): 2
+  COPY (found 6-word sequence: "på fade af amerikansk hvid eg" in source): 2
+  COPY (found 6-word sequence: "fremstillet af frisk sukkerrørsaft og melasse" in source): 2
+  COPY (found 6-word sequence: "i både tropisk og kontinentalt klima" in source): 1
+  COPY (found 6-word sequence: "fire år på afsvedne egefade i" in source): 1
+  COPY (found 6-word sequence: "udvalgt og aftappet af ærø whisky" in source): 1
+  COPY (found 6-word sequence: "5-8 år gammel rom fra venezuela" in source): 1
+  COPY (found 6-word sequence: "den venezuelanske romtradition er kendt for" in source): 1
+  COPY (found 6-word sequence: "på virgin oak- og spanske moscatel-fade" in source): 1
+  COPY (found 6-word sequence: "john dore double retort pot still" in source): 1
+  COPY (found 6-word sequence: "af sprøde æbler og saftige druer" in source): 1
+  COPY (found 6-word sequence: "i en pot still i 2010" in source): 1
+  COPY (found 6-word sequence: "destillater fra både pot still og" in source): 1
+  COPY (found 6-word sequence: "på san antonio sugar mill i" in source): 1
+  COPY (found 6-word sequence: "er lagret udelukkende på sherryfade fra" in source): 1
+  COPY (found 6-word sequence: "fra hele verden hver med sin" in source): 1
+  COPY (found 6-word sequence: "gør den både nydelsesvenlig og interessant" in source): 1
+  COPY (found 6-word sequence: "pacifico fra compagnie des indes er" in source): 1
+  COPY (found 6-word sequence: "friskbagt æbletærte varme krydderier og rosin" in source): 1
+  COPY (found 6-word sequence: "rig og krydret duft af brændt" in source): 1
+  COPY (found 6-word sequence: "år på franske egetræsfade og store" in source): 1
+  COPY (found 6-word sequence: "af destillater fra nicaragua og panama" in source): 1
+  COPY (found 6-word sequence: "krydret rom fra bristol og bath" in source): 1
+  COPY (found 6-word sequence: "en gylden rom med lys ravgul" in source): 1
+  COPY (found 6-word sequence: "lynghonning og havtorn fra fanø samt" in source): 1
+  COPY (found 6-word sequence: "fem år på sherryfade i spanien" in source): 1
+  COPY (found 6-word sequence: "fra den dominikanske republik og spanien" in source): 1
+  COPY (found 6-word sequence: "af frisk sukkerrørssaft i sydafrika og" in source): 1
+  FACT (untraceable numbers: 40): 1
+  COPY (found 6-word sequence: "en eksklusiv rom fra costa rica" in source): 1
+  COPY (found 6-word sequence: "fra den dominikanske republik en del" in source): 1
+  COPY (found 6-word sequence: "er ikke tilsat farve eller sukker" in source): 1
+  COPY (found 6-word sequence: "en melassebaseret rom destilleret på kolonneapparat" in source): 1
+  COPY (found 6-word sequence: "rom fra det sidste familieejede destilleri" in source): 1
+  COPY (found 6-word sequence: "port mourant pot still og tappet" in source): 1
+  COPY (found 6-word sequence: "destilleret på south pacific distillery og" in source): 1
+  FACT (untraceable numbers: 1700): 1
+  COPY (found 6-word sequence: "af rom fra den dominikanske republik" in source): 1
+  COPY (found 6-word sequence: "fra et hemmeligt destilleri i trelawny" in source): 1
+  FACT (untraceable numbers: 2): 1
+  COPY (found 6-word sequence: "en lang finish af peber og" in source): 1
+  COPY (found 6-word sequence: "udvalgt af juuls vin & spritis" in source): 1
+  COPY (found 6-word sequence: "fra barbados guyana og den dominikanske" in source): 1
+  COPY (found 6-word sequence: "fra demerara distillers ltd i guyana" in source): 1
+  COPY (found 6-word sequence: "guatemala den dominikanske republik barbados jamaica" in source): 1
+  COPY (found 6-word sequence: "ud for port antonio i jamaica" in source): 1
+  COPY (found 6-word sequence: "af mørk chokolade og tørrede frugter" in source): 1
+  COPY (found 6-word sequence: "resultatet er en frugtrig og aromatisk" in source): 1
+  COPY (found 6-word sequence: "finish i danmark på tidligere cognacfade" in source): 1
+  COPY (found 6-word sequence: "mellem 12 og 15 år i" in source): 1
+  COPY (found 6-word sequence: "hos ingenio la cabaña i el" in source): 1
+  COPY (found 6-word sequence: "en fyldig og intens rom med" in source): 1
+  COPY (found 6-word sequence: "af modne røde bær og stenfrugter" in source): 1
+  COPY (found 6-word sequence: "på worthy park destilleriet i st" in source): 1
+  COPY (found 6-word sequence: "og en rå sødme fra sukkerrør" in source): 1
+  COPY (found 6-word sequence: "år i det tropiske klima på" in source): 1
+  COPY (found 6-word sequence: "en sprudlende 8-årig rom fra den" in source): 1
+  COPY (found 6-word sequence: "i amerikanske bourbonfade i tropisk klima" in source): 1
+  COPY (found 6-word sequence: "hints af rosiner mørk chokolade og" in source): 1
+  COPY (found 6-word sequence: "på øen reunion i det indiske" in source): 1
+  COPY (found 6-word sequence: "frisk og citruspræget rom fra panama" in source): 1
+  COPY (found 6-word sequence: "vaniljesødme et strejf af hvid peber" in source): 1
+  COPY (found 6-word sequence: "fra trinidad barbados jamaica og guyana" in source): 1
+  COPY (found 6-word sequence: "er destilleret på et sjældent barbet-kolonnestill" in source): 1
+  COPY (found 6-word sequence: "en gennemsnitlig alder på 25 år" in source): 1
+  COPY (found 6-word sequence: "rom fra barbados trinidad jamaica og" in source): 1
+  COPY (found 6-word sequence: "3-5 år gammel rom fra guyana" in source): 1
+  COPY (found 6-word sequence: "lag af tørret frugt og citrus" in source): 1
+  COPY (found 6-word sequence: "fra den dominikanske republik colombia venezuela" in source): 1
+  COPY (found 6-word sequence: "seks år på bourbonfade på filippinerne" in source): 1
+  COPY (found 6-word sequence: "fra vestindien og mellemamerika sammensat af" in source): 1
+  BAN (found '\bkr\.?\b'): 1
+  COPY (found 6-word sequence: "fremstillet af nøje udvalgt melasse og" in source): 1
+  COPY (found 6-word sequence: "på sukkerrørsspiritus fra veracruz i mexico" in source): 1
+  COPY (found 6-word sequence: "let krydderi og et strejf af" in source): 1
+  COPY (found 6-word sequence: "wph er en hvid rom fra" in source): 1
+  COPY (found 6-word sequence: "fra south pacific distillery i fiji" in source): 1
+  COPY (found 6-word sequence: "fra jamaica barbados guyana og trinidad" in source): 1
+  COPY (found 6-word sequence: "noter af sukkerrørsjuice tropiske frugter og" in source): 1
+  COPY (found 6-word sequence: "noter af tørret frugt og varme" in source): 1
+  COPY (found 6-word sequence: "er et blend af kolonnedestillater og" in source): 1
+  COPY (found 6-word sequence: "blend af rom fra barbados panama" in source): 1
+  COPY (found 6-word sequence: "af destillater fra barbados guyana trinidad" in source): 1
+  COPY (found 6-word sequence: "port mourant double wooden pot still" in source): 1
+  COPY (found 6-word sequence: "frisk sukkerrørssaft mens de to andre" in source): 1
+  COPY (found 6-word sequence: "i guyana og 2 år på" in source): 1
+  COPY (found 6-word sequence: "et blend fra brasilien mellemamerika og" in source): 1
+  COPY (found 6-word sequence: "med en gennemsnitlig alkoholprocent på 42" in source): 1
+  COPY (found 6-word sequence: "fra barbados jamaica guyana og trinidad" in source): 1
+  COPY (found 6-word sequence: "er en økologisk rhum agricole fra" in source): 1
+  COPY (found 6-word sequence: "af tropisk frugt hvid peber og" in source): 1
+  COPY (found 6-word sequence: "destilleret på en dobbelt pot still" in source): 1
+  COPY (found 6-word sequence: "på både amerikansk og fransk eg" in source): 1
+  COPY (found 6-word sequence: "saft koges ind til sirup som" in source): 1
+  COPY (found 6-word sequence: "årgange – 2002 2007 og 2009" in source): 1
+  COPY (found 6-word sequence: "af melasse lys karamel og honning" in source): 1
+  COPY (found 6-word sequence: "en blanding af op til 15" in source): 1
+  COPY (found 6-word sequence: "kompleks duft af kandiseret frugt blomme" in source): 1
+  COPY (found 6-word sequence: "oliver er en mørkgylden rom fra" in source): 1
+  FACT (untraceable numbers: 24): 1
+  COPY (found 6-word sequence: "pot still batch still og column" in source): 1
+  COPY (found 6-word sequence: "fra guyana barbados jamaica og den" in source): 1
+  COPY (found 6-word sequence: "smagen er rund og silkeagtig med" in source): 1
+  COPY (found 6-word sequence: "en rom fra den dominikanske republik" in source): 1
+  COPY (found 6-word sequence: "af honning og mørk sukker smagen" in source): 1
+  COPY (found 6-word sequence: "er en officiel aftapning fra destilleriet" in source): 1
+  COPY (found 6-word sequence: "er en rhum traditionnel fra reunion" in source): 1
+  COPY (found 6-word sequence: "i bourbonfade og herefter i ekstra-toastede" in source): 1
+  COPY (found 6-word sequence: "modnet i både amerikanske og franske" in source): 1
+  COPY (found 6-word sequence: "oliver rums i den dominikanske republik" in source): 1
+  COPY (found 6-word sequence: "lagret mellem 12 og 15 år" in source): 1
+  COPY (found 6-word sequence: "gylden rom med en blød og" in source): 1
+  COPY (found 6-word sequence: "fra renegade rum distillery på grenada" in source): 1
+  COPY (found 6-word sequence: "mellem 12 og 21 år i" in source): 1
+  COPY (found 6-word sequence: "destillater fra jamaica barbados guyana og" in source): 1
+  COPY (found 6-word sequence: "jamaica guyana venezuela nicaragua og guatemala" in source): 1
+  COPY (found 6-word sequence: "som erstatning for bourbon i en" in source): 1
+  COPY (found 6-word sequence: "en blanding af kolonnedestilleret og kedeldestilleret" in source): 1
+  COPY (found 6-word sequence: "og destilleret på foursquare rum distillery" in source): 1
+  COPY (found 6-word sequence: "med noter af melasse brun farin" in source): 1
+  COPY (found 6-word sequence: "er lagret i op til 12" in source): 1
+  COPY (found 6-word sequence: "3 5 år i kontinentalt klima" in source): 1
+  COPY (found 6-word sequence: "en mere afdæmpet sødme med en" in source): 1
+  COPY (found 6-word sequence: "små fade af amerikansk hvid eg" in source): 1
+  COPY (found 6-word sequence: "fra diamond coffey still og den" in source): 1
+  COPY (found 6-word sequence: "blanding af melasse dunder muck og" in source): 1
+  COPY (found 6-word sequence: "noter af brændt sukker gamle træfade" in source): 1
+  COPY (found 6-word sequence: "mellem rom fra trinidad barbados og" in source): 1
+  COPY (found 6-word sequence: "på hvid rom fra puerto rico" in source): 1
+  COPY (found 6-word sequence: "i 18 år på fade af" in source): 1
+  COPY (found 6-word sequence: "af vanilje og karameliserede tropiske frugter" in source): 1
+  FACT (untraceable numbers: 13): 1
+  COPY (found 6-word sequence: "og tappet i danmark i august" in source): 1
+  COPY (found 6-word sequence: "til tre år på bourbonfade i" in source): 1
+  COPY (found 6-word sequence: "en kompleks og velafbalanceret rom fra" in source): 1
+  FACT (untraceable numbers: 18): 1
+  COPY (found 6-word sequence: "batch rom fra clément på martinique" in source): 1
+  COPY (found 6-word sequence: "af tørret frugt appelsinskal melasse og" in source): 1
+  COPY (found 6-word sequence: "fra fiji og papua new guinea" in source): 1
+  COPY (found 6-word sequence: "rom fra fire forskellige destillerier i" in source): 1
+  COPY (found 6-word sequence: "gay estate i st lucy barbados" in source): 1
+  COPY (found 6-word sequence: "med noter af hvid peber og" in source): 1
+  COPY (found 6-word sequence: "af både frisk sukkerrørsjuice og melasse" in source): 1
+  COPY (found 6-word sequence: "rom fra barbados jamaica og trinidad" in source): 1
+  COPY (found 6-word sequence: "en jordagtig og let saltet profil" in source): 1
+  COPY (found 6-word sequence: "guyana trinidad den dominikanske republik barbados" in source): 1
+  COPY (found 6-word sequence: "rum er et blend af rom" in source): 1
+  COPY (found 6-word sequence: "destilleret på port mourant potstill i" in source): 1
+  COPY (found 6-word sequence: "denne rom er et blend af" in source): 1
+  COPY (found 6-word sequence: "umodnet rhum agricole fra en enkelt" in source): 1
+  COPY (found 6-word sequence: "smagen er tør og fadpræget med" in source): 1
+  COPY (found 6-word sequence: "fra det dominikanske destilleri oliver &" in source): 1
+  COPY (found 6-word sequence: "på både pot still og column" in source): 1
+  COPY (found 6-word sequence: "den dominikanske republik barbados jamaica guyana" in source): 1
+  COPY (found 6-word sequence: "mørke rom fra den dominikanske republik" in source): 1
+  COPY (found 6-word sequence: "ren og tør rom fra diamond" in source): 1
+  COPY (found 6-word sequence: "melasse og lagret efter solera-systemet hvor" in source): 1
+  COPY (found 6-word sequence: "blandet med chokolade toffee vanilje og" in source): 1
+  COPY (found 6-word sequence: "de faria tradicional ipê er en" in source): 1
+  COPY (found 6-word sequence: "kompleks duft af krydderier som nellike" in source): 1
+  COPY (found 6-word sequence: "år på fade af amerikansk egetræ" in source): 1
+  COPY (found 6-word sequence: "år på nye fade af amerikansk" in source): 1
+  COPY (found 6-word sequence: "naturlig rom uden tilsætning af sukker" in source): 1
+  COPY (found 6-word sequence: "en dyb og karakterfuld rom med" in source): 1
+  COPY (found 6-word sequence: "både nye fade bourbonfade og ferrand-fade" in source): 1
+  COPY (found 6-word sequence: "på mellem 100 og 120 timer" in source): 1
+  COPY (found 6-word sequence: "pot still batch still og coffey" in source): 1
+  COPY (found 6-word sequence: "til både varme og kolde drikke" in source): 1
+  COPY (found 6-word sequence: "stenfrugt som fersken og tørret abrikos" in source): 1
+  COPY (found 6-word sequence: "af tropisk frugt honning og chokoladeganache" in source): 1
+  COPY (found 6-word sequence: "fra barbados den dominikanske republik og" in source): 1
+  COPY (found 6-word sequence: "fra destilería colombiana i cartagena de" in source): 1
+  COPY (found 6-word sequence: "blød dominikansk rom med naturlig kokosnød" in source): 1
+  COPY (found 6-word sequence: "med noter af ristede bananer og" in source): 1
+  COPY (found 6-word sequence: "med rom fra barbados jamaica guatemala" in source): 1
+  COPY (found 6-word sequence: "lettere og mere gylden udgave end" in source): 1
+  COPY (found 6-word sequence: "noter af ristet kaffe mørk chokolade" in source): 1
+  COPY (found 6-word sequence: "i otte år i hvide egetræsfade" in source): 1
+  COPY (found 6-word sequence: "de blå sukkerrør hvilket giver en" in source): 1
+  COPY (found 6-word sequence: "er blevet blendet og modnet i" in source): 1
+  COPY (found 6-word sequence: "madagaskansk vanilje appelsinskal kanel nelliker og" in source): 1
+  COPY (found 6-word sequence: "rom fra panama og den dominikanske" in source): 1
+  COPY (found 6-word sequence: "stars er en hvid blended rom" in source): 1
+  COPY (found 6-word sequence: "fra foursquare rum distillery på barbados" in source): 1
+  COPY (found 6-word sequence: "i det tropiske klima i den" in source): 1
+  COPY (found 6-word sequence: "rom fra jamaica guyana og trinidad" in source): 1
+  COPY (found 6-word sequence: "mourant dobbelt pot still af træ" in source): 1
+  COPY (found 6-word sequence: "fra panama trinidad-tobago og guyana hvor" in source): 1
+  COPY (found 6-word sequence: "har sat et tydeligt præg på" in source): 1
+
+Failed products (first 20):
+  1. Rum Nation Rare Rums Belize 2008-2025 Bourbon Cask, 53,2% (444eb7db-4d34-4cd7-af4c-34d9af71003d)
+     Errors: COPY (found 6-word sequence: "i både tropisk og kontinentalt klima" in source)
+  2. Bacardi Carta Negra Puerto Rico Rom 70 cl 40% (a2626788-b498-47e5-a0c0-e260ba84eab2)
+     Errors: COPY (found 6-word sequence: "fire år på afsvedne egefade i" in source)
+  3. Å Æ Cykel XO Blended Caribbean Rom 40% (2914aa31-6ba2-4cd5-931f-b140f9c0162e)
+     Errors: COPY (found 6-word sequence: "udvalgt og aftappet af ærø whisky" in source)
+  4. Infernal Rum Paris to Berlin Dominikanske Republik Venezuela Infernal Rom 40% (76008bd1-10cb-4ae3-a328-89058ec95862)
+     Errors: COPY (found 6-word sequence: "5-8 år gammel rom fra venezuela" in source)
+  5. SBS Venezuela 2010 – 50% (823d1277-a002-4bf4-8cda-7c0046734386)
+     Errors: COPY (found 6-word sequence: "den venezuelanske romtradition er kendt for" in source)
+  6. Infernal Personal Selection IPS Trinidad Rom (e1b02fd7-5a50-4e91-b88a-45d9e65b43c9)
+     Errors: COPY (found 6-word sequence: "på virgin oak- og spanske moscatel-fade" in source)
+  7. Planteray Rum Jamaica STCE 1995 Prestige Cellar rom (bb717951-5c4a-4382-8ffc-4fa4410898ab)
+     Errors: COPY (found 6-word sequence: "john dore double retort pot still" in source)
+  8. Rammstein Rum Limoux Cask Finish rom (7f41e18f-84cb-4724-a169-07f67e861932)
+     Errors: COPY (found 6-word sequence: "af sprøde æbler og saftige druer" in source)
+  9. SBS Jamaica 2010 EMB rom (bottled for Germany & Austria) (bb8584d4-f130-4cec-b233-ad3b94e418d6)
+     Errors: COPY (found 6-word sequence: "i en pot still i 2010" in source)
+  10. Foursquare 19 Years Old EPILOGUE Exceptional Cask Selection Mark XXXI Rom (58dac1c7-8502-4a8b-b471-cc9d5a9f555d)
+     Errors: COPY (found 6-word sequence: "destillater fra både pot still og" in source)
+  11. Flor de Cana Centenario 12 års Rom – i gaveæske med 1 glas (adfb40f1-4d4e-43ef-84d6-22e64499ccc2)
+     Errors: COPY (found 6-word sequence: "på san antonio sugar mill i" in source)
+  12. Hampden Estate Pagos, Pure Single Jamaican Rum, 52% (f311ad2c-b814-440a-90e1-1b631ccd388a)
+     Errors: COPY (found 6-word sequence: "er lagret udelukkende på sherryfade fra" in source)
+  13. Julekalender Rom (b761fa0b-93e4-4ca3-b993-48dad00f3a2c)
+     Errors: COPY (found 6-word sequence: "fra hele verden hver med sin" in source)
+  14. New Grove 10 Years (888d07e9-d346-4f73-9c32-8fa89ff8425a)
+     Errors: COPY (found 6-word sequence: "gør den både nydelsesvenlig og interessant" in source)
+  15. Planteray Rum BARBADOS XO 20th Anniversary (b41ea2e8-1a0f-4a47-a87e-881af7acffab)
+     Errors: COPY (found 6-word sequence: "i både tropisk varme og franske" in source)
+  16. CDI Pacifico - Rum from Molasses - Panama & Thailand (3a8b82f6-8ff6-42a5-9545-5dcc63bdb111)
+     Errors: COPY (found 6-word sequence: "pacifico fra compagnie des indes er" in source)
+  17. Papas Pilar Sherry Finish, Limited Edition Rum 43% (5ea5d73f-8ac6-46bd-9f5c-4661b2abd38d)
+     Errors: COPY (found 6-word sequence: "finish er en fyldig og sødmefuld" in source)
+  18. Montebello Rhum Vieux 6 ans (1600d6f5-5355-4468-8889-ea176bf8cd97)
+     Errors: COPY (found 6-word sequence: "friskbagt æbletærte varme krydderier og rosin" in source)
+  19. Plantation Guyana 2007 Teeling Whiskey Juuls V&S (b4f13cc1-ede1-4924-82b9-cbf747981258)
+     Errors: COPY (found 6-word sequence: "rig og krydret duft af brændt" in source)
+  20. Savanna Metis (5a04404a-d375-4d2d-9d16-7af107cfa10a)
+     Errors: COPY (found 6-word sequence: "år på franske egetræsfade og store" in source)
+     ... and 186 more
+
+Sample PASS descriptions (first 20):
+
+  1. Abuelo Anejo Reserva Especial 5 år Panama Rom 70 cl 40%
+     Modningen i amerikansk hvid eg har givet denne panamanske rom en rig og fyldig karakter med noter af karameliseret rørsukker og krydderier. En let vaniljeagtig sødme, og en rund, syrlig friskhed præger smagsoplevelsen, mens en lang, sødmefuld eftersmag afslutter med blødhed.
+
+  2. Diplomatico Reserva Exclusiva Ron Antiguo
+     En venezuelansk rom med blød og rund karakter, udvundet af lokale sukkerrør fra Andelsbjergene. Modningen har strakt sig over op til et dusin år i amerikanske egetræsfade, hvilket giver den noter af egetræ, appelsin og chokolade. Den sødmefulde profil fortsætter med antydninger af lakrids og karamel, hvilket gør den til en behagelig og omgængelig oplevelse.
+
+  3. Ron Centenario 1985 Cask Selection Rum, Batch 2
+     En rom, der forener Costa Ricas frugtige lethed med skotske whiskyfadendes tørre elegance. Efter et par årtier i tropisk varme er den blevet modnet i skotske whiskyfade fra Highlands, som rejste hele vejen til Costa Rica for at modne i junglens fugtige klima. Resultatet er en gylden rom med en sød og frugtig start, der hurtigt giver plads til noter af røg, eg og en let buskagtig kant. Den runde sødme fra rommen balancerer elegant med whiskyfadenes tørre karakter, mens eftersmagen længe hænger ved.
+
+  4. CDI Leviathan Multi Distilleries 1973+1996 Vintage
+     En kompleks fusion af to sjældne rome, hvor en landbrugsrom fra Guadeloupe fra 1973 og en melassebaseret rom fra Panama fra 1996 smelter sammen i en dybt gylden blanding. De umodne kirsebær og figner i duften giver plads til en smag fyldt med ristede noter, læder og krydderier, afsluttet med en tør, syrlig finish af bitter appelsinskal og mørk chokolade. Modningen i egetræ bringer dybe trætone og en let alkoholisk varme, der understreger kompleksiteten. Velegnet til at nydes ren for at opleve alle lag af smag og aroma.
+
+  5. Clairin 2017 Ansyen Single Cask Daniel Seehuusen 48,5%
+     En haitiansk landbrugsrom fra Arrawaks-destilleriet i Cavaillon, destilleret af Fritz Vaval og udvalgt af bartender Daniel Seehuusen. Efter 16 måneders modning i et tidligere Caroni-fad præsenteres den ufiltreret og uden tilsætningsstoffer ved fadstyrke. Smagen bærer præg af den tropiske oprindelse med noter af moden frugt og en let krydret afrunding. Velegnet til nydelse i ren tilstand eller som grundlag for komplekse cocktails.
+
+  6. Abuelo XV 15 års Napoleon Cognac Cask Finish, 40% 20cl
+     En mørk rom fra Panama, der bærer præg af en lang modning med bløde toner af tørret frugt og kaffe. Efter et årti og et halvt i amerikanske bourbonfade har rommen fået en elegant afrunding i cognacfade, hvilket tilfører yderligere dybde og kompleksitet. Den modne smag gør den velegnet til langsom nydelse.
+
+  7. Bumbu XO Barbados Rom 70 cl 40%
+     Bumbu XO fra Barbados præsenterer sig med en dyb og kompleks karakter, formet af op mod 18 år i bourboneg. Den afsluttende modning på spanske sherryfade tilfører en blød sødme og en rig nuance af tørrede frugter. Smagen balancerer mellem varme krydderier og en rund, afrundet sødme, der gør den velegnet til at nydes som en luksuriøs sippingrom.
+
+  8. Compagnie des Indes 2002/2015 Dillon 13 år Martinique Single Cask Rom 70 cl 44%
+     En elegant rhum agricole fra Martinique, modnet i et enkelt fransk egefad gennem 13 år. Dens smag udvikler noter af modne frugter og en blød vanilje, afrundet med en let krydret tone. Velegnet til nydelse som en velkomstdrink eller sammen med desserter.
+
+  9. Infernal Rum IPS 3 - Infernal Personal Selection Trinidad Infernal Rom 52%
+     Efter et par år i traditionelle fade har denne Trinidad-rom fundet sin endelige form i en kombination af virgin eg og muskatel. Den afrundede modning i de to træsorter giver en blød og rund profil med noter af tropisk frugt og en let krydrethed.
+
+  10. Papalin Original Vatted 7 år Pot Still Jamaica Rom 70 cl 47%
+     En fyldig og kompleks Jamaica-rom med rødder i Hampden Estate og Worthy Park, hvor pot still-destillationen giver en robust og krydret karakter. Modningen i mere end et halvt årti har afrundet smagen med noter af tropiske frugter og en let pebret varme, der gør den velegnet til at nydes ren eller i lange drinks.
+
+  11. Patridom XO Ltd. Marsala Cask Finish
+     En fyldig rom fra Den Dominikanske Republik, fremstillet af sukkerrørsaft og melasse. Modningen har strakt sig over flere år i amerikanske og franske egetræsfade under det tropiske klima, hvilket giver den en kompleks karakter. En afsluttende lagring i tidligere Marsala-vinefade tilfører cremede noter og en blød vanilje, der bærer præg af moden abrikos og gylden honning. Smagsmæssigt afrundes oplevelsen med subtile toner af tørrede frugter og en let tobaksnote.
+
+  12. Ron Sostenible Rioja " The Conscious Choice" 40 %
+     Denne rom er fremstillet af frisk sukkerrørsjuice og gennemgår først en otteårig modning i tidligere bourbonfade. Herefter tilføres ekstra lagring i spanske Riojafade, hvilket giver en rund og frugtig karakter med noter af tørrede frugter og en let krydret afslutning. Den afsluttende modning bidrager med en blød og afbalanceret struktur.
+
+  13. Collectors Series No. 10, Barbados 19 års Rum, 50,7%, RomDeluxe
+     Denne rom fra Foursquare på Barbados er modnet i 19 år og bærer en lys gylden farve, usædvanlig for en så gammel udgave. Modningen i det kontinentale klima har givet den et blødt og mildt udtryk med noter af kokos, vanilje og en let krydret finish. En ren udgave uden tilsætninger, der afslører fine trætoner på bagkanten.
+
+  14. Diplomatico Distillery Collection Batch No. 1 Kettle Rum 47%
+     Denne limited edition-rom fra Venezuela hylder håndværkets mangfoldighed gennem en sjælden destillationsmetode. Batch No. 1 er destilleret på et historisk batch kettle-apparat, oprindeligt fra Canada, som har stået på Diplomáticos La Miel-destilleriet siden 1959. Råstoffet er sukkerrørshonning, og modningen har strakt sig over seks år i amerikanske egetræsfade, der tidligere rummede bourbon og maltwhisky. Resultatet er en fyldig og kompleks rom med bløde toner af vanilje og modne frugter, der bærer præg af egetræets indflydelse. Smagen afbalancerer lakrids og karamel med en lang, varm eftersmag, hvor krydderier og egetræ træder frem.
+
+  15. Habitation Velier LROK 6 år Hampden 2010 Jamaica Pure Single Rum 67%
+     Den legendariske Hampden 2010 LROK er den første rom, som udelukkende modnes på Hampden Destilleriets egne fade i Trelawny, Jamaica. Efter seks år i fad – med en betydelig angels' share på 40 % – aftappes den kraftfulde rom med en fadstyrke på 67 %. Med et højt esterindhold på mellem 350 og 450 fremstår den som en klassisk repræsentant for Hampdens karakteristiske smagsprofil.
+
+  16. Hampden Great House Distillery Edition 2021 Old Pure Single Jamaican Rum, 55%
+     Den gyldne rom fra Hampden Great House Distillery Edition 2021 skiller sig ud med sin intense og levende profil, skabt ved at blande mellemstore og høje ester marks. Efter en omhyggelig modning bærer den præg af hvide frugter og blomsteraromaer, der giver en frisk og frugtig karakter. Smagen udvikler sig med noter af tobak og saltkaramel, mens en let medicinsk tone og frysetørrede bær tilføjer kompleksitet. Serveres bedst rent, men kan med fordel nydes med et par dråber vand for at åbne smagsoplevelsen.
+
+  17. Plantation 2004 Fidji Single Cask Rum, Bottled for Denmark 46%
+     Plantation 2004 Fidji Single Cask Rum, aftappet til det danske marked, bærer præg af en modning i et tidligere portvinsfad. Den vinøse lagring giver en fyldig og intens smag med noter af saftige røde frugter. Den kraftige alkoholstyrke understreger dybden og kompleksiteten i rommens karakter.
+
+  18. Plantation Jamaican Rom Xaymaca Special Dry 43%
+     En kraftfuld jamaicansk rom destilleret på traditionelle pot stills i Clarendon og Long Pond. Modningen har strakt sig over et par år i bourbonefade, inden den afsluttede sit første år i franske Cognacfade. Smagen bærer præg af eksotiske frugter som banan og ananas, suppleret med en røget tørhed, der gør den velegnet til både nydelse i glas og som base i cocktails.
+
+  19. Planteray PX XO 20th Anniversary Rum 40%
+     En rig og fløjlsblød sippingrom, der bærer præg af en dobbelt modning i Frankrig og Spanien. Først modnet i ex-bourbonfade i Barbados' varme klima, gennemgår rommen derefter en længere tid i Ferrand-fade ved den sydvestfranske kyst. En afsluttende lagring i ex-Pedro Ximenez-fade tilfører en nøddet, tørret rosinagtig dybde og en blød kokos- og vaniljenote. De sidste måneder i de spanske fade løfter blandingen med en let kaffearoma og en krydret, tropisk frugtighed.
+
+  20. Ron Zacapa Reserva Limitada 2019, Guatemala 45%
+     Denne guatemalanske rom fremstår med en dyb, mahogniagtig farve og en intens ravglød. Modningen har strakt sig over seks til fireogtyve år i spanske og amerikanske hvide egetræsfade, hvilket giver den en kompleks og eksotisk karakter. Smagsmæssigt præges den af bløde noter af vanilje og karamel, suppleret med friske urter og en let ristet mandelton. En balance mellem frugtige og chokoladeagtige indtryk gør den velegnet til nydelse som den er eller i cocktails.
+
+============================================================
+Pipeline completed!

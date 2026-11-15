@@ -452,12 +452,12 @@ ${sourcesText}`;
 
 // Database operations
 async function fetchProductsWithoutGeneratedDescription(): Promise<ProductDescription[]> {
-    console.log(`Fetching products (rerun mode: ${rerunFailed}, regenerate all: ${regenerateAll})...`);
+    console.log('Fetching products...');
     
     // Build the filter based on mode
     let query = supabase
         .from('products')
-        .select('id, name, brand, volume_ml, abv, description, description_status');
+        .select('id, name, brand, volume_ml, abv, description, description_status', { head: false });
     
     if (regenerateAll) {
         // Regenerate ALL mode: get all products with generated descriptions
@@ -470,34 +470,99 @@ async function fetchProductsWithoutGeneratedDescription(): Promise<ProductDescri
         query = query.is('description', null);
     }
     
-    const { data: products, error: productsError } = await query.limit(5000);
+    // Fetch all products using pagination to avoid 1000 row limit
+    const allProducts: any[] = [];
+    let page = 0;
+    const pageSize = 1000;
+    let hasMore = true;
     
-    if (productsError || !products) {
-        console.error('Error fetching products:', productsError);
+    while (hasMore) {
+        const { data: pageProducts, error: productsError } = await query
+            .range(page * pageSize, (page + 1) * pageSize - 1);
+        
+        if (productsError) {
+            console.error('Error fetching products page:', productsError);
+            hasMore = false;
+            break;
+        }
+        
+        if (!pageProducts || pageProducts.length === 0) {
+            hasMore = false;
+            break;
+        }
+        
+        allProducts.push(...pageProducts);
+        page++;
+    }
+    
+    const products = allProducts;
+    
+    if (products.length === 0) {
+        console.error('No products fetched');
         return [];
     }
     
-    console.log(`Found ${products.length} products without PASS descriptions`);
+    console.log(`products fetched: ${products.length}`);
     
-    // For each product, get descriptions from product_retailer_links
-    const productDescriptions: ProductDescription[] = [];
+    // Fetch all links using pagination
+    console.log('Fetching all product_retailer_links with descriptions...');
+    const allLinks: any[] = [];
+    let linksPage = 0;
+    let linksHasMore = true;
     
-    for (const product of products) {
-        const { data: links, error: linksError } = await supabase
+    while (linksHasMore) {
+        const { data: pageLinks, error: linksError } = await supabase
             .from('product_retailer_links')
-            .select('description, product_url')
-            .eq('product_id', product.id)
-            .not('description', 'is', null);
+            .select('product_id, description, product_url')
+            .not('description', 'is', null)
+            .range(linksPage * pageSize, (linksPage + 1) * pageSize - 1);
         
         if (linksError) {
-            console.error(`Error fetching links for product ${product.id}:`, linksError);
-            continue;
+            console.error('Error fetching links page:', linksError);
+            linksHasMore = false;
+            break;
         }
         
+        if (!pageLinks || pageLinks.length === 0) {
+            linksHasMore = false;
+            break;
+        }
+        
+        allLinks.push(...pageLinks);
+        linksPage++;
+    }
+    
+    if (allLinks.length === 0) {
+        console.error('No links fetched');
+        return [];
+    }
+    
+    console.log(`links fetched: ${allLinks.length}`);
+    
+    // Group links by product_id and filter in JS
+    const linksByProduct = new Map<string, Array<{ description: string; product_url: string | null }>>();
+    for (const link of allLinks) {
+        if (!link.description) continue;
+        if (!linksByProduct.has(link.product_id)) {
+            linksByProduct.set(link.product_id, []);
+        }
+        linksByProduct.get(link.product_id)!.push({
+            description: link.description,
+            product_url: link.product_url
+        });
+    }
+    
+    // Filter and build ProductDescription objects
+    const productDescriptions: ProductDescription[] = [];
+    const productIdsWithSources = new Set<string>();
+    
+    for (const product of products) {
+        const links = linksByProduct.get(product.id) || [];
         // Filter in JS: only descriptions longer than 40 chars
-        const validLinks = (links || []).filter(l => l.description && l.description.length > 40);
+        const validLinks = links.filter(l => l.description && l.description.length > 40);
         
         if (validLinks.length > 0) {
+            productIdsWithSources.add(product.id);
             productDescriptions.push({
                 productId: product.id,
                 name: product.name,
@@ -514,7 +579,7 @@ async function fetchProductsWithoutGeneratedDescription(): Promise<ProductDescri
         }
     }
     
-    console.log(`Found ${productDescriptions.length} products with source descriptions`);
+    console.log(`products with usable sources: ${productDescriptions.length}`);
     return productDescriptions;
 }
 
@@ -680,8 +745,20 @@ async function handleLLMReview(
     return reviewed;
 }
 
+// Polishing function for fixing spacing issues
+async function polishDescription(text: string): Promise<string | null> {
+    const polishPrompt = `Returnér teksten uændret bortset fra at rette manglende mellemrum og tegnsætningsfejl. Ændr intet indhold, ingen omformuleringer.`;
+    
+    return callMistralAPI(
+        "Du er en præcis tekst-redigeringsassistent. Din eneste opgave er at rette stavefejl i form af manglende mellemrum og tegnsætning. Ændr IKKE noget indhold.",
+        `${polishPrompt}\n\nTekst at polere:\n${text}`,
+        0 // temperature = 0
+    );
+}
+
 async function promoteDescriptions(
-    results: Record<string, GeneratedDescription>
+    results: Record<string, GeneratedDescription>,
+    products: ProductDescription[]
 ): Promise<PipelineStats> {
     const stats: PipelineStats = {
         pass: 0,
@@ -692,6 +769,9 @@ async function promoteDescriptions(
         failProducts: []
     };
     
+    // Process polishing for PASS results
+    console.log('Starting polishing phase for PASS descriptions...');
+    
     for (const [pid, result] of Object.entries(results)) {
         // Count error codes
         for (const code of result.errorCodes) {
@@ -699,20 +779,83 @@ async function promoteDescriptions(
         }
         
         if (result.status === 'PASS') {
-            stats.pass++;
-            stats.passProducts.push(result);
+            const product = products.find(p => p.productId === pid);
+            if (!product) {
+                stats.fail++;
+                stats.failProducts.push(result);
+                continue;
+            }
             
-            await updateProductDescription(
-                pid,
-                result.generatedText,
-                'generated',
-                JSON.stringify({
-                    original_text: result.generatedText,
-                    sources_count: result.sources?.length || 0,
-                    generated_at: new Date().toISOString()
-                }),
-                'PASS'
+            // Polish the description
+            let polishedText: string | null = null;
+            let polishedRetries = 0;
+            const maxPolishRetries = MAX_RETRIES_429;
+            
+            while (polishedRetries < maxPolishRetries && !polishedText) {
+                polishedText = await polishDescription(result.generatedText);
+                if (!polishedText) {
+                    polishedRetries++;
+                    if (polishedRetries < maxPolishRetries) {
+                        const retryAfter = 10;
+                        console.warn(`Polish rate limited, retry ${polishedRetries + 1}/${maxPolishRetries} after ${retryAfter}s`);
+                        await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+                    }
+                }
+            }
+            
+            // Rate limiting between polish calls
+            await new Promise(resolve => setTimeout(resolve, 250));
+            
+            // If polishing failed, use original text
+            const finalText = polishedText || result.generatedText;
+            
+            // Re-validate the polished text
+            const polishedValidation = validateDescription(
+                finalText,
+                product.sources,
+                product.volumeMl,
+                product.abv,
+                product.name
             );
+            polishedValidation.productId = pid;
+            polishedValidation.productName = product.name;
+            polishedValidation.generatedText = finalText;
+            
+            // Only use polished version if it still PASSes
+            if (polishedValidation.status === 'PASS') {
+                stats.pass++;
+                stats.passProducts.push(polishedValidation);
+                
+                await updateProductDescription(
+                    pid,
+                    finalText,
+                    'generated',
+                    JSON.stringify({
+                        original_text: result.generatedText,
+                        polished_text: finalText,
+                        sources_count: result.sources?.length || 0,
+                        generated_at: new Date().toISOString()
+                    }),
+                    'PASS'
+                );
+            } else {
+                // Polished version failed, keep original if it was PASS
+                stats.pass++;
+                stats.passProducts.push(result);
+                
+                await updateProductDescription(
+                    pid,
+                    result.generatedText,
+                    'generated',
+                    JSON.stringify({
+                        original_text: result.generatedText,
+                        polished_failed: true,
+                        sources_count: result.sources?.length || 0,
+                        generated_at: new Date().toISOString()
+                    }),
+                    'PASS'
+                );
+            }
         } else if (result.status === 'LLM_REVIEW') {
             stats.llmReview++;
         } else {
@@ -831,8 +974,8 @@ async function main() {
         }
     }
     
-    // Trin 5: Promover
-    const stats = await promoteDescriptions(results);
+    // Trin 5: Promover (med polering)
+    const stats = await promoteDescriptions(results, products);
     
     // Trin 6: Rapport
     await generateReport(stats);
