@@ -217,6 +217,7 @@ export interface ProductDetail {
   volume_cl: number | null;
   abv: number | null;
   category: string | null;
+  country: string | null;
   image_url: string | null;
   description: string | null;
   offers: RetailerOffer[];
@@ -232,7 +233,7 @@ export async function getProductDetail(
 
   const { data: product, error: productError } = await supabase
     .from("products")
-    .select("id, name, brand, volume_ml, abv, category, image_url, description")
+    .select("id, name, brand, volume_ml, abv, category, image_url, description, country")
     .eq("id", productId)
     .maybeSingle();
 
@@ -307,6 +308,7 @@ export async function getProductDetail(
     volume_cl: product.volume_ml !== null ? Math.round(product.volume_ml / 10) : null,
     abv: product.abv,
     category: product.category,
+    country: (product as { country?: string | null }).country ?? null,
     image_url: product.image_url,
     description,
     offers,

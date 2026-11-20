@@ -68,8 +68,8 @@ export default async function ProductPage({
     ? Math.round((savingsAmount / mostExpensiveOffer.price) * 100)
     : 0;
 
-  // Stempel tekst: brand eller category som fallback
-  const stampText = product.brand ?? product.category ?? "Rom";
+  // Stempel tekst: land, med kategori som fallback
+  const stampText = product.country ?? product.category ?? "Rom";
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 px-4 py-10">
