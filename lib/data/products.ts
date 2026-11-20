@@ -230,18 +230,16 @@ export async function getProductDetail(
 ): Promise<ProductDetail | null> {
   const supabase = await createClient();
 
-  // Prøv først uden description (kolonnen findes endnu ikke i DB)
   const { data: product, error: productError } = await supabase
     .from("products")
-    .select("id, name, brand, volume_ml, abv, category, image_url")
+    .select("id, name, brand, volume_ml, abv, category, image_url, description")
     .eq("id", productId)
     .maybeSingle();
 
   if (productError) throw productError;
   if (!product) return null;
 
-  // TODO: aktiver når products.description findes - indtil da er det null
-  const description: string | null = null;
+  const description: string | null = product.description ?? null;
 
   const { data: links, error: linksError } = await supabase
     .from("product_retailer_links")

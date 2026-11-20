@@ -114,9 +114,14 @@ export default async function ProductPage({
               .filter(Boolean).join(" · ")}
           </p>
           {product.description && (
-            <p className="mt-4 max-w-[52ch] text-sm italic leading-relaxed text-muted-foreground">
-              {product.description}
-            </p>
+            <div className="mt-5">
+              <h2 className="text-[11px] font-bold uppercase tracking-[2.5px] text-[#c2410c]">
+                Om denne rom
+              </h2>
+              <p className="mt-2 max-w-[54ch] text-[15px] leading-relaxed text-foreground/90">
+                {product.description}
+              </p>
+            </div>
           )}
         </div>
       </section>
