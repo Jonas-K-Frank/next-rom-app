@@ -19,7 +19,7 @@ rulle tilbage til det, der gik galt.
 | #   | Skridt                          | Risiko | Bevis for at det virker                         | Status |
 | --- | ------------------------------- | ------ | ----------------------------------------------- | ------ |
 | 0   | Sikkerhedsnet og baseline       | Ingen  | Baseline gemt, `npm run verify` kører           | [x] |
-| 1   | Hygiejne (git, docs)            | Ingen  | `verify` giver samme resultat som baseline      | [ ]    |
+| 1   | Hygiejne (git, docs)            | Ingen  | `verify` giver samme resultat som baseline      | [x]    |
 | 2   | Ret ISR/cache                   | Lav    | Build-output (`○`/`●`) og `x-nextjs-cache: HIT` | [ ]    |
 | 3   | Datalag og 1000-rækkers-fejl    | Mellem | Gammel og ny query returnerer identiske data    | [ ]    |
 | 4   | Sikkerhed: billedproxy, webhook | Mellem | Alle billeder loader, webhook giver 401         | [ ]    |
@@ -68,13 +68,18 @@ Færdig når: der findes en `baseline/`-mappe med "sådan så det ud før", og `
   så Månedens fund er altid fallback-grenen, og prisgrafen vises næsten aldrig. Ingen fejl,
   men det betyder at 3a ikke kan ses på forsiden endnu; den skal bevises med snapshot
 
-## Skridt 1: Hygiejne
+## Skridt 1: Hygiejne (færdigt)
 
-- [ ] `*.log` og `supabase/.temp/` i `.gitignore`, `git rm --cached` på committede logs
-- [ ] Ret README og `scripts/README.md` (forhandlerantal, webhook-status, forkert filnavn)
-- [ ] `MISTRAL_API_KEY` i `.env.example`
+- [x] `*.log`, `scripts/generation_report.txt` og `supabase/.temp/` i `.gitignore`; 10 filer fjernet
+      fra git (de ligger stadig på disken). Scannet for hemmeligheder i filerne og historikken: intet fundet
+- [x] README omskrevet: faktisk pipeline (`stg_*` -> `import_shop`), 10 forhandlere, kommandoer,
+      env-tabel, advarsel om manglende backups, skema-snapshot som kilde. `scripts/README.md`: forkert
+      filnavn rettet og øvrige scripts tilføjet
+- [x] `.env.example`: `MISTRAL_API_KEY` tilføjet, deles op i "appen" / "kun scripts" / "ikke i brug"
+- [x] Verificeret: `npm run verify` identisk med baseline (6 errors / 5 warnings, samme ruteliste),
+      ingen filer i `app/`, `components/`, `lib/`, `public/` eller config rørt
 
-Verificér: `npm run verify` giver samme resultat som baseline.
+Udestår fra README (kræver Jonas): hvordan `stg_*` fyldes og hvornår `import_shop` køres.
 
 ## Skridt 2: Få cachen til at virke
 
