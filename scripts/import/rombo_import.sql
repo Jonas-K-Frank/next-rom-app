@@ -7,9 +7,7 @@
 --                  'https://rombo.dk', 'stg_rombo_dk', 'Rom');
 -- ============================================================
 
-DROP TABLE IF EXISTS stg_rombo_dk;
-
-CREATE TABLE stg_rombo_dk (
+CREATE TABLE IF NOT EXISTS stg_rombo_dk (
     name         TEXT,
     url          TEXT UNIQUE,
     price_dkk    NUMERIC,
@@ -20,6 +18,12 @@ CREATE TABLE stg_rombo_dk (
     description  TEXT,
     scraped_at   TIMESTAMPTZ DEFAULT '2026-11-07 17:00:00+01'
 );
+
+-- Standard: tøm staging før hver gen-import, så gamle rækker aldrig blandes med nye.
+TRUNCATE stg_rombo_dk;
+ALTER TABLE stg_rombo_dk ENABLE ROW LEVEL SECURITY;
+-- INSERTs herunder udelader scraped_at: sæt default for denne runde (en eksisterende tabel beholder ellers sin gamle default).
+ALTER TABLE stg_rombo_dk ALTER COLUMN scraped_at SET DEFAULT '2026-11-07 17:00:00+01';
 
 INSERT INTO stg_rombo_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description) VALUES ('1731 Fine & Rare Guatemala Gran Reserva Rum', 'https://rombo.dk/products/1731-fine-rare-guatemala', 399, true, 70, 46, 'https://cdn.shopify.com/s/files/1/0985/3911/0748/files/output_ff682b69-28af-45c6-87db-12f780abe142.png?v=1769439769', '1731 Fine &amp; Rare Guatemala Gran Reserva Rum er en kolonne-destilleret rom fra et enkelt og unavngivet destilleri i mellemamerikanske Guatemala, hvorfra vi også kender Ron Zacapa. 1731 Fine &amp; Rare serien består af naturlig rom uden tilsat sukker, og det gælder også denne Guatemala udgave. Der er ej heller tilsat farve eller anvendt kølefiltrering. Rommen er tropisk lagret på ex-bourbonfade i minimum fire år og udgivet af 1731 Fine &amp; Rare, der ligger i Holland. 46% - 70 cl.');
 INSERT INTO stg_rombo_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description) VALUES ('A.H. Riise Old St. Croix XO Explorer Danmark', 'https://rombo.dk/products/ah-riise-old-st-croix-xo-explorer-danmark', 599, true, 70, 40, 'https://cdn.shopify.com/s/files/1/0985/3911/0748/files/output_2e6e0a23-1038-4c42-9016-3a430bfce791.png?v=1769437421', 'A.H. Riise Old St. Croix XO Explorer Danmark er pr. 1. august 2024 en ny eksklusiv Explorer-serie til hyldest af de modige forskere, eventyrere og opdagelsesrejsende, der på A.H. Riise''s tid bidrog til kortlægningen og forståelsen af verden. A.H. Riise XO Explorer-serien består af en række Limited Editions, der udkommer i en række forskellige lande i et meget begrænset antal flasker, som alle er nummererede. A.H. Riise Old St. Croix XO Explorer Danmark er skabt specielt til A.H. Riise fans og samlere i de respektive lande, hvor Explorer udgivelserne frigives, og disse flasker udkommer i et meget begrænset antal. Den danske XO Explorer udgave er begrænset til kun 6.960 flasker, og der er tale om et eksklusivt Limited Edition-blend fra Vestindien og Mellemamerika. I duften finder man karamel og moden frugt, mens smagen byder på noter af kraftig umami fra egetræ, tobak, gammelt læder og sødme fra brændte figner samt kandiseret citrusskal. 40% - 70 cl.');

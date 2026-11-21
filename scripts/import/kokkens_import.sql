@@ -2,12 +2,15 @@
 -- Kilde: kokkensvinhus.dk (WooCommerce), katalog /page/1-5 + 184 produktsider via JSON-LD, 2026-11-08. Volumen er kun sat hvor butikken oplyser den (oevrige = NULL).
 -- Koer: 1) hele filen, 2) SELECT * FROM import_shop('Kokkens Vinhus', 'https://www.kokkensvinhus.dk', 'stg_kokkensvinhus_dk', 'Rom');
 
-DROP TABLE IF EXISTS stg_kokkensvinhus_dk;
-CREATE TABLE stg_kokkensvinhus_dk (
+CREATE TABLE IF NOT EXISTS stg_kokkensvinhus_dk (
     name TEXT, url TEXT, price_dkk NUMERIC, in_stock BOOLEAN,
     volume_cl NUMERIC, abv NUMERIC, image_url TEXT, description TEXT,
     scraped_at TIMESTAMPTZ
 );
+
+-- Standard: tøm staging før hver gen-import, så gamle rækker aldrig blandes med nye.
+TRUNCATE stg_kokkensvinhus_dk;
+ALTER TABLE stg_kokkensvinhus_dk ENABLE ROW LEVEL SECURITY;
 INSERT INTO stg_kokkensvinhus_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('SBS Ghana ARC 2019 50%', 'https://www.kokkensvinhus.dk/shop/sbs-ghana-arc-2019-50/', 999.95, TRUE, NULL, 50, 'https://www.kokkensvinhus.dk/wp-content/uploads/2026/10/Product-billede-4.png', 'SBS Ghana ARC 2019 50% – Single Cask Rom SBS Ghana ARC 2019 50% er en spændende rom fra Ghana, udvalgt af SBS – Single Barrel Selection. Rommen er destilleret i 2019 og tappet ved en alkoholstyrke på 50 %. Aftapningen henvender sig til romentusiaster, der ønsker at udforske rom fra Vestafrika og opleve nye nuancer inden for romverdenen. SBS Ghana ARC 2019 er et interessant valg for både samlere og kendere, der søger anderledes rom med tydelig geografisk oprindelse.', '2026-11-08 11:00:00+01');
 INSERT INTO stg_kokkensvinhus_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('SBS Mauritius 2009 46% – Single Cask Rom', 'https://www.kokkensvinhus.dk/shop/sbs-mauritius-2009-46-single-cask-rom/', 849.95, TRUE, NULL, 46, 'https://www.kokkensvinhus.dk/wp-content/uploads/2026/10/Product-billede-4.png', 'et specifikt fad og giver mulighed for at opleve den særlige karakter,', '2026-11-08 11:00:00+01');
 INSERT INTO stg_kokkensvinhus_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('24 Days of Rum Calendar, SBS Edition', 'https://www.kokkensvinhus.dk/shop/24-days-of-rum-calendar-sbs-edition/', 999.95, TRUE, NULL, NULL, 'https://www.kokkensvinhus.dk/wp-content/uploads/2026/09/Product-billede-3-1.png', 'ÅRETS VILDESTE ROM SAMLING! M.FINE BESKRIVELSER.', '2026-11-08 11:00:00+01');

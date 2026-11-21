@@ -2,12 +2,15 @@
 -- Kilde: hjhansen-vin.dk (React/SSR), katalogsider ?page=1-2, 2026-11-08. Navne = brand + titel. Forudbestillinger taeller som udsolgt.
 -- Koer: 1) hele filen, 2) SELECT * FROM import_shop('HJ Hansen Vin', 'https://www.hjhansen-vin.dk', 'stg_hjhansen_vin_dk', 'Rom');
 
-DROP TABLE IF EXISTS stg_hjhansen_vin_dk;
-CREATE TABLE stg_hjhansen_vin_dk (
+CREATE TABLE IF NOT EXISTS stg_hjhansen_vin_dk (
     name TEXT, url TEXT, price_dkk NUMERIC, in_stock BOOLEAN,
     volume_cl NUMERIC, abv NUMERIC, image_url TEXT, description TEXT,
     scraped_at TIMESTAMPTZ
 );
+
+-- Standard: tøm staging før hver gen-import, så gamle rækker aldrig blandes med nye.
+TRUNCATE stg_hjhansen_vin_dk;
+ALTER TABLE stg_hjhansen_vin_dk ENABLE ROW LEVEL SECURITY;
 INSERT INTO stg_hjhansen_vin_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Bellamy''s Reserve Rum Rum Tasting Box 43,8%, 5x4 cl', 'https://www.hjhansen-vin.dk/spiritus/rom/rum-tasting-box-438-5x4-cl', 329.95, TRUE, 20, 43.8, '', 'Afhold din egen romsmagning derhjemme.', '2026-11-08 11:00:00+01');
 INSERT INTO stg_hjhansen_vin_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('1423 S.B.S Dominican Republic 2013, Bourbon & port cask 52,5%, 70 cl', 'https://www.hjhansen-vin.dk/spiritus/rom/sbs-dominican-republic-2013-bourbon-port-cask-525-70-cl', 615, TRUE, 70, 52.5, '', '', '2026-11-08 11:00:00+01');
 INSERT INTO stg_hjhansen_vin_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Cartavio Rum Company Cartavio Solera 12 Years 40%, 70 cl', 'https://www.hjhansen-vin.dk/spiritus/rom/cartavio-solera-12-years-40-70-cl', 409.95, TRUE, 70, 40, '', '', '2026-11-08 11:00:00+01');

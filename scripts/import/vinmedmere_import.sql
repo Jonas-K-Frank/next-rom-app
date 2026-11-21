@@ -2,12 +2,15 @@
 -- Kilde: vinmedmere.dk (SmartWeb), produktsider via google_sitemap-feed, 2026-11-08. NB: El Dorado Collection har ingen samlet ABV (3 forskellige rom).
 -- Koer: 1) hele filen, 2) SELECT * FROM import_shop('Vin Med Mere', 'https://vinmedmere.dk', 'stg_vinmedmere_dk', 'Rom');
 
-DROP TABLE IF EXISTS stg_vinmedmere_dk;
-CREATE TABLE stg_vinmedmere_dk (
+CREATE TABLE IF NOT EXISTS stg_vinmedmere_dk (
     name TEXT, url TEXT, price_dkk NUMERIC, in_stock BOOLEAN,
     volume_cl NUMERIC, abv NUMERIC, image_url TEXT, description TEXT,
     scraped_at TIMESTAMPTZ
 );
+
+-- Standard: tøm staging før hver gen-import, så gamle rækker aldrig blandes med nye.
+TRUNCATE stg_vinmedmere_dk;
+ALTER TABLE stg_vinmedmere_dk ENABLE ROW LEVEL SECURITY;
 INSERT INTO stg_vinmedmere_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Havana Club Añejo Especial Rom 70 cl. - 37,5%', 'https://vinmedmere.dk/shop/295-rom/5256-havana-club-antildeejo-especial-rom-70-cl-40/', 189, TRUE, 70, 37.5, 'https://shop14539.sfstatic.io/upload_dir/shop/_thumbs/Havana_Club_Anejo_Especial.w1200.png', '', '2026-11-08 11:00:00+01');
 INSERT INTO stg_vinmedmere_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Bacardi Carta Blanca 70 CL. - 37,5%', 'https://vinmedmere.dk/shop/295-rom/7063-bacardi-carta-blanca-70-cl/', 129, TRUE, 70, 37.5, 'https://shop14539.sfstatic.io/upload_dir/shop/_thumbs/05010677013147.1.w1200.png', 'Bacardi Carta Blanca har den velkendte Bacardi smag.', '2026-11-08 11:00:00+01');
 INSERT INTO stg_vinmedmere_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Ron Zacapa Centenario 23 år Rom 70 cl.', 'https://vinmedmere.dk/shop/295-rom/7116-ron-zacapa-centenario-23-aar-rom-70-cl/', 399, TRUE, 70, 40, 'https://shop14539.sfstatic.io/upload_dir/shop/_thumbs/romrigtig.w1200.png', 'Ron Zacapa Centenario 23 år er en fantastisk rom fra Guatamala.', '2026-11-08 11:00:00+01');

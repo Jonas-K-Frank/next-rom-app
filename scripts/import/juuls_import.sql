@@ -2,9 +2,7 @@
 -- Kilde: juuls.dk/rom (47 katalogsider + 419 produktsider), scrapet 2026-11-08
 -- Koer: 1) hele denne fil, 2) SELECT * FROM import_shop('Juuls Vine', 'https://www.juuls.dk', 'stg_juuls_dk', 'Rom');
 
-DROP TABLE IF EXISTS stg_juuls_dk;
-
-CREATE TABLE stg_juuls_dk (
+CREATE TABLE IF NOT EXISTS stg_juuls_dk (
     name TEXT,
     url TEXT,
     price_dkk NUMERIC,
@@ -15,6 +13,10 @@ CREATE TABLE stg_juuls_dk (
     description TEXT,
     scraped_at TIMESTAMPTZ
 );
+
+-- Standard: tøm staging før hver gen-import, så gamle rækker aldrig blandes med nye.
+TRUNCATE stg_juuls_dk;
+ALTER TABLE stg_juuls_dk ENABLE ROW LEVEL SECURITY;
 
 INSERT INTO stg_juuls_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Planteray Original Dark Rum', 'https://www.juuls.dk/rom/varekort/planteray-original-dark-rum', 229, TRUE, 70, 40, 'https://www.juuls.dk/admin/public/getimage.ashx?Image=/Files/Images/Products/50648020.jpg&Width=480&Height=0&Format=jpg&Quality=75&Crop=0&filename=50648020-Planteray-Original-Dark-Rum.jpg', 'Her kan man virkelig tale om en klassiker! Planteray Original Dark Rum er fast inventar på verdens bedste barer; der findes bare ikke ret mange flasker, der kan konkurrere på kvaliteten til den pris! Rommen har to komponenter: en del fra Barbados og en del fra Jamaica. Begge er lavet på melasse og fra Barbados kommer de bløde karamel- og kokosagtige noter, mens Jamaica (Long Pond Distillery) leverer den velkendte frugtige kvalitet og lidt ekstra intensitet. Rommen er afrundet med lidt sukker – 15 gram per liter – hvilket giver en sødmefuld smagsoplevelse, uden at rommens karakter overdøves. Farve : Mahogni. Duft : Rige noter af brændt karamel, mælkechokolade, ristet kokos og tropisk frugt. Smagsnoter : Blød og sødmefuld på tungen, men med masser af smag. Varme krydderier, eksotiske frugtnoter og vanilje. Mediumlang eftersmag. Serveringsforslag : En vinder i alt fra Mai Tais til Dark n Stormy.', '2026-11-08 09:30:00+01');
 INSERT INTO stg_juuls_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Planteray Original Dark Rum ECO Pouch', 'https://www.juuls.dk/rom/varekort/planteray-original-dark-rum-eco-pouch-1', 709, TRUE, 280, 40, 'https://www.juuls.dk/admin/public/getimage.ashx?Image=/Files/Images/Products/50641377.jpg&Width=480&Height=0&Format=jpg&Quality=75&Crop=0&filename=50641377-Planteray-Original-Dark-Rum-ECO-Pouch.jpg', 'Planterays ECO Pouch er løsningen til dig der gerne vil gøre dine romdrinks lidt mere bæredygtige. Tunge glasflasker er en stor post på klimaregnskabet, men det findes der nu råd for. Planteray har tappet deres ikoniske Original Dark (og 3 Stars) i en pouch – tænk bag-in-box without the box – som indeholder 2,8 liter (hvad der svarer til 4 flasker). Pouchen er væsentligt lettere end en glasflaske – den vejer faktisk kun 45 gram. Og så fylder den også mindre, så der er virkelig noget at spare på transport og i produktionen. Samlet er emballagens carbon footprint reduceret med 80%. Selvfølgelig sparer man endda også noget på literprisen! Rommen er den samme, som vi kender og elsker: et caribisk festfyrværkeri af smag og god stemning! Farve : Rødbrun. Duft : Karamelliseret sukker, nelliker og kanel. Smagsnoter : En fed og cremet fornemmelse i munden, med søde noter af rosiner og kirsebær. Finishen er mere tør og krydret med hints af peberkorn og appelsin. Serveringsforslag : Oplagt til cocktails der kræver mørk, smagfuld rom. Prøv den evt. i en Planter’s Punch.', '2026-11-08 09:30:00+01');

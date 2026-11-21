@@ -5,12 +5,15 @@
 -- NB: Volumen er kun sat hvor butikken oplyser den (navn/beskrivelse), oevrige = NULL.
 -- Koer: 1) hele filen, 2) SELECT * FROM import_shop('Uhrskov Vine', 'https://www.uhrskov-vine.dk', 'stg_uhrskov_dk', 'Rom');
 
-DROP TABLE IF EXISTS stg_uhrskov_dk;
-CREATE TABLE stg_uhrskov_dk (
+CREATE TABLE IF NOT EXISTS stg_uhrskov_dk (
     name TEXT, url TEXT, price_dkk NUMERIC, in_stock BOOLEAN,
     volume_cl NUMERIC, abv NUMERIC, image_url TEXT, description TEXT,
     scraped_at TIMESTAMPTZ
 );
+
+-- Standard: tøm staging før hver gen-import, så gamle rækker aldrig blandes med nye.
+TRUNCATE stg_uhrskov_dk;
+ALTER TABLE stg_uhrskov_dk ENABLE ROW LEVEL SECURITY;
 INSERT INTO stg_uhrskov_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Planteray XO Barbados Rum 20th Anniversary Extra Old 40%', 'https://www.uhrskov-vine.dk/planteray-barbados-rum-20th-anniversary-xo-extra-old', 399, TRUE, NULL, 40, 'https://www.uhrskov-vine.dk/media/catalog/product/cache/f438d0b91aceecad0fcc94fe30062643/p/l/plantationxo.png', 'Denne unikke Barbados rom er efterlagret på fine små cognacfade hos cognachuset Pierre Ferrand i hjertet af Cognac i Frankrig. De bløde franske limousine egefade, som først er blevet brugt til modning af den allerbedste Grande Champagne Cognac, bidrager med blød frugt, revet appelsinskal og fine vaniljetoner.', '2026-11-08 12:00:00+01');
 INSERT INTO stg_uhrskov_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Diplomatico Reserva Exclusiva Rum 12 år Venezuela 40%', 'https://www.uhrskov-vine.dk/diplomatico-reserva-exclusiva-rum-12-ar-venezuela', 319, TRUE, NULL, 40, 'https://www.uhrskov-vine.dk/media/catalog/product/cache/f438d0b91aceecad0fcc94fe30062643/d/i/diplomatico_exclusiva_flaskefoto.png', 'Guldmedalje - Ministry of Rum Tasting Competetion 2007 ★★★★★★, 93 Point & Bedste Rom - Ekstra Bladet Diplomatico Rom er en en fabelagtig mørk gylden rom fra Venezuela. destilleret på melasse i kober potstills og derefter 12 års lagring. Diplomatico er en fyldig, sød go frugtig rom. Super kvalitet til pengene!', '2026-11-08 12:00:00+01');
 INSERT INTO stg_uhrskov_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Planteray Original Dark Double Aged Rum 40%', 'https://www.uhrskov-vine.dk/planteray-original-dark', 219, TRUE, NULL, 40, 'https://www.uhrskov-vine.dk/media/catalog/product/cache/f438d0b91aceecad0fcc94fe30062643/p/l/plantation-original-dark.jpg', 'Her kan man virkelig tale om en klassiker! Planteray Original Dark Rum er fast inventar på verdens bedste barer; der findes bare ikke ret mange flasker, der kan konkurrere på kvaliteten til den pris! Rommen har to komponenter: en del fra Barbados og en del fra Jamaica. Begge er lavet på melasse og fra Barbados kommer de bløde karamel- og kokosagtige noter, mens Jamaica (Long Pond Distillery) leverer den velkendte frugtige kvalitet og lidt ekstra intensitet. Rommen er afrundet med lidt sukker – 15 gram per liter – hvilket giver en sødmefuld smagsoplevelse, uden at rommens karakter overdøves.', '2026-11-08 12:00:00+01');

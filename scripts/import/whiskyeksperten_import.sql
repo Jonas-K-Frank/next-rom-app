@@ -3,12 +3,15 @@
 -- Beskrivelser: butikkens produktsider er JS-renderede uden server-side beskrivelse -> NULL.
 -- Koer: 1) hele filen, 2) SELECT * FROM import_shop('Whiskyeksperten', 'https://www.whiskyeksperten.dk', 'stg_whiskyeksperten_dk', 'Rom');
 
-DROP TABLE IF EXISTS stg_whiskyeksperten_dk;
-CREATE TABLE stg_whiskyeksperten_dk (
+CREATE TABLE IF NOT EXISTS stg_whiskyeksperten_dk (
     name TEXT, url TEXT, price_dkk NUMERIC, in_stock BOOLEAN,
     volume_cl NUMERIC, abv NUMERIC, image_url TEXT, description TEXT,
     scraped_at TIMESTAMPTZ
 );
+
+-- Standard: tøm staging før hver gen-import, så gamle rækker aldrig blandes med nye.
+TRUNCATE stg_whiskyeksperten_dk;
+ALTER TABLE stg_whiskyeksperten_dk ENABLE ROW LEVEL SECURITY;
 INSERT INTO stg_whiskyeksperten_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Santiago de Cuba 12 År', 'https://www.whiskyeksperten.dk/santiago-de-cuba-12-aar.html', 389, TRUE, 70, 40, 'https://d2yq4iactkdrix.cloudfront.net/image/33163-medium-1508077984/santiago-de-cuba-12-aar.jpg', NULL, '2026-11-08 11:30:00+01');
 INSERT INTO stg_whiskyeksperten_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Ron Abuelo XII Two Oaks', 'https://www.whiskyeksperten.dk/ron-abuelo-xii-two-oaks-rom.html', 469, TRUE, 70, 40, 'https://d2yq4iactkdrix.cloudfront.net/image/74559-medium-1698953086/ron-abuelo-xii-two-oaks-rom.jpg', NULL, '2026-11-08 11:30:00+01');
 INSERT INTO stg_whiskyeksperten_dk (name, url, price_dkk, in_stock, volume_cl, abv, image_url, description, scraped_at) VALUES ('Mount Gay XO Triple Cask Blend', 'https://www.whiskyeksperten.dk/mount-gay-xo-triple-cask-blend-rom.html', 389, TRUE, 70, 43, 'https://d2yq4iactkdrix.cloudfront.net/image/53943-medium-1597578084/mount-gay-xo-triple-cask-blend-rom.jpg', NULL, '2026-11-08 11:30:00+01');
