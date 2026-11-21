@@ -13,8 +13,6 @@ import { createClient } from '@supabase/supabase-js';
 import { config } from 'dotenv';
 import path from 'path';
 
-const { WebSocket } = require('websocket');
-
 // Load environment variables from .env.local in project root
 config({ path: path.join(__dirname, '..', '.env.local') });
 
@@ -26,12 +24,9 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
     process.exit(1);
 }
 
-// Initialize Supabase client with WebSocket transport for Node.js < 22
+// Initialize Supabase client (Node 22 har indbygget WebSocket; realtime bruges ikke her)
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
-    db: { schema: 'public' },
-    realtime: {
-        transport: { WebSocket: WebSocket }
-    }
+    db: { schema: 'public' }
 });
 
 async function checkProductsTable() {
@@ -174,7 +169,7 @@ async function checkProductRetailerLinks() {
             where description is not null and length(description) > 40
         `);
         
-        console.log(`  - Unique products with source descriptions: ${uniqueProducts?.count || 0}`);
+        console.log(`  - Unique products with source descriptions: ${uniqueProducts || 0}`);
         
         // Count products with multiple descriptions
         const { data: multiDesc } = await supabase.rpc(`
@@ -230,7 +225,7 @@ async function checkStagingTables() {
                 results[table] = {
                     exists: true,
                     rowCount: count || 0,
-                    hasDescription: columns && columns.length > 0
+                    hasDescription: (columns?.length ?? 0) > 0
                 };
                 
                 console.log(`✓ ${table}: ${count || 0} rows, ${results[table].hasDescription ? 'has' : 'no'} description column`);

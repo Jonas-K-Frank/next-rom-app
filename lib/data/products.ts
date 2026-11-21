@@ -136,16 +136,17 @@ export async function getMonthlyFind(): Promise<MonthlyFind | null> {
   if (dropCandidate) {
     const lowest = lowestByProductId.get(dropCandidate.product_id)!;
     productId = dropCandidate.product_id;
-    lowestPrice = lowest.lowest_price;
-    editorialLine = `Prisen er faldet ${Math.round(dropCandidate.best_price_drop_pct)}% siden sidste prischeck`;
+    lowestPrice = lowest.lowest_price ?? 0;
+    editorialLine = `Prisen er faldet ${Math.round(dropCandidate.best_price_drop_pct ?? 0)}% siden sidste prischeck`;
   } else {
     const fallback = [...lowestByProductId.values()].sort(
       (a, b) =>
-        b.retailer_count - a.retailer_count || a.lowest_price - b.lowest_price,
+        (b.retailer_count ?? 0) - (a.retailer_count ?? 0) ||
+        (a.lowest_price ?? 0) - (b.lowest_price ?? 0),
     )[0];
     if (fallback) {
       productId = fallback.product_id;
-      lowestPrice = fallback.lowest_price;
+      lowestPrice = fallback.lowest_price ?? 0;
       editorialLine = `Bedste pris sammenlignet mellem ${fallback.retailer_count} ${
         fallback.retailer_count === 1 ? "forhandler" : "forhandlere"
       }`;
