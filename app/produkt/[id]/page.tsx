@@ -129,7 +129,7 @@ export default async function ProductPage({
           <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg bg-card px-6 py-5 shadow-[2px_4px_12px_rgba(26,26,24,0.08)]">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[2.5px] text-muted-foreground">
-                Bedste pris
+                {hasMultipleOffers ? "Bedste pris" : "Pris"}
               </p>
               <p className="mt-1 text-3xl font-bold leading-none text-pencil-accent sm:text-[40px]">
                 {priceFormatter.format(cheapestOffer.price)} kr.
@@ -172,7 +172,7 @@ export default async function ProductPage({
                     <TableCell className="font-medium">
                       <div className="flex items-center gap-2">
                         {offer.retailerName}
-                        {index === 0 && (
+                        {index === 0 && hasMultipleOffers && (
                           <span className="ml-2 inline-block -rotate-2 rounded-[3px] border-2 border-pencil-accent px-2 py-0.5 text-[10px] font-bold uppercase tracking-[2px] text-pencil-accent">
                             Bedste pris
                           </span>
@@ -215,7 +215,7 @@ export default async function ProductPage({
                     <p className="font-medium text-foreground">
                       {offer.retailerName}
                     </p>
-                    {index === 0 && (
+                    {index === 0 && hasMultipleOffers && (
                       <span className="inline-block -rotate-2 rounded-[3px] border-2 border-pencil-accent px-2 py-0.5 text-[10px] font-bold uppercase tracking-[2px] text-pencil-accent">
                         Bedste pris
                       </span>
