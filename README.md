@@ -71,8 +71,8 @@ Anubis proof-of-work løst i Python (Uhrskov).
 - `stg_*`-tabellerne og funktionerne findes kun i databasen, ikke i
   `supabase/migrations/`. Det fulde skema ligger i
   [`supabase/schema-snapshot.sql`](supabase/schema-snapshot.sql).
-- `app/api/apify-webhook/route.ts` er en ubrugt stub, som kun logger. Den er ikke
-  en del af pipelinen og bliver fjernet eller sikret (se `PLAN.md`, skridt 4).
+- Den tidligere Apify-webhook-stub (`app/api/apify-webhook/`) er fjernet —
+  den tilhørte en forladt plan og indgik aldrig i pipelinen.
 
 ## Kør lokalt
 
@@ -97,7 +97,6 @@ Udfyld værdierne fra Supabase (**Project Settings → API**). Skriv værdien li
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | appen og scripts | Public anon-nøgle, sikker at eksponere til klienten |
 | `SUPABASE_SERVICE_ROLE_KEY` | kun scripts | Omgår RLS. Må aldrig eksponeres til klienten |
 | `MISTRAL_API_KEY` | kun scripts | `generate:descriptions` og `generate:countries` |
-| `APIFY_WEBHOOK_SECRET` | ingen i dag | Hører til den ubrugte webhook-stub |
 
 ### 3. Database
 

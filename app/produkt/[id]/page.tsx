@@ -99,7 +99,7 @@ export default async function ProductPage({
 
         <div className="min-w-0 flex-1">
           {/* Brand-stempel (fallback: kategori) */}
-          <span className="mb-4 inline-block -rotate-3 rounded-[3px] border-[2.5px] border-[#c2410c] px-4 py-1 text-[13px] font-bold tracking-[4px] text-[#c2410c] uppercase">
+          <span className="mb-4 inline-block -rotate-3 rounded-[3px] border-[2.5px] border-pencil-accent px-4 py-1 text-[13px] font-bold tracking-[4px] text-pencil-accent uppercase">
             {stampText}
           </span>
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -112,7 +112,7 @@ export default async function ProductPage({
           </p>
           {product.description && (
             <div className="mt-5">
-              <h2 className="text-[11px] font-bold uppercase tracking-[2.5px] text-[#c2410c]">
+              <h2 className="text-[11px] font-bold uppercase tracking-[2.5px] text-pencil-accent">
                 Om denne rom
               </h2>
               <p className="mt-2 max-w-[54ch] text-[15px] leading-relaxed text-foreground/90">
@@ -131,7 +131,7 @@ export default async function ProductPage({
               <p className="text-[11px] font-bold uppercase tracking-[2.5px] text-muted-foreground">
                 Bedste pris
               </p>
-              <p className="mt-1 text-3xl font-bold leading-none text-[#c2410c] sm:text-[40px]">
+              <p className="mt-1 text-3xl font-bold leading-none text-pencil-accent sm:text-[40px]">
                 {priceFormatter.format(cheapestOffer.price)} kr.
               </p>
               {hasMultipleOffers && savingsAmount > 0 && (
@@ -142,7 +142,7 @@ export default async function ProductPage({
               )}
             </div>
             <a href={cheapestOffer.productUrl} target="_blank" rel="nofollow sponsored noopener noreferrer"
-               className="-rotate-1 rounded-[2px] bg-foreground px-5 py-2.5 text-sm font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-[#c2410c]">
+               className="-rotate-1 rounded-[2px] bg-foreground px-5 py-2.5 text-sm font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-pencil-accent">
               Køb hos {cheapestOffer.retailerName}
             </a>
           </div>
@@ -173,13 +173,13 @@ export default async function ProductPage({
                       <div className="flex items-center gap-2">
                         {offer.retailerName}
                         {index === 0 && (
-                          <span className="ml-2 inline-block -rotate-2 rounded-[3px] border-2 border-[#c2410c] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[2px] text-[#c2410c]">
+                          <span className="ml-2 inline-block -rotate-2 rounded-[3px] border-2 border-pencil-accent px-2 py-0.5 text-[10px] font-bold uppercase tracking-[2px] text-pencil-accent">
                             Bedste pris
                           </span>
                         )}
                       </div>
                     </TableCell>
-                    <TableCell className={`font-mono font-medium ${index === 0 ? 'text-[#c2410c]' : ''}`}>
+                    <TableCell className={`font-mono font-medium ${index === 0 ? 'text-pencil-accent' : ''}`}>
                       {priceFormatter.format(offer.price)}
                     </TableCell>
                     <TableCell className="hidden md:table-cell">
@@ -192,7 +192,7 @@ export default async function ProductPage({
                         href={offer.productUrl}
                         target="_blank"
                         rel="nofollow sponsored noopener noreferrer"
-                        className="block rounded-[2px] bg-foreground px-4 py-2 text-center text-sm font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-[#c2410c]"
+                        className="block rounded-[2px] bg-foreground px-4 py-2 text-center text-sm font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-pencil-accent"
                       >
                         Køb hos {offer.retailerName}
                       </a>
@@ -216,7 +216,7 @@ export default async function ProductPage({
                       {offer.retailerName}
                     </p>
                     {index === 0 && (
-                      <span className="inline-block -rotate-2 rounded-[3px] border-2 border-[#c2410c] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[2px] text-[#c2410c]">
+                      <span className="inline-block -rotate-2 rounded-[3px] border-2 border-pencil-accent px-2 py-0.5 text-[10px] font-bold uppercase tracking-[2px] text-pencil-accent">
                         Bedste pris
                       </span>
                     )}
@@ -227,7 +227,7 @@ export default async function ProductPage({
                     </p>
                   )}
                 </div>
-                <span className={`shrink-0 font-mono font-semibold ${index === 0 ? 'text-[#c2410c]' : ''}`}>
+                <span className={`shrink-0 font-mono font-semibold ${index === 0 ? 'text-pencil-accent' : ''}`}>
                   {priceFormatter.format(offer.price)}
                 </span>
                 <div className="shrink-0">
@@ -235,7 +235,7 @@ export default async function ProductPage({
                     href={offer.productUrl}
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
-                    className="block rounded-[2px] bg-foreground px-3 py-1.5 text-center text-xs font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-[#c2410c]"
+                    className="block rounded-[2px] bg-foreground px-3 py-1.5 text-center text-xs font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-pencil-accent"
                   >
                     Køb
                   </a>

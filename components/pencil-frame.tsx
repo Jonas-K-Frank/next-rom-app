@@ -33,7 +33,7 @@ export function PencilFrame({
       preserveAspectRatio="none"
       className="pointer-events-none absolute inset-0 z-0 h-full w-full"
       fill="none"
-      stroke={color}
+      style={{ stroke: color }}
       strokeLinecap="round"
       vectorEffect="non-scaling-stroke"
     >

@@ -15,6 +15,11 @@
   --color-success-muted: var(--success-muted);
   --color-header: var(--header);
   --color-header-foreground: var(--header-foreground);
+  /* Blyant-designets accentfarve (stempel, fokus-streg, hover-tilstande).
+     NB: Dette er IKKE shadcn-accenten (#c17817) — pencil-accent er den
+     orange fra blyantstreg/CTA-designet og bruges af stempel,
+     søgefokus og hover-tilstande. Ændres kun her. */
+  --color-pencil-accent: var(--pencil-accent);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -56,6 +61,7 @@
 
 :root {
   --background: #FBFBF2;
+  --pencil-accent: #c2410c;
   --foreground: #1a1a18;
   --card: #ffffff;
   --card-foreground: #1a1a18;

@@ -27,7 +27,7 @@ export function SearchField({
 			{/* Orange fokus-streg */}
 			<div className="absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
 				<PencilFrame
-					color="#c2410c"
+					color="var(--pencil-accent)"
 					withFill={false}
 					showCrumble={false}
 					strokeWidthH={8}
@@ -65,7 +65,7 @@ export function SearchField({
 
 					<button
 						type="submit"
-						className="flex h-[42px] items-center bg-[#5f5f5c] px-8 text-base text-background tracking-wide transition-colors hover:bg-[#c2410c] group-hover:bg-[#c2410c] group-focus-within:bg-[#c2410c]"
+						className="flex h-[42px] items-center bg-[#5f5f5c] px-8 text-base text-background tracking-wide transition-colors hover:bg-pencil-accent group-hover:bg-pencil-accent group-focus-within:bg-pencil-accent"
 					>
 						Søg
 					</button>

@@ -82,7 +82,7 @@ export function MonthlyFindModule({
           <div className="flex-1 sm:ml-[100px]">
             {/* Roteret stempel-mærkat i orange — sidens accentfarve,
                 genbruges af prisen og hover-tilstande. */}
-            <span className="inline-block -rotate-3 rounded-[3px] border-[2.5px] border-[#c2410c] px-4 py-1 text-[13px] font-bold tracking-[4px] text-[#c2410c] uppercase">
+            <span className="inline-block -rotate-3 rounded-[3px] border-[2.5px] border-pencil-accent px-4 py-1 text-[13px] font-bold tracking-[4px] text-pencil-accent uppercase">
               Månedens fund
             </span>
             <h2 className="mt-3 text-xl sm:text-2xl font-semibold text-foreground">
@@ -91,7 +91,7 @@ export function MonthlyFindModule({
             <p className="mt-1 text-sm italic text-muted-foreground">
               {find.editorialLine}
             </p>
-            <p className="mt-3 text-3xl sm:text-[40px] leading-none font-bold text-[#c2410c]">
+            <p className="mt-3 text-3xl sm:text-[40px] leading-none font-bold text-pencil-accent">
               {priceFormatter.format(find.lowestPrice)}
             </p>
 
@@ -103,7 +103,7 @@ export function MonthlyFindModule({
               <Button
                 variant="default"
                 nativeButton={false}
-                className="-rotate-1 h-11 rounded-[2px] bg-foreground px-5 text-sm sm:h-12 sm:px-7 sm:text-base font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-[#c2410c]"
+                className="-rotate-1 h-11 rounded-[2px] bg-foreground px-5 text-sm sm:h-12 sm:px-7 sm:text-base font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] hover:bg-pencil-accent"
                 render={
                   <Link href={`/produkt/${find.productId}`}>
                     Se månedens fund

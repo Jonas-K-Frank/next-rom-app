@@ -172,7 +172,7 @@ export default function Home({
                 <button
                   type="button"
                   onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
-                  className="-rotate-1 rounded-[2px] bg-foreground px-6 py-3 text-sm font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] transition-transform hover:rotate-0 hover:bg-[#c2410c]"
+                  className="-rotate-1 rounded-[2px] bg-foreground px-6 py-3 text-sm font-medium text-background shadow-[2px_3px_0_rgba(17,17,17,0.15)] transition-transform hover:rotate-0 hover:bg-pencil-accent"
                 >
                   Vis flere rom {remaining > 0 ? `(${remaining} tilbage)` : ""}
                 </button>

@@ -1,5 +1,6 @@
 import type { CatalogStats } from "@/lib/data/products";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Hero({ stats }: { stats: CatalogStats }) {
   return (
@@ -39,10 +40,17 @@ export function Hero({ stats }: { stats: CatalogStats }) {
             </div>
           </div>
           <div className="relative aspect-[4/3] sm:aspect-[3/4]">
-            <img
+            {/* Hero-billede: over folden, derfor priority (LCP-element).
+                next/image giver AVIF/WebP-konvertering og responsiv bredde
+                på tværs af skærmstile — JPEG-kilden i public/ er 237 KB uoptimeret. */}
+            <Image
               src="/Rom-illustration.jpg"
-              alt="Rom illustration"
-              className="w-full h-full rounded-lg object-cover "
+              alt="Rom illustration: en flaske rom på rustik baggrund"
+              fill
+              priority
+              quality={70}
+              sizes="(min-width: 640px) 50vw, 100vw"
+              className="rounded-lg object-cover"
             />
           </div>
         </div>
