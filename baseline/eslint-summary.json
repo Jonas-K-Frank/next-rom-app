@@ -1,0 +1,17 @@
+{
+  "errors": 6,
+  "warnings": 5,
+  "findings": [
+    "E @typescript-eslint/no-explicit-any lib/data/products.ts:17",
+    "E @typescript-eslint/no-explicit-any lib/data/products.ts:21",
+    "E @typescript-eslint/no-explicit-any lib/data/products.ts:24",
+    "E prefer-const lib/data/products.ts:24",
+    "E react-hooks/refs app/HomeClient.tsx:28",
+    "E react-hooks/set-state-in-effect app/HomeClient.tsx:70",
+    "W @next/next/no-img-element components/hero.tsx:22",
+    "W @next/next/no-img-element components/hero.tsx:31",
+    "W @next/next/no-img-element components/hero.tsx:42",
+    "W @next/next/no-page-custom-font app/layout.tsx:37",
+    "W @typescript-eslint/no-unused-vars components/hero.tsx:4"
+  ]
+}

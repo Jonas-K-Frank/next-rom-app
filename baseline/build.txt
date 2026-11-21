@@ -1,0 +1,28 @@
+▲ Next.js 16.3.3 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 107ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1546ms
+  Running TypeScript ...
+  Finished TypeScript in 1033ms ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/5) ...
+  Generating static pages using 7 workers (1/5) 
+  Generating static pages using 7 workers (2/5) 
+  Generating static pages using 7 workers (3/5) 
+✓ Generating static pages using 7 workers (5/5) in 216ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /api/apify-webhook
+└ ƒ /produkt/[id]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+build exit: 0
+build-tid: 5s
