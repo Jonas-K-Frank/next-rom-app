@@ -41,14 +41,17 @@ export async function generateMetadata({
   ].filter(Boolean).join(", ");
 
   const cheapest = product.offers[0];
+  // offers er runtime-filtreret til in-stock + pris, men typen siger
+  // stadig price: number | null — indsnævr derfor, før priceFormatter.format.
+  const cheapestPrice = cheapest?.price ?? null;
   const shopSuffix =
     product.offers.length === 1
       ? "hos en dansk forhandler"
       : `hos ${product.offers.length} danske forhandlere`;
 
   const title = `${displayName}${details ? ` (${details})` : ""} | Rompriser`;
-  const description = cheapest
-    ? `${displayName} koster ${priceFormatter.format(cheapest.price)} ${shopSuffix}. Se pris, lagerstatus og prishistorik på Rompriser.`
+  const description = cheapestPrice !== null
+    ? `${displayName} koster ${priceFormatter.format(cheapestPrice)} ${shopSuffix}. Se pris, lagerstatus og prishistorik på Rompriser.`
     : `${displayName} — pris, lagerstatus og prishistorik fra danske forhandlere, samlet på Rompriser.`;
 
   return {
