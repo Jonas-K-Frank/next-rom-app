@@ -18,7 +18,7 @@ rulle tilbage til det, der gik galt.
 
 | #   | Skridt                          | Risiko | Bevis for at det virker                         | Status |
 | --- | ------------------------------- | ------ | ----------------------------------------------- | ------ |
-| 0   | Sikkerhedsnet og baseline       | Ingen  | Baseline gemt, `npm run verify` kører           | [~] pg_dump mangler |
+| 0   | Sikkerhedsnet og baseline       | Ingen  | Baseline gemt, `npm run verify` kører           | [x] |
 | 1   | Hygiejne (git, docs)            | Ingen  | `verify` giver samme resultat som baseline      | [ ]    |
 | 2   | Ret ISR/cache                   | Lav    | Build-output (`○`/`●`) og `x-nextjs-cache: HIT` | [ ]    |
 | 3   | Datalag og 1000-rækkers-fejl    | Mellem | Gammel og ny query returnerer identiske data    | [ ]    |
@@ -38,12 +38,11 @@ rulle tilbage til det, der gik galt.
 - [x] Snapshot af nøgletal fra databasen (`baseline/db-snapshot.json`)
 - [x] Data-backup via API (`npm run backup:data` -> `backups/`, gitignored): de 4 kernetabeller,
       rækketal bekræftet mod baseline. Supabase-planen har ingen automatiske backups
-- [ ] **Komplet pg_dump** (`npm run backup:pg`, kræver at Jonas sætter `DATABASE_URL` i sin
-      egen terminal): tager `stg_*`-tabellerne, funktionerne (`import_shop` m.fl.), policies
-      og grants, som API'et ikke kan se. **Blokerer skridt 3.** Se `baseline/README.md`
-- [ ] Læg skema-dump i git som `supabase/schema-snapshot.sql` (migrationerne er ude af trit
-      med databasen)
-- [ ] Kopiér `backups/` til et andet sted end denne disk
+- [x] **Komplet pg_dump** taget 2026-11-21 14:33 (`full.dump` + `schema.sql`): alle 14 tabeller,
+      5 funktioner, policies og grants. Rækketal verificeret (se `baseline/pg-dump-manifest.txt`)
+- [x] Skema-dump i git som `supabase/schema-snapshot.sql` (migrationerne er ude af trit med databasen)
+- [x] Dump kopieret til anden disk (rapporteret af Jonas). TODO: bekræft med
+      `shasum -a 256` mod `baseline/pg-dump-manifest.txt`
 - [x] `npm run verify` (tsc + ESLint-ikke-værre-end-baseline + build). Selvtestet: fejler
       korrekt på bevidst indsat typefejl og ny `any`
 
@@ -51,6 +50,14 @@ Færdig når: der findes en `baseline/`-mappe med "sådan så det ud før", og `
 
 **Fund fra baseline** (detaljer i `baseline/README.md`):
 
+- **Sådan er datapipelinen faktisk:** `stg_<butik>` -> `import_shop(navn, base_url, stg_tabel)`
+  -> `retailers`/`products`/`product_retailer_links`/`prices`. Priser appendes kun hvis
+  `(link_id, scraped_at)` er ny. Webhook-ruten i appen indgår ikke i den kæde (den logger kun).
+  Ukendt: hvordan `stg_*` fyldes, og hvem/hvad kalder `import_shop` (formentlig manuelt i SQL editor)
+- Rettigheder: `anon`/`authenticated` har `GRANT ALL` på `products`, `prices`, `retailers`,
+  `product_retailer_links`. Kun RLS (ingen skrive-policies) forhindrer skrivning. Migrationens
+  `revoke update, delete on prices` er ikke længere gældende. Alle funktioner (inkl. `import_shop`)
+  har `EXECUTE` til `anon`. `stg_whisky_dk` har ikke RLS slået til (de 9 andre har)
 - Skridt 2-hypotesen er bekræftet på build-niveau: `/` og `/produkt/[id]` er `ƒ`
 - Databasen indeholder logik, der ikke findes i repoet: 10 `stg_*`-tabeller (utilgængelige via
   API, selv for service_role), funktioner (`import_shop`, `normalize_name(_v2)`,
@@ -78,7 +85,8 @@ Verificér: `npm run verify` giver samme resultat som baseline.
 
 ## Skridt 3: Datalaget
 
-**Forudsætning:** komplet pg_dump taget og kopieret (skridt 0). Ingen migration køres uden.
+**Forudsætning:** komplet pg_dump taget og kopieret (skridt 0): opfyldt. Rør ikke `stg_*`, `import_shop`
+og `normalize_name*`; de er ikke en del af dette skridt.
 
 - [ ] 3a: `getMonthlyFind` paginerer (loft på 1000 rækker). Sammenlign valgt produkt før/efter
 - [ ] 3b: Ny migration med `product_list_view` (join i databasen, kun nødvendige kolonner).
@@ -93,6 +101,11 @@ Rollback: skift tilbage til den gamle funktion (findes indtil 3c er bevist).
 - [ ] Find faktiske billeddomæner (`select distinct` på værtsnavne i `products.image_url`),
       begræns `images.remotePatterns`, gå alle sider igennem for brudte billeder
 - [ ] Webhook: 401 uden gyldigt `APIFY_WEBHOOK_SECRET` (eller fjern ruten). Test med `curl`
+- [ ] Træk skrive-rettigheder tilbage (ny migration): `revoke insert, update, delete, truncate
+      on products, prices, retailers, product_retailer_links from anon, authenticated` og
+      `revoke execute on function import_shop(...) from anon, authenticated, public`.
+      Test først at forsiden, PDP og scrape/import-flowet stadig virker
+- [ ] `alter table stg_whisky_dk enable row level security` (som de 9 andre)
 
 ## Skridt 5: SEO
 
@@ -127,5 +140,5 @@ Rollback: skift tilbage til den gamle funktion (findes indtil 3c er bevist).
 
 ## Åbne beslutninger
 
-- Webhook: bygges nu eller fjernes? (skridt 4)
+- Webhook: bygges nu eller fjernes? (skridt 4). Anbefaling: fjern den, da pipelinen går via `stg_*` + `import_shop`
 - Billedhåndtering: begræns domæner, eller kopiér billeder til Supabase Storage?

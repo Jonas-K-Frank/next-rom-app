@@ -44,25 +44,13 @@ og sammenlign med `diff baseline/db-snapshot.json baseline/efter-skridt-3.json`
 (gitignored) med manifest og sha256. Rækketal matcher `db-snapshot.json` præcist
 (10 / 3120 / 3287 / 3289). Det er kun data. Ingen skema, funktioner eller policies.
 
-**Trin B: komplet backup med pg_dump (mangler, kræver dig).** API'et kan ikke se alt:
+**Trin B: komplet pg_dump (gjort 2026-11-21 14:33).** Se `baseline/pg-dump-manifest.txt` for rækketal
+og checksums. Skemaet ligger i git som `supabase/schema-snapshot.sql`.
+Bekræft kopien på den anden disk med `shasum -a 256 <sti>/full.dump` og sammenlign.
 
-- 10 `stg_*`-tabeller (rå scrape-data) giver *permission denied* selv for `service_role`
-- RPC-funktioner i databasen: `import_shop`, `normalize_name`, `normalize_name_v2`,
-  `decode_entities`, `extract_numbers` (sandsynligvis det, der flytter `stg_*` over i
-  `products`/`links`/`prices`). De findes **ikke** i `supabase/migrations/`
-- kolonnen `products.normalized_name`, `product_retailer_links.description` og extension
-  `pg_trgm` er heller ikke i migrationerne
+API'et kunne ikke se: 10 `stg_*`-tabeller (permission denied selv for `service_role`), RPC-funktionerne
+`import_shop`, `normalize_name`, `normalize_name_v2`, `decode_entities` og `extract_numbers`, kolonnen
+`products.normalized_name`, `product_retailer_links.description` og extension `pg_trgm`. De er nu
+dokumenteret i schema-snapshot.sql, men findes stadig ikke i `supabase/migrations/`.
 
-Det betyder, at databasen ikke kan genskabes fra repoet, og at en fejl i skridt 3 kan koste
-logik, som kun findes i Supabase. Derfor:
-
-1. `brew install libpq`
-2. Dashboard → **Connect** → *Session pooler* → kopiér forbindelsesstrengen og indsæt
-   DB-passwordet (glemt? *Database → Settings → Reset password*; appen bruger API-nøgler,
-   så et nyt password går ikke ud over sitet)
-3. I din egen terminal (ikke i chatten):
-   `export DATABASE_URL='postgresql://…'` og derefter `npm run backup:pg`
-4. Kopiér `backups/pg-*/` til et andet sted end denne disk (iCloud, anden maskine)
-5. Læg `schema.sql` i git som `supabase/schema-snapshot.sql`, så skemaet og funktionerne endelig er versioneret
-
-`backup:pg` er syntakstjekket men endnu ikke kørt (kræver pg_dump og din forbindelsesstreng).
+Gentag `npm run backup:pg` før hver ny migration (skridt 3 og 4).

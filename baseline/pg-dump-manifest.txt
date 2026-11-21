@@ -1,0 +1,16 @@
+pg_dump taget 2026-11-21 14:33 (mappe: backups/pg-2026-11-21T14-33-00, gitignored)
+Server-extensions: pg_stat_statements, pg_trgm, pgcrypto, plpgsql, supabase_vault, uuid-ossp. Ingen pg_cron-jobs.
+
+Rækker i full.dump (talt fra COPY-blokke), matcher db-snapshot.json for de 4 kernetabeller:
+  retailers 10 | products 3120 | product_retailer_links 3287 | prices 3289
+  stg_foetex_dk 35 | stg_hjhansen_vin_dk 51 | stg_juuls_dk 419 | stg_kokkensvinhus_dk 184
+  stg_rombo_dk 498 | stg_spitus_dk 348 | stg_uhrskov_dk 566 | stg_vinmedmere_dk 25
+  stg_whisky_dk 678 | stg_whiskyeksperten_dk 509
+
+sha256 (brug til at bekræfte at kopien på den anden disk er identisk):
+  c800789c02fae7938fc48d686c81c90369bc47b7180303bb08b4f51895de5978  full.dump
+  13c44263c97096226a8227afd209a2afaadb80ea134bc1bf33b8b26a3a9f2954  schema.sql
+Kontrol:  shasum -a 256 <sti-til-kopien>/full.dump
+
+Skemaet (uden data) ligger i git som supabase/schema-snapshot.sql. Det er den sande
+beskrivelse af databasen. supabase/migrations/ er ude af trit med den (se PLAN.md).
