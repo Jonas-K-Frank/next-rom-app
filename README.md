@@ -60,7 +60,14 @@ Anubis proof-of-work løst i Python (Uhrskov).
 - **Rytme:** månedligt gen-scrape, næste runde ca. **2026-12-08**. Genkør scraping pr.
   butik, generér nye import-filer med frisk `scraped_at`, kør `import_shop`
   (historikken i `prices` bevares), og afslut med fusionskontrol (v2-nøgle + `pg_trgm`).
-- Import-SQL-filerne (`juuls_import.sql` osv.) ligger **ikke** i dette repo.
+- **Import-SQL-filerne** (`juuls_import.sql` osv.) ligger i [`scripts/import/`](scripts/import/).
+  Runde 1 (nov. 2026) er committet uændret. Runde 2 og frem: lav en ny fil pr. butik og
+  læg den i samme mappe.
+- **Standard ved gen-import:** kør `TRUNCATE stg_<butik>` (eller kør hele import-filen,
+  som starter med `CREATE TABLE IF NOT EXISTS … ; TRUNCATE …`) inden `import_shop`.
+  Det sikrer, at staging aldrig indeholder en blanding af to runders data. Alternativet
+  — at `import_shop` deduplikerer på `scraped_at` og altid tager den nyeste pr. `url` —
+  er den rigtige løsning på sigt, men TRUNCATE er den simple, idempotente løsning nu.
 - `stg_*`-tabellerne og funktionerne findes kun i databasen, ikke i
   `supabase/migrations/`. Det fulde skema ligger i
   [`supabase/schema-snapshot.sql`](supabase/schema-snapshot.sql).
