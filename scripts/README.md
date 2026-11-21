@@ -213,12 +213,21 @@ Tjek at din API-nøgle er gyldig og har kredit.
 
 ## Filer
 
-- `generate_descriptions_from_links.ts` - Hovedscriptet
+Beskrivelses-pipelinen (denne README):
+
+- `generate_descriptions.ts` - Hovedscriptet (`npm run generate:descriptions`)
 - `description_prompt.md` - System-prompt til AI
-- `check_database.ts` - Database-verificering
-- `README.md` - Denne fil
-- `generation_report.txt` - Output rapport (genereres ved kørsel)
-- `description_generation.log` - Log-fil (genereres ved kørsel)
+- `check_database.ts` - Database-verificering (`npm run check:db`)
+- `generation_report.txt` - Output rapport (genereres ved kørsel, gitignored)
+- `description_generation.log` - Log-fil (genereres ved kørsel, gitignored)
+
+Øvrige scripts (se hovedreadme og `PLAN.md`):
+
+- `generate_countries.ts` - Udleder oprindelsesland med Mistral (`npm run generate:countries`)
+- `verify.mjs` - `tsc` + ESLint mod baseline + build (`npm run verify`)
+- `snapshot_baseline.ts` - Skrivebeskyttet snapshot af nøgletal fra databasen (`npm run snapshot:baseline`)
+- `backup_data.ts` - JSON-backup af kernetabellerne via API (`npm run backup:data`)
+- `pg_dump_full.sh` - Komplet `pg_dump` (`npm run backup:pg`)
 
 ## Teknisk
 
