@@ -19,21 +19,51 @@ prisgrafen vises kun for få produkter.
 
 ## Datapipeline
 
-Priser kommer ikke ind via appen. Flowet er:
+Priser kommer ikke ind via appen eller et automatisk script. Der er ingen
+Apify-til-Supabase-pipeline; flowet er manuelt og kører butik for butik:
 
 ```
-scraping (uden for dette repo)  ->  stg_<butik>-tabeller i Supabase
-                                ->  public.import_shop(navn, base_url, stg_tabel)
-                                ->  retailers / products / product_retailer_links / prices
+1. scraping pr. butik (curl m.m., butiksspecifikt)
+2. normalisering  ->  én import-SQL-fil pr. butik (INSERT ind i stg_<butik>_dk)
+3. SQL-filen køres i Supabase SQL Editor
+4. SELECT * FROM import_shop(navn, base_url, stg_tabel, kategori);
+5. kontrolquery (antal, på lager, uden volumen/ABV ...) sidst i import-filen
 ```
 
+Scraping-metoden varierer pr. butik, fx `data-product-*`-attributter (Juuls),
+Algolia-API med offentlig søgenøgle (Føtex), sitemap-feeds (Vin Med Mere) og curl med
+Anubis proof-of-work løst i Python (Uhrskov).
+
+- Staging-tabellerne har 9 kolonner: `name, url, price_dkk, in_stock, volume_cl, abv,
+  image_url, description, scraped_at` (`stg_whisky_dk` har desuden ekstra kolonner).
 - `import_shop` normaliserer navne (`normalize_name`, `decode_entities`), opretter
   produkter og links og **tilføjer** en ny pris, hvis `(link_id, scraped_at)` er ny.
+  Det er kun sikkert at genkøre, når `scraped_at` er den samme som sidst. En ny
+  scraping med frisk `scraped_at` giver en ny prisrække pr. link. Det er meningen.
+- Butikkerne, som de står i `retailers`. **Brug præcis disse `base_url`-værdier**, ellers
+  opretter `import_shop` en ny forhandler i stedet for at genbruge den eksisterende:
+
+  | Staging-tabel | `retailers.name` | `retailers.base_url` |
+  | --- | --- | --- |
+  | `stg_foetex_dk` | Foetex | `https://www.foetex.dk` |
+  | `stg_hjhansen_vin_dk` | HJ Hansen Vin | `https://www.hjhansen-vin.dk` |
+  | `stg_juuls_dk` | Juuls Vine | `https://www.juuls.dk` |
+  | `stg_kokkensvinhus_dk` | Kokkens Vinhus | `https://www.kokkensvinhus.dk` |
+  | `stg_rombo_dk` | Rombo.dk | `https://rombo.dk` |
+  | `stg_spitus_dk` | Spitus.dk | `https://spitus.dk` |
+  | `stg_uhrskov_dk` | Uhrskov Vine | `https://www.uhrskov-vine.dk` |
+  | `stg_vinmedmere_dk` | Vin Med Mere | `https://vinmedmere.dk` |
+  | `stg_whisky_dk` | Whisky.dk | `https://www.whisky.dk` |
+  | `stg_whiskyeksperten_dk` | Whiskyeksperten | `https://www.whiskyeksperten.dk` |
+
+  (Koblingen mellem tabel og butik er udledt af navnene.)
+- **Rytme:** månedligt gen-scrape, næste runde ca. **2026-12-08**. Genkør scraping pr.
+  butik, generér nye import-filer med frisk `scraped_at`, kør `import_shop`
+  (historikken i `prices` bevares), og afslut med fusionskontrol (v2-nøgle + `pg_trgm`).
+- Import-SQL-filerne (`juuls_import.sql` osv.) ligger **ikke** i dette repo.
 - `stg_*`-tabellerne og funktionerne findes kun i databasen, ikke i
   `supabase/migrations/`. Det fulde skema ligger i
   [`supabase/schema-snapshot.sql`](supabase/schema-snapshot.sql).
-- **Mangler at blive dokumenteret:** hvordan `stg_*` fyldes, og hvordan/hvornår
-  `import_shop` køres.
 - `app/api/apify-webhook/route.ts` er en ubrugt stub, som kun logger. Den er ikke
   en del af pipelinen og bliver fjernet eller sikret (se `PLAN.md`, skridt 4).
 

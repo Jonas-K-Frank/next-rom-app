@@ -53,7 +53,8 @@ Færdig når: der findes en `baseline/`-mappe med "sådan så det ud før", og `
 - **Sådan er datapipelinen faktisk:** `stg_<butik>` -> `import_shop(navn, base_url, stg_tabel)`
   -> `retailers`/`products`/`product_retailer_links`/`prices`. Priser appendes kun hvis
   `(link_id, scraped_at)` er ny. Webhook-ruten i appen indgår ikke i den kæde (den logger kun).
-  Ukendt: hvordan `stg_*` fyldes, og hvem/hvad kalder `import_shop` (formentlig manuelt i SQL editor)
+  Bekræftet af Jonas: scraping er manuel pr. butik, der genereres en import-SQL-fil pr. butik,
+  som køres i Supabase SQL Editor efterfulgt af `import_shop`. Månedlig rytme, næste runde ca. **2026-12-08**
 - Rettigheder: `anon`/`authenticated` har `GRANT ALL` på `products`, `prices`, `retailers`,
   `product_retailer_links`. Kun RLS (ingen skrive-policies) forhindrer skrivning. Migrationens
   `revoke update, delete on prices` er ikke længere gældende. Alle funktioner (inkl. `import_shop`)
@@ -64,9 +65,15 @@ Færdig når: der findes en `baseline/`-mappe med "sådan så det ud før", og `
   `decode_entities`, `extract_numbers`), `normalized_name`-kolonnen og `pg_trgm`. Derfor
   kræver skridt 3 en komplet pg_dump først, og vi rører ikke disse objekter
 - Skridt 3a er bekræftet: 2891 rækker i `product_lowest_prices`, kun 1000 hentes til Månedens fund
-- Der er næsten ingen prishistorik (3289 priser / 3287 links, 2 rækker i `product_price_drops`),
-  så Månedens fund er altid fallback-grenen, og prisgrafen vises næsten aldrig. Ingen fejl,
-  men det betyder at 3a ikke kan ses på forsiden endnu; den skal bevises med snapshot
+- Der er næsten ingen prishistorik, fordi der kun har været én scraping-runde (6.-8. nov.:
+  673 + 497 + 2119 priser, 2 rækker i `product_price_drops`). Derfor er Månedens fund i dag altid
+  fallback-grenen, og 3a kan ikke ses på forsiden; den skal bevises med snapshot
+- **Frist: skridt 3a skal være færdigt før import-runden ca. 8. dec.** Når runde 2 er importeret,
+  får `product_price_drops` mange rækker, og Månedens fund skifter til prisfald-grenen. Den slår
+  op i et `lowestByProductId`-map bygget af de første 1000 af 2891 rækker, så de fleste prisfald
+  bliver hoppet over (`drops.find(...)`), og forsiden viser et tilfældigt dårligere fund
+- Skridt 4 (`REVOKE` på tabeller/funktioner) påvirker ikke importen, som kører i SQL Editor som
+  `postgres`. Alligevel: tag en frisk `npm run backup:pg` lige før og efter runde 2
 
 ## Skridt 1: Hygiejne (færdigt)
 
@@ -79,7 +86,8 @@ Færdig når: der findes en `baseline/`-mappe med "sådan så det ud før", og `
 - [x] Verificeret: `npm run verify` identisk med baseline (6 errors / 5 warnings, samme ruteliste),
       ingen filer i `app/`, `components/`, `lib/`, `public/` eller config rørt
 
-Udestår fra README (kræver Jonas): hvordan `stg_*` fyldes og hvornår `import_shop` køres.
+README's datapipeline-afsnit er udfyldt (manuelt flow, rytme, forhandler-`base_url`'er). Åbent: import-SQL-filerne
+ligger ikke i repoet.
 
 ## Skridt 2: Få cachen til at virke
 
