@@ -29,6 +29,7 @@ export function ProductCard({ product }: { product: ProductListItem }) {
                 src={product.image_url}
                 alt={product.name}
                 fill
+                quality={70}
                 className="object-contain p-3"
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               />

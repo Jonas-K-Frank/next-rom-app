@@ -123,6 +123,8 @@ export function MonthlyFindModule({
                   src={find.imageUrl}
                   alt={find.name}
                   fill
+                  priority
+                  quality={70}
                   className="object-contain"
                   sizes="300px"
                 />

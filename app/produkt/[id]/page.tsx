@@ -87,7 +87,7 @@ export default async function ProductPage({
           <PencilFrame />
           {product.image_url ? (
             <div className="relative z-10 aspect-[3/4]">
-              <Image src={product.image_url} alt={product.name} fill
+              <Image src={product.image_url} alt={product.name} fill priority quality={70}
                 className="object-contain" sizes="300px" />
             </div>
           ) : (

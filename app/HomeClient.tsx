@@ -143,7 +143,10 @@ export default function Home({
       <Hero stats={catalogStats} />
       
       <div className="mx-auto w-full max-w-5xl flex-1 px-4 pb-10">
-        <div className="py-4">
+        {/* Sticky søgebar: følger med ved scroll, så man altid kan søge.
+            -mx-4 px-4 så baggrunden dækker hele containerbredden
+            (kort ville ellers skimte igennem i side-margenerne). */}
+        <div className="sticky top-0 z-30 -mx-4 bg-[#FBFBF2] px-4 py-4">
           <SearchField searchQuery={searchQuery} onSearchChange={handleSearchChange} />
         </div>
 
