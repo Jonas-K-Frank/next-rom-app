@@ -43,3 +43,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lokale databackups (indeholder data, må ikke i git)
+/backups/

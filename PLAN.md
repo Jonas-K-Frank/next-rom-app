@@ -18,7 +18,7 @@ rulle tilbage til det, der gik galt.
 
 | #   | Skridt                          | Risiko | Bevis for at det virker                         | Status |
 | --- | ------------------------------- | ------ | ----------------------------------------------- | ------ |
-| 0   | Sikkerhedsnet og baseline       | Ingen  | Baseline gemt, `npm run verify` kører           | [~] backup mangler |
+| 0   | Sikkerhedsnet og baseline       | Ingen  | Baseline gemt, `npm run verify` kører           | [~] pg_dump mangler |
 | 1   | Hygiejne (git, docs)            | Ingen  | `verify` giver samme resultat som baseline      | [ ]    |
 | 2   | Ret ISR/cache                   | Lav    | Build-output (`○`/`●`) og `x-nextjs-cache: HIT` | [ ]    |
 | 3   | Datalag og 1000-rækkers-fejl    | Mellem | Gammel og ny query returnerer identiske data    | [ ]    |
@@ -36,8 +36,14 @@ rulle tilbage til det, der gik galt.
       Turbopack udskriver ikke bundle-størrelser, så de er ikke med
 - [x] Baseline af `tsc` (ren) og ESLint (**6 errors, 5 warnings**, ikke 2 som først antaget)
 - [x] Snapshot af nøgletal fra databasen (`baseline/db-snapshot.json`)
-- [ ] Bekræft Supabase-backup (eller `pg_dump`). **Kræver manuel handling fra Jonas**,
-      se `baseline/README.md`. Skal være på plads før skridt 3
+- [x] Data-backup via API (`npm run backup:data` -> `backups/`, gitignored): de 4 kernetabeller,
+      rækketal bekræftet mod baseline. Supabase-planen har ingen automatiske backups
+- [ ] **Komplet pg_dump** (`npm run backup:pg`, kræver at Jonas sætter `DATABASE_URL` i sin
+      egen terminal): tager `stg_*`-tabellerne, funktionerne (`import_shop` m.fl.), policies
+      og grants, som API'et ikke kan se. **Blokerer skridt 3.** Se `baseline/README.md`
+- [ ] Læg skema-dump i git som `supabase/schema-snapshot.sql` (migrationerne er ude af trit
+      med databasen)
+- [ ] Kopiér `backups/` til et andet sted end denne disk
 - [x] `npm run verify` (tsc + ESLint-ikke-værre-end-baseline + build). Selvtestet: fejler
       korrekt på bevidst indsat typefejl og ny `any`
 
@@ -46,6 +52,10 @@ Færdig når: der findes en `baseline/`-mappe med "sådan så det ud før", og `
 **Fund fra baseline** (detaljer i `baseline/README.md`):
 
 - Skridt 2-hypotesen er bekræftet på build-niveau: `/` og `/produkt/[id]` er `ƒ`
+- Databasen indeholder logik, der ikke findes i repoet: 10 `stg_*`-tabeller (utilgængelige via
+  API, selv for service_role), funktioner (`import_shop`, `normalize_name(_v2)`,
+  `decode_entities`, `extract_numbers`), `normalized_name`-kolonnen og `pg_trgm`. Derfor
+  kræver skridt 3 en komplet pg_dump først, og vi rører ikke disse objekter
 - Skridt 3a er bekræftet: 2891 rækker i `product_lowest_prices`, kun 1000 hentes til Månedens fund
 - Der er næsten ingen prishistorik (3289 priser / 3287 links, 2 rækker i `product_price_drops`),
   så Månedens fund er altid fallback-grenen, og prisgrafen vises næsten aldrig. Ingen fejl,
@@ -67,6 +77,8 @@ Verificér: `npm run verify` giver samme resultat som baseline.
 - [ ] Verificér: `○`/`●` i build-output, HIT ved andet kald, forside-HTML uændret ift. baseline
 
 ## Skridt 3: Datalaget
+
+**Forudsætning:** komplet pg_dump taget og kopieret (skridt 0). Ingen migration køres uden.
 
 - [ ] 3a: `getMonthlyFind` paginerer (loft på 1000 rækker). Sammenlign valgt produkt før/efter
 - [ ] 3b: Ny migration med `product_list_view` (join i databasen, kun nødvendige kolonner).
