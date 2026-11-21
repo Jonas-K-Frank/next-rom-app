@@ -11,7 +11,11 @@
     "generate:descriptions:rerun": "tsx scripts/generate_descriptions.ts --rerun-failed",
     "generate:descriptions:regenerate": "tsx scripts/generate_descriptions.ts --regenerate-all",
     "generate:countries": "tsx scripts/generate_countries.ts",
-    "check:db": "tsx scripts/check_database.ts"
+    "check:db": "tsx scripts/check_database.ts",
+    "verify": "node scripts/verify.mjs",
+    "snapshot:baseline": "tsx scripts/snapshot_baseline.ts",
+    "backup:data": "tsx scripts/backup_data.ts",
+    "backup:pg": "bash scripts/pg_dump_full.sh"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

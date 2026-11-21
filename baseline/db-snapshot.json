@@ -1,0 +1,70 @@
+{
+  "note": "Skrivebeskyttet snapshot (anon-nøgle). Se scripts/snapshot_baseline.ts",
+  "takenAt": "2026-11-21T13:12:06.183Z",
+  "counts": {
+    "products": 3120,
+    "retailers": 10,
+    "product_retailer_links": 3287,
+    "prices": 3289,
+    "product_lowest_prices": 2891,
+    "product_price_drops": 2
+  },
+  "homepage": {
+    "productCountWithPrice": 2891,
+    "idFingerprint": "5a78316a79f00941"
+  },
+  "catalogStats": {
+    "product_count": 2891,
+    "retailer_count": 10
+  },
+  "monthlyFind": {
+    "picked": {
+      "kind": "fallback",
+      "product_id": "428163ef-6615-4fc7-adad-ca8641332d55",
+      "name": "Goslings Black Seal Rom",
+      "lowest_price": 199
+    },
+    "rowsReturnedByUnpaginatedDropsQuery": 0,
+    "rowsReturnedByUnpaginatedLowestPricesQuery": 1000,
+    "lowestPricesTruncatedByRowLimit": true,
+    "dropsTruncatedByRowLimit": false
+  },
+  "sampleProductPages": [
+    {
+      "id": "03365c4d-6277-4e94-a7cc-8cb97a7aaf2a",
+      "name": "Cargo Cult Navy Strength Rum",
+      "volume_cl": 70,
+      "country": "Fiji",
+      "has_image": true,
+      "has_description": true,
+      "links": 2,
+      "offers_in_stock": 2,
+      "lowest_price": 299,
+      "price_history_rows": 2
+    },
+    {
+      "id": "03ab96a9-2854-499f-af67-2afe341f6eb8",
+      "name": "Worthy Park White Overproof",
+      "volume_cl": 70,
+      "country": "Jamaica",
+      "has_image": true,
+      "has_description": true,
+      "links": 2,
+      "offers_in_stock": 2,
+      "lowest_price": 249,
+      "price_history_rows": 2
+    },
+    {
+      "id": "05da05f8-a1c6-4fbd-a8d2-51085a50579e",
+      "name": "Old St. Croix Danish Navy Frigate Jylland",
+      "volume_cl": 70,
+      "country": "Danmark",
+      "has_image": true,
+      "has_description": true,
+      "links": 2,
+      "offers_in_stock": 2,
+      "lowest_price": 439,
+      "price_history_rows": 2
+    }
+  ]
+}
