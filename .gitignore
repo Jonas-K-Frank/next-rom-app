@@ -46,3 +46,10 @@ next-env.d.ts
 
 # lokale databackups (indeholder data, må ikke i git)
 /backups/
+
+# genererede logs og rapporter fra scripts (ligger stadig på disken, men ikke i git)
+*.log
+scripts/generation_report.txt
+
+# Supabase CLI's lokale cache
+supabase/.temp/
