@@ -15,25 +15,12 @@ export default function Home({
   monthlyFind: MonthlyFind | null;
   catalogStats: CatalogStats;
 }) {
-  console.log('initialProducts ialt:', initialProducts.length);
-  console.log('bacardi i initialProducts:', initialProducts.filter(p => p.name.toLowerCase().includes('bacardi')).length);
-  
   const [searchQuery, setSearchQuery] = useState("");
 
   // Reset search on page refresh/mount
   useEffect(() => {
     setSearchQuery("");
   }, []);
-
-  // Log products with/without images for debugging
-  useEffect(() => {
-    const withImage = initialProducts.filter(p => p.image_url).length;
-    const withoutImage = initialProducts.filter(p => !p.image_url).length;
-    console.log(`Products: ${initialProducts.length} total, ${withImage} with image, ${withoutImage} without image`);
-    if (withoutImage > 0) {
-      console.log("Products without image:", initialProducts.filter(p => !p.image_url).map(p => p.name));
-    }
-  }, [initialProducts]);
 
   const filteredProducts = initialProducts.filter((product) => {
     const query = searchQuery.toLowerCase();

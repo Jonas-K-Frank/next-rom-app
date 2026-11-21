@@ -20,6 +20,9 @@ const priceFormatter = new Intl.NumberFormat("da-DK", {
   currency: "DKK",
 });
 
+// Priser/prishistorik opdateres månedligt → cach produktsider i 1 time (ISR)
+export const revalidate = 3600;
+
 const dateFormatter = new Intl.DateTimeFormat("da-DK", {
   day: "numeric",
   month: "short",
