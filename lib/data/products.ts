@@ -89,7 +89,6 @@ export async function getProductListWithLowestPrice(): Promise<
       };
     });
 
-  console.log("initialProducts loaded:", result.length);
   return result;
 }
 

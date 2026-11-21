@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { BackButton } from "./back-button";
 import { notFound } from "next/navigation";
 import { getProductDetail } from "@/lib/data/products";
 import { cleanDisplayName } from "@/lib/utils";
@@ -13,7 +13,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
 
 const priceFormatter = new Intl.NumberFormat("da-DK", {
   style: "currency",
@@ -76,14 +75,9 @@ export default async function ProductPage({
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 px-4 py-10">
-      {/* Tilbage-knap - diskret ghost */}
+      {/* Tilbage-knap - husker scroll-position via browserens historie */}
       <div className="mb-4">
-        <Button
-          variant="ghost"
-          className="-ml-4 text-sm"
-          nativeButton={false}
-          render={<Link href="/">← Tilbage til forsiden</Link>}
-        />
+        <BackButton />
       </div>
 
       {/* TRIN 3: HERO-SEKTION */}
