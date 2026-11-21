@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { BackButton } from "./back-button";
 import { notFound } from "next/navigation";
 import { getProductDetail } from "@/lib/data/products";
@@ -21,6 +22,46 @@ const priceFormatter = new Intl.NumberFormat("da-DK", {
 
 // Priser/prishistorik opdateres månedligt → cach produktsider i 1 time (ISR)
 export const revalidate = 3600;
+
+// SEO: unik title/description pr. produkt til søgemaskiner og delinger.
+// offers er allerede filtreret (kun in-stock + pris) og sorteret stigende.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const product = await getProductDetail(id);
+  if (!product) return {};
+
+  const displayName = cleanDisplayName(product.name);
+  const details = [
+    product.volume_cl ? `${product.volume_cl} cl` : null,
+    product.abv ? `${product.abv}%` : null,
+  ].filter(Boolean).join(", ");
+
+  const cheapest = product.offers[0];
+  const shopSuffix =
+    product.offers.length === 1
+      ? "hos en dansk forhandler"
+      : `hos ${product.offers.length} danske forhandlere`;
+
+  const title = `${displayName}${details ? ` (${details})` : ""} | Rompriser`;
+  const description = cheapest
+    ? `${displayName} koster ${priceFormatter.format(cheapest.price)} ${shopSuffix}. Se pris, lagerstatus og prishistorik på Rompriser.`
+    : `${displayName} — pris, lagerstatus og prishistorik fra danske forhandlere, samlet på Rompriser.`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: `/produkt/${id}` },
+    openGraph: {
+      title,
+      description,
+      images: product.image_url ? [{ url: product.image_url }] : undefined,
+    },
+  };
+}
 
 const dateFormatter = new Intl.DateTimeFormat("da-DK", {
   day: "numeric",
@@ -73,8 +114,39 @@ export default async function ProductPage({
   // Stempel tekst: land, med kategori som fallback
   const stampText = product.country ?? product.category ?? "Rom";
 
+  // JSON-LD til søgemaskiner: schema.org Product med pristilbud.
+  // Én forhandler → Offer; flere → AggregateOffer (lav/høj pris).
+  const jsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: cleanDisplayName(product.name),
+    ...(product.image_url ? { image: product.image_url } : {}),
+    ...(product.description ? { description: product.description } : {}),
+  };
+  if (offers.length > 0 && cheapestOffer) {
+    jsonLd.offers = hasMultipleOffers
+      ? {
+          "@type": "AggregateOffer",
+          priceCurrency: "DKK",
+          lowPrice: cheapestOffer.price,
+          highPrice: mostExpensiveOffer?.price,
+          offerCount: offers.length,
+          availability: "https://schema.org/InStock",
+        }
+      : {
+          "@type": "Offer",
+          priceCurrency: "DKK",
+          price: cheapestOffer.price,
+          availability: "https://schema.org/InStock",
+        };
+  }
+
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 px-4 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Tilbage-knap - husker scroll-position via browserens historie */}
       <div className="mb-4">
         <BackButton />

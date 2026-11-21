@@ -194,6 +194,16 @@ export async function getCatalogStats(): Promise<CatalogStats> {
   };
 }
 
+// Sitemap: produkt-id'er til app/sitemap.ts. Kun produkter med en aktuel
+// pris (product_lowest_prices-viewet udelukker automatisk udsolgte alle
+// steder). Matcher altså det, forsiden faktisk linker til.
+export async function getSitemapProducts(): Promise<
+  Array<{ product_id: string }>
+> {
+  const supabase = await createClient();
+  return fetchAll(supabase, "product_lowest_prices", "product_id", "product_id");
+}
+
 export interface RetailerOffer {
   linkId: string;
   retailerName: string;

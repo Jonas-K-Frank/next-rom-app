@@ -13,9 +13,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rompriser | Sammenlign rom-priser i Danmark",
+  title: "Rompriser | Danmarks store rom-katalog",
   description:
-    "Sammenlign priser og se prishistorik på rom fra danske online forhandlere.",
+    "Rom fra 10 danske online forhandlere, samlet ét sted. Priser, prishistorik og lagerstatus.",
+  // Lukket testfase: søgemaskiner skal ikke indeksere test-URLen.
+  // Fjernes når det rigtige domæne er koblet på.
+  robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

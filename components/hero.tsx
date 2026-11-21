@@ -9,14 +9,14 @@ export function Hero({ stats }: { stats: CatalogStats }) {
         <div className="grid gap-8 sm:grid-cols-2">
           <div>
             <span className="block text-[11px] font-semibold tracking-widest uppercase text-amber-600">
-              Prissammenligning på rom
+              Danmarks store rom-katalog
             </span>
             <Link href="/" className="brand mt-2 mb-4 text-5xl font-bold tracking-tight leading-none sm:text-6xl lg:text-[6rem]" style={{ fontFamily: '"DM Serif Display", serif' }}>Rompriser</Link>
             <h1 className="mt-12 text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-             Find din næste yndlingsrom til den bedste pris
+             Find din næste yndlingsrom blandt danske forhandlere
             </h1>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground">
-              Vi sammenligner priserne hos Danmarks førende forhandlere af rom, så du altid gør den bedste handel.
+              Vi har samlet rom-sortimentet fra flere danske forhandlere ét sted, så du altid kan finde din yndlingsrom eller måske en ny og spændende.
             </p>
             <div className="mt-8 flex flex-col gap-6 sm:gap-8">
               <div className="flex items-start gap-4">
@@ -24,7 +24,7 @@ export function Hero({ stats }: { stats: CatalogStats }) {
                 <div>
                   <h3 className="font-semibold text-header">Alle store forhandlere</h3>
                   <p className="text-sm text-muted-foreground">
-                    Vi sammenligner alt fra specialbutikker til landets største supermarkeder.
+                    Kataloget spænder fra specialbutikker til landets største supermarkeder.
                   </p>
                 </div>
               </div>
